@@ -1,0 +1,21 @@
+/* src/app/globals.css - With custom theme */
+@import "tailwindcss";
+
+@theme {
+  /* Your custom colors */
+  --color-primary-dark: #142143;
+  --color-primary-blue: #1a5d94;
+  --color-accent-orange: #f1a100;
+  --color-accent-light: #dcc1ed;
+  --color-secondary-blue: #112258;
+}
+
+/* Custom base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
