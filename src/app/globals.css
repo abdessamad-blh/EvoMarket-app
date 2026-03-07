@@ -1,16 +1,18 @@
-/* src/app/globals.css - With custom theme */
 @import "tailwindcss";
 
 @theme {
-  /* Your custom colors */
-  --color-primary-dark: #142143;
-  --color-primary-blue: #1a5d94;
-  --color-accent-orange: #f1a100;
-  --color-accent-light: #dcc1ed;
+  --color-primary-gold: #F4B223;
+  --color-primary-gold-hover: #E09800;
+  --color-dark-blue: #0A0E27;
+  --color-dark-surface: #0D1230;
   --color-secondary-blue: #112258;
+  --color-gold-light: #F4B22333;
+  --color-text-muted: #9CA3AF;
+
+  --font-heading: "Bebas Neue", sans-serif;
+  --font-body: "Archivo", sans-serif;
 }
 
-/* Custom base styles */
 html {
   scroll-behavior: smooth;
 }
@@ -18,4 +20,90 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-color: #0A0E27;
+  color: #FFFFFF;
+  font-family: var(--font-body);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(244, 178, 35, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(244, 178, 35, 0.4); }
+}
+
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F4B223, #E09800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-underline {
+  position: relative;
+}
+
+.gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #F4B223;
+  transition: width 0.3s ease;
+}
+
+.gold-underline:hover::after {
+  width: 100%;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(244, 178, 35, 0.15);
+  border-color: rgba(244, 178, 35, 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0E27;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #112258;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F4B223;
 }

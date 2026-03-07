@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "title": "EvoMarket - Digital Agency in Rabat, Morocco",
+    "description": "EvoMarket is a digital agency in Rabat specializing in digital marketing, content creation, web & mobile development and social media management."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "cta": "Get a quote",
+    "academy": "Academy",
+    "devis": "Quote"
+  },
+  "hero": {
+    "badge": "Digital Agency in Morocco",
+    "title1": "In",
+    "title2": "Evo Market",
+    "title3": "Agency",
+    "title4": "we create",
+    "description": "EvoMarket is a digital agency based in Rabat, specializing in transforming your ideas into high-performing digital experiences.",
+    "floating": {
+      "service1": "Brand Identity",
+      "service2": "Content Creation",
+      "service3": "Web Development",
+      "service4": "Digital Marketing"
+    },
+    "cta1": "Request a quote",
+    "cta2": "Discover our services"
+  },
+  "services": {
+    "badge": "What we do",
+    "title": "Our Services",
+    "description": "Complete digital solutions to propel your business towards success.",
+    "socialMedia": {
+      "title": "Social Media Management",
+      "description": "Content strategy, planning, community management and growth of your social media presence."
+    },
+    "contentCreation": {
+      "title": "Content Creation",
+      "description": "Video production, graphic design, copywriting and creative content that captivates your audience."
+    },
+    "webDev": {
+      "title": "Web Development",
+      "description": "Elegant showcase sites and custom web applications, built with the most modern technologies."
+    },
+    "mobileApp": {
+      "title": "Mobile Development",
+      "description": "High-performing iOS and Android applications, with intuitive design and optimal user experience."
+    },
+    "digitalMarketing": {
+      "title": "Digital Marketing & Strategy",
+      "description": "SEO, online advertising, digital strategy and data analysis to maximize your ROI."
+    },
+    "learnMore": "Learn more",
+    "requestQuote": "Request a quote"
+  },
+  "process": {
+    "badge": "Our Methodology",
+    "title": "How we work",
+    "description": "An example structure of a full-stack website with multi-functionalities — from strategy to launch.",
+    "step1": {
+      "title": "Discovery & Strategy",
+      "description": "In-depth analysis of your objectives, audience and competitors to develop a winning strategy.",
+      "duration": "1-2 weeks"
+    },
+    "step2": {
+      "title": "Design & Prototyping",
+      "description": "Creation of UI/UX mockups and interactive prototypes to validate the concept before development.",
+      "duration": "2-3 weeks"
+    },
+    "step3": {
+      "title": "Development & Testing",
+      "description": "Development with modern technologies, rigorous testing and performance optimization.",
+      "duration": "3-4 weeks"
+    },
+    "step4": {
+      "title": "Launch & Support",
+      "description": "Deployment, team training and ongoing support to ensure success.",
+      "duration": "1 week + ongoing"
+    }
+  },
+  "portfolio": {
+    "badge": "Our Work",
+    "title": "Recent Projects",
+    "description": "A glimpse of our work in Website creation across diverse sectors.",
+    "viewProject": "View project",
+    "viewAll": "View all projects",
+    "categories": {
+      "all": "All",
+      "web": "Web",
+      "mobile": "Mobile",
+      "marketing": "Marketing",
+      "branding": "Branding"
+    }
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "Your trusted digital partner",
+    "description": "EvoMarket is more than just a digital agency. We are your strategic partner, dedicated to transforming your vision into digital reality. Based in Rabat, we combine local expertise with international standards.",
+    "mission": "Our mission is to make digital accessible and performant for every Moroccan business.",
+    "stats": {
+      "projects": "Projects completed",
+      "satisfaction": "Client satisfaction",
+      "team": "Dedicated experts",
+      "experience": "Years of experience"
+    }
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What our clients say",
+    "description": "Our clients' satisfaction is our greatest reward."
+  },
+  "blogSection": {
+    "badge": "Our Blog",
+    "title": "Latest Articles",
+    "description": "Stay informed about the latest trends in digital marketing and web development.",
+    "readMore": "Read article",
+    "viewAll": "View all articles",
+    "minRead": "min read"
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "title": "Ready to launch your project?",
+    "description": "Let's discuss your goals and find the best digital solution for your business together.",
+    "form": {
+      "name": "Your name",
+      "email": "Your email",
+      "phone": "Your phone",
+      "message": "Your message",
+      "subject": "Subject",
+      "send": "Send message",
+      "sending": "Sending..."
+    },
+    "info": {
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "addressValue": "Rabat, Morocco",
+      "social": "Social media"
+    }
+  },
+  "footer": {
+    "description": "Digital agency based in Rabat, specializing in digital marketing, web development and content creation.",
+    "services": "Services",
+    "links": "Useful Links",
+    "contactTitle": "Contact",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Get our latest news and tips.",
+    "subscribe": "Subscribe",
+    "emailPlaceholder": "Your email",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Articles & Tips",
+    "description": "Discover our articles on digital marketing, web development and digital strategies.",
+    "allCategories": "All categories",
+    "noArticles": "No articles found.",
+    "backToBlog": "Back to blog",
+    "shareArticle": "Share this article",
+    "relatedArticles": "Related articles",
+    "publishedOn": "Published on",
+    "by": "by"
+  },
+  "devis": {
+    "meta": {
+      "title": "Request a free quote",
+      "description": "Get a personalized quote for your digital project. Website, mobile app, digital marketing and more."
+    },
+    "title": "Request a quote",
+    "subtitle": "Tell us about your project and receive a personalized proposal within 24 hours.",
+    "steps": {
+      "info": "Information",
+      "service": "Service",
+      "details": "Details"
+    },
+    "step1": {
+      "title": "Your information",
+      "fullName": "Full name",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email address",
+      "emailPlaceholder": "your@email.com",
+      "company": "Company / Organization",
+      "companyPlaceholder": "Your company name (optional)",
+      "phone": "Phone",
+      "phonePlaceholder": "6 XX XX XX XX",
+      "employees": "Number of employees",
+      "employeesPlaceholder": "Select",
+      "employeesOptions": {
+        "1-10": "1 - 10 employees",
+        "11-50": "11 - 50 employees",
+        "51-100": "51 - 100 employees",
+        "101-500": "101 - 500 employees",
+        "500+": "500+ employees"
+      }
+    },
+    "step2": {
+      "title": "Desired service",
+      "serviceLabel": "Which service(s) are you interested in?",
+      "services": {
+        "website": "Website creation (Showcase / Custom)",
+        "mobile": "Mobile app development",
+        "seo": "SEO optimization",
+        "socialMedia": "Social media management",
+        "content": "Content creation (Video / Design / Copywriting)",
+        "ads": "Online advertising (Meta Ads / Google Ads)"
+      },
+      "budget": "Estimated budget",
+      "budgetPlaceholder": "Select your budget",
+      "budgetOptions": {
+        "less5k": "Less than 5,000 MAD",
+        "5k-10k": "5,000 - 10,000 MAD",
+        "10k-30k": "10,000 - 30,000 MAD",
+        "30k-60k": "30,000 - 60,000 MAD",
+        "60k+": "60,000 MAD and above"
+      }
+    },
+    "step3": {
+      "title": "Project details",
+      "subject": "Project subject",
+      "subjectPlaceholder": "e.g., Redesign of our e-commerce website",
+      "description": "Detailed description",
+      "descriptionPlaceholder": "Describe your project, objectives, timeline...",
+      "privacy": "I agree that my data will be used to process my request in accordance with the privacy policy."
+    },
+    "buttons": {
+      "next": "Next",
+      "previous": "Previous",
+      "submit": "Submit request",
+      "submitting": "Submitting..."
+    },
+    "success": {
+      "title": "Request sent!",
+      "message": "Thank you for your quote request. Our team will contact you within 24 hours.",
+      "backHome": "Back to home",
+      "newRequest": "New request"
+    },
+    "validation": {
+      "required": "This field is required",
+      "invalidEmail": "Invalid email address",
+      "selectService": "Please select at least one service",
+      "acceptPrivacy": "You must accept the privacy policy"
+    }
+  },
+  "whatsapp": {
+    "tooltip": "Chat with us"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home"
+  }
+}

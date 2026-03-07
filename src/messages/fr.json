@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "title": "EvoMarket - Agence Digitale à Rabat, Maroc",
+    "description": "EvoMarket est une agence digitale à Rabat spécialisée en marketing digital, création de contenu, développement web & mobile et gestion des réseaux sociaux."
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "cta": "Obtenir un devis",
+    "academy": "Academy",
+    "devis": "Devis"
+  },
+  "hero": {
+    "badge": "Agence Digitale au Maroc",
+    "title1": "Chez",
+    "title2": "EvoMarket",
+    "title3": "Agency,",
+    "title4": "nous créons",
+    "description": "EvoMarket est une agence digitale basée à Rabat, spécialisée dans la transformation de vos idées en expériences numériques performantes.",
+    "floating": {
+      "service1": "Identité de Marque",
+      "service2": "Création de Contenu",
+      "service3": "Développement Web",
+      "service4": "Marketing Digital"
+    },
+    "cta1": "Demander un devis",
+    "cta2": "Découvrir nos services"
+  },
+  "services": {
+    "badge": "Ce que nous faisons",
+    "title": "Nos Services",
+    "description": "Des solutions digitales complètes pour propulser votre entreprise vers le succès.",
+    "socialMedia": {
+      "title": "Gestion des Réseaux Sociaux",
+      "description": "Stratégie de contenu, planification, community management et croissance de votre présence sur les réseaux sociaux."
+    },
+    "contentCreation": {
+      "title": "Création de Contenu",
+      "description": "Production de vidéos, design graphique, copywriting et contenu créatif qui captive votre audience."
+    },
+    "webDev": {
+      "title": "Développement Web",
+      "description": "Sites vitrines élégants et applications web sur mesure, construits avec les technologies les plus modernes."
+    },
+    "mobileApp": {
+      "title": "Développement Mobile",
+      "description": "Applications iOS et Android performantes, avec un design intuitif et une expérience utilisateur optimale."
+    },
+    "digitalMarketing": {
+      "title": "Marketing Digital & Stratégie",
+      "description": "SEO, publicité en ligne, stratégie digitale et analyse de données pour maximiser votre ROI."
+    },
+    "learnMore": "En savoir plus",
+    "requestQuote": "Demander un devis"
+  },
+  "process": {
+    "badge": "Notre Méthodologie",
+    "title": "Comment nous travaillons",
+    "description": "Un exemple de structure d'un site web full-stack aux multi-fonctionnalités — de la stratégie au lancement.",
+    "step1": {
+      "title": "Découverte & Stratégie",
+      "description": "Analyse approfondie de vos objectifs, votre audience et vos concurrents pour élaborer une stratégie gagnante.",
+      "duration": "1-2 semaines"
+    },
+    "step2": {
+      "title": "Design & Prototypage",
+      "description": "Création de maquettes UI/UX et prototypes interactifs pour valider le concept avant le développement.",
+      "duration": "2-3 semaines"
+    },
+    "step3": {
+      "title": "Développement & Tests",
+      "description": "Développement avec les technologies modernes, tests rigoureux et optimisation des performances.",
+      "duration": "3-4 semaines"
+    },
+    "step4": {
+      "title": "Lancement & Suivi",
+      "description": "Déploiement, formation de votre équipe et accompagnement continu pour assurer la réussite.",
+      "duration": "1 semaine + continu"
+    }
+  },
+  "portfolio": {
+    "badge": "Nos Réalisations",
+    "title": "Projets récents",
+    "description": "Un aperçu de nos créations web dans différents secteurs d'activité.",
+    "viewProject": "Voir le projet",
+    "viewAll": "Voir tous les projets",
+    "categories": {
+      "all": "Tous",
+      "web": "Web",
+      "mobile": "Mobile",
+      "marketing": "Marketing",
+      "branding": "Branding"
+    }
+  },
+  "about": {
+    "badge": "À Propos",
+    "title": "Votre partenaire digital de confiance",
+    "description": "EvoMarket n'est pas qu'une simple agence digitale. Nous sommes votre partenaire stratégique, dédiés à transformer votre vision en réalité numérique. Basés à Rabat, nous combinons expertise locale et standards internationaux.",
+    "mission": "Notre mission est de rendre le digital accessible et performant pour chaque entreprise marocaine.",
+    "stats": {
+      "projects": "Projets réalisés",
+      "satisfaction": "Satisfaction client",
+      "team": "Experts dédiés",
+      "experience": "Ans d'expérience"
+    }
+  },
+  "testimonials": {
+    "badge": "Témoignages",
+    "title": "Ce que disent nos clients",
+    "description": "La satisfaction de nos clients est notre plus grande récompense."
+  },
+  "blogSection": {
+    "badge": "Notre Blog",
+    "title": "Derniers articles",
+    "description": "Restez informé des dernières tendances du marketing digital et du développement web.",
+    "readMore": "Lire l'article",
+    "viewAll": "Voir tous les articles",
+    "minRead": "min de lecture"
+  },
+  "contact": {
+    "badge": "Contactez-nous",
+    "title": "Prêt à lancer votre projet ?",
+    "description": "Discutons de vos objectifs et trouvons ensemble la meilleure solution digitale pour votre entreprise.",
+    "form": {
+      "name": "Votre nom",
+      "email": "Votre email",
+      "phone": "Votre téléphone",
+      "message": "Votre message",
+      "subject": "Sujet",
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours..."
+    },
+    "info": {
+      "phone": "Téléphone",
+      "email": "Email",
+      "address": "Adresse",
+      "addressValue": "Rabat, Maroc",
+      "social": "Réseaux sociaux"
+    }
+  },
+  "footer": {
+    "description": "Agence digitale basée à Rabat, spécialisée dans le marketing digital, le développement web et la création de contenu.",
+    "services": "Services",
+    "links": "Liens Utiles",
+    "contactTitle": "Contact",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Recevez nos dernières actualités et conseils.",
+    "subscribe": "S'abonner",
+    "emailPlaceholder": "Votre email",
+    "rights": "Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Articles & Conseils",
+    "description": "Découvrez nos articles sur le marketing digital, le développement web et les stratégies numériques.",
+    "allCategories": "Toutes les catégories",
+    "noArticles": "Aucun article trouvé.",
+    "backToBlog": "Retour au blog",
+    "shareArticle": "Partager cet article",
+    "relatedArticles": "Articles similaires",
+    "publishedOn": "Publié le",
+    "by": "par"
+  },
+  "devis": {
+    "meta": {
+      "title": "Demander un devis gratuit",
+      "description": "Obtenez un devis personnalisé pour votre projet digital. Site web, application mobile, marketing digital et plus."
+    },
+    "title": "Demander un devis",
+    "subtitle": "Parlez-nous de votre projet et recevez une proposition personnalisée sous 24h.",
+    "steps": {
+      "info": "Informations",
+      "service": "Service",
+      "details": "Détails"
+    },
+    "step1": {
+      "title": "Vos informations",
+      "fullName": "Nom complet",
+      "fullNamePlaceholder": "Votre nom complet",
+      "email": "Adresse email",
+      "emailPlaceholder": "votre@email.com",
+      "company": "Entreprise / Organisation",
+      "companyPlaceholder": "Nom de votre entreprise (optionnel)",
+      "phone": "Téléphone",
+      "phonePlaceholder": "6 XX XX XX XX",
+      "employees": "Nombre d'employés",
+      "employeesPlaceholder": "Sélectionnez",
+      "employeesOptions": {
+        "1-10": "1 - 10 employés",
+        "11-50": "11 - 50 employés",
+        "51-100": "51 - 100 employés",
+        "101-500": "101 - 500 employés",
+        "500+": "500+ employés"
+      }
+    },
+    "step2": {
+      "title": "Service souhaité",
+      "serviceLabel": "Quel(s) service(s) vous intéresse(nt) ?",
+      "services": {
+        "website": "Création de site web (Vitrine / Sur Mesure)",
+        "mobile": "Développement d'application mobile",
+        "seo": "Référencement SEO",
+        "socialMedia": "Gestion des réseaux sociaux",
+        "content": "Création de contenu (Vidéo / Design / Copywriting)",
+        "ads": "Publicité en ligne (Meta Ads / Google Ads)"
+      },
+      "budget": "Budget estimé",
+      "budgetPlaceholder": "Sélectionnez votre budget",
+      "budgetOptions": {
+        "less5k": "Moins de 5 000 MAD",
+        "5k-10k": "5 000 - 10 000 MAD",
+        "10k-30k": "10 000 - 30 000 MAD",
+        "30k-60k": "30 000 - 60 000 MAD",
+        "60k+": "60 000 MAD et plus"
+      }
+    },
+    "step3": {
+      "title": "Détails du projet",
+      "subject": "Sujet du projet",
+      "subjectPlaceholder": "Ex: Refonte de notre site web e-commerce",
+      "description": "Description détaillée",
+      "descriptionPlaceholder": "Décrivez votre projet, vos objectifs, votre calendrier...",
+      "privacy": "J'accepte que mes données soient utilisées pour traiter ma demande conformément à la politique de confidentialité."
+    },
+    "buttons": {
+      "next": "Suivant",
+      "previous": "Précédent",
+      "submit": "Envoyer la demande",
+      "submitting": "Envoi en cours..."
+    },
+    "success": {
+      "title": "Demande envoyée !",
+      "message": "Merci pour votre demande de devis. Notre équipe vous contactera dans les 24 heures.",
+      "backHome": "Retour à l'accueil",
+      "newRequest": "Nouvelle demande"
+    },
+    "validation": {
+      "required": "Ce champ est requis",
+      "invalidEmail": "Adresse email invalide",
+      "selectService": "Veuillez sélectionner au moins un service",
+      "acceptPrivacy": "Vous devez accepter la politique de confidentialité"
+    }
+  },
+  "whatsapp": {
+    "tooltip": "Discutez avec nous"
+  },
+  "notFound": {
+    "title": "Page non trouvée",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil"
+  }
+}

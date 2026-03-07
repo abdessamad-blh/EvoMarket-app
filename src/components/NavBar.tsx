@@ -1,106 +1,137 @@
-// src/components/Navbar.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { useTranslations, useLocale } from 'next-intl';
+import { motion, AnimatePresence } from 'framer-motion';
+import LanguageSwitcher from './LanguageSwitcher';
+import { Menu, X } from 'lucide-react';
 
-export default function Navbar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function NavBar() {
+  const t = useTranslations('nav');
+  const locale = useLocale();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-    // Update navigation items to match your structure
-    const navItems = [
-        { name: 'Home', path: '/' },
-        { name: 'Services', path: '/#services' },
-        { name: 'About', path: '/#about' },
-        { name: 'Projects', path: '/projects' },
-        { name: 'Contact', path: '/#contact' }
-    ];
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    return (
-        <>
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-20">
-                        {/* Logo - Left aligned */}
-                        <div className="flex items-center">
-                            <Link href="/" className="flex items-center">
-                                <img
-                                    src="/images/evologo.png"
-                                    alt="EvoMarket Logo"
-                                    className="h-14 w-auto"
-                                />
-                            </Link>
-                        </div>
+  const navItems = [
+    // { name: t('home'), path: `/${locale}` },
+    { name: t('services'), path: `/${locale}#services` },
+    { name: t('portfolio'), path: `/${locale}#portfolio` },
+    { name: t('blog'), path: `/${locale}/blog` },
+    { name: t('contact'), path: `/${locale}/contact` },
+    { name: t('academy'), path: 'https://academy.evomarket.ma' }
+  ];
 
-                        {/* Centered Navigation - Desktop */}
-                        <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
-                            <div className="flex items-center space-x-8">
-                                {navItems.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        href={item.path}
-                                        className="text-gray-700 hover:text-[#f1a100] transition-colors duration-200 font-medium text-lg relative group"
-                                    >
-                                        {item.name}
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#f1a100] transition-all duration-200 group-hover:w-full"></span>
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
+  return (
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-[#0A0E27]/95 backdrop-blur-md shadow-lg shadow-black/20'
+            : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            {/* Logo */}
+            <Link href={`/${locale}`} className="flex items-center shrink-0">
+              <Image
+                src="/images/evologo.png"
+                alt="EvoMarket Logo"
+                width={120}
+                height={48}
+                className="h-12 w-auto"
+                priority
+              />
+            </Link>
 
-                        {/* CTA Button - Right aligned */}
-                        <div className="hidden md:flex items-center">
-                            <Link
-                                href="/#contact"
-                                className="bg-[#142143] hover:bg-[#1a5d94] text-white font-medium py-2.5 px-6 rounded-full transition-all duration-200 text-sm shadow-sm hover:shadow-md"
-                            >
-                                Get Quote
-                            </Link>
-                        </div>
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2">
+              <div className="flex items-center gap-8 md:gap-16">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.path}
+                    className="gold-underline text-white/90 hover:text-white transition-colors duration-200 font-medium text-[15px]"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-                        {/* Mobile menu button */}
-                        <button
-                            className="md:hidden text-gray-700 p-2"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
-                    </div>
+            {/* Right side: Language Switcher + CTA */}
+            <div className="hidden lg:flex items-center gap-4">
+              <LanguageSwitcher />
+              <Link
+                href={`/${locale}/devis`}
+                className="bg-[#F4B223] hover:bg-[#E09800] text-[#0A0E27] font-semibold py-2.5 px-6 rounded-full transition-all duration-200 text-sm shadow-lg shadow-[#F4B223]/20 hover:shadow-[#F4B223]/40 hover:scale-105"
+              >
+                {t('cta')}
+              </Link>
+            </div>
+
+            {/* Mobile menu button */}
+            <button
+              className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden bg-[#0A0E27]/98 backdrop-blur-md border-t border-white/10"
+            >
+              <div className="px-4 py-6 space-y-1">
+                {navItems.map((item, i) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                  >
+                    <Link
+                      href={item.path}
+                      className="block text-white/90 hover:text-[#F4B223] py-3 px-4 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                ))}
+                <div className="pt-4 flex items-center gap-4 px-4">
+                  <LanguageSwitcher />
+                  <Link
+                    href={`/${locale}#contact`}
+                    className="bg-[#F4B223] hover:bg-[#E09800] text-[#0A0E27] font-semibold py-2.5 px-6 rounded-full transition-all duration-200 text-sm"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t('cta')}
+                  </Link>
                 </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
 
-                {/* Mobile Menu */}
-                {isMenuOpen && (
-                    <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200">
-                        <div className="px-4 py-4 space-y-4">
-                            {navItems.map((item) => (
-                                <Link
-                                    key={item.name}
-                                    href={item.path}
-                                    className="block text-gray-700 hover:text-[#f1a100] py-2 transition-colors duration-200"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    {item.name}
-                                </Link>
-                            ))}
-                            <div className="pt-4">
-                                <Link
-                                    href="/#contact"
-                                    className="bg-[#142143] hover:bg-[#1a5d94] text-white font-medium py-2.5 px-6 rounded-full transition-all duration-200 text-sm inline-block"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Get Quote
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </nav>
-
-            {/* Spacer to prevent content from going under fixed navbar */}
-            <div className="h-20"></div>
-        </>
-    );
+    </>
+  );
 }
