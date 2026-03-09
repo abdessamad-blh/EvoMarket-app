@@ -177,34 +177,34 @@
       "sector": "Secteur",
       "info": "Informations",
       "service": "Service",
-      "details": "Détails"
+      "message": "Message"
     },
     "step0": {
       "title": "Dans quel secteur êtes-vous ?",
       "subtitle": "Sélectionnez un ou plusieurs secteurs",
       "sectors": {
-        "ecommerce": "E-commerce / Commerce",
+        "ecommerce": "E-commerce",
         "health": "Santé & Bien-être",
-        "entertainment": "Divertissement & Médias",
-        "education": "Éducation & Formation",
+        "entertainment": "Divertissement",
+        "education": "Éducation",
         "realestate": "Immobilier",
-        "food": "Restauration & Alimentation",
+        "food": "Restauration",
         "travel": "Voyage & Tourisme",
-        "tech": "Technologie & SaaS",
-        "ngo": "ONG / Associatif",
         "other": "Autre"
       }
     },
     "step1": {
       "title": "Vos informations",
-      "fullName": "Nom complet",
-      "fullNamePlaceholder": "Votre nom complet",
+      "typePersonal": "Particulier",
+      "typeOrg": "Organisation",
+      "personName": "Votre nom",
+      "orgName": "Nom de l'organisation",
+      "personNamePlaceholder": "Votre nom complet",
+      "orgNamePlaceholder": "Nom de votre organisation",
       "email": "Adresse email",
       "emailPlaceholder": "votre@email.com",
-      "company": "Entreprise / Organisation",
-      "companyPlaceholder": "Nom de votre entreprise (optionnel)",
       "phone": "Téléphone",
-      "phonePlaceholder": "6 XX XX XX XX",
+      "phonePlaceholder": "6 12 34 56 78",
       "employees": "Nombre d'employés",
       "employeesPlaceholder": "Sélectionnez",
       "employeesOptions": {
@@ -237,11 +237,9 @@
       }
     },
     "step3": {
-      "title": "Détails du projet",
-      "subject": "Sujet du projet",
-      "subjectPlaceholder": "Ex: Refonte de notre site web e-commerce",
-      "description": "Description détaillée",
-      "descriptionPlaceholder": "Décrivez votre projet, vos objectifs, votre calendrier...",
+      "title": "Votre message",
+      "description": "Parlez-nous de votre projet",
+      "descriptionPlaceholder": "Décrivez votre projet, vos objectifs, votre vision, votre calendrier...",
       "privacy": "J'accepte que mes données soient utilisées pour traiter ma demande conformément à la politique de confidentialité."
     },
     "buttons": {

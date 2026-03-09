@@ -32,9 +32,9 @@ export default function DevisForm() {
   const [step0Errors, setStep0Errors] = useState<Partial<Record<keyof Step0Data, string>>>({});
 
   const [step1Data, setStep1Data] = useState<Step1Data>({
+    nameType: 'person',
     fullName: '',
     email: '',
-    company: '',
     phoneCode: '+212',
     phone: '',
     employees: '',
@@ -46,7 +46,6 @@ export default function DevisForm() {
   });
 
   const [step3Data, setStep3Data] = useState<Step3Data>({
-    subject: '',
     description: '',
     privacyAccepted: false,
   });
@@ -96,7 +95,6 @@ export default function DevisForm() {
     const vt = (key: string) => t(`validation.${key}`);
 
     if (step2Data.services.length === 0) errors.services = vt('selectService');
-    if (!step2Data.budget) errors.budget = vt('required');
 
     setStep2Errors(errors);
     return Object.keys(errors).length === 0;
@@ -106,8 +104,6 @@ export default function DevisForm() {
     const errors: Partial<Record<keyof Step3Data, string>> = {};
     const vt = (key: string) => t(`validation.${key}`);
 
-    if (!step3Data.subject.trim()) errors.subject = vt('required');
-    if (!step3Data.description.trim()) errors.description = vt('required');
     if (!step3Data.privacyAccepted) errors.privacyAccepted = vt('acceptPrivacy');
 
     setStep3Errors(errors);
@@ -158,9 +154,9 @@ export default function DevisForm() {
     setShowSuccess(false);
     setCurrentStep(1);
     setStep0Data({ sectors: [] });
-    setStep1Data({ fullName: '', email: '', company: '', phoneCode: '+212', phone: '', employees: '' });
+    setStep1Data({ nameType: 'person', fullName: '', email: '', phoneCode: '+212', phone: '', employees: '' });
     setStep2Data({ services: [], budget: '' });
-    setStep3Data({ subject: '', description: '', privacyAccepted: false });
+    setStep3Data({ description: '', privacyAccepted: false });
     setStep0Errors({});
     setStep1Errors({});
     setStep2Errors({});

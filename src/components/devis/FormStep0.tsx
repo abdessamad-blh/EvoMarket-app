@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
+import { ShoppingCart, Heart, Film, GraduationCap, Home, Utensils, Plane, Sparkles } from 'lucide-react';
 
 export interface Step0Data {
   sectors: string[];
@@ -13,17 +14,15 @@ interface FormStep0Props {
   errors: Partial<Record<keyof Step0Data, string>>;
 }
 
-const sectorKeys = [
-  'ecommerce',
-  'health',
-  'entertainment',
-  'education',
-  'realestate',
-  'food',
-  'travel',
-  'tech',
-  'ngo',
-  'other',
+const sectorOptions = [
+  { key: 'ecommerce', Icon: ShoppingCart },
+  { key: 'health', Icon: Heart },
+  { key: 'entertainment', Icon: Film },
+  { key: 'education', Icon: GraduationCap },
+  { key: 'realestate', Icon: Home },
+  { key: 'food', Icon: Utensils },
+  { key: 'travel', Icon: Plane },
+  { key: 'other', Icon: Sparkles },
 ] as const;
 
 export default function FormStep0({ data, onChange, errors }: FormStep0Props) {
@@ -48,21 +47,22 @@ export default function FormStep0({ data, onChange, errors }: FormStep0Props) {
         <p className="text-white/40 text-sm">{t('subtitle')}</p>
       </div>
 
-      <div className="flex flex-wrap gap-3">
-        {sectorKeys.map((key) => {
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {sectorOptions.map(({ key, Icon }) => {
           const active = data.sectors.includes(key);
           return (
             <button
               key={key}
               type="button"
               onClick={() => toggle(key)}
-              className={`px-4 py-2.5 rounded-full text-sm font-medium border transition-all duration-200 ${
+              className={`flex flex-col items-center gap-2.5 p-4 rounded-xl border transition-all duration-200 ${
                 active
                   ? 'bg-[#F4B223]/15 border-[#F4B223] text-[#F4B223]'
-                  : 'bg-white/5 border-white/15 text-white/60 hover:border-white/30 hover:text-white'
+                  : 'bg-white/5 border-white/10 text-white/60 hover:border-white/25 hover:text-white'
               }`}
             >
-              {t(`sectors.${key}`)}
+              <Icon className="w-6 h-6 shrink-0" />
+              <span className="text-xs font-medium text-center leading-tight">{t(`sectors.${key}`)}</span>
             </button>
           );
         })}

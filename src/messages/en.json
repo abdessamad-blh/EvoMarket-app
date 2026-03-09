@@ -177,34 +177,34 @@
       "sector": "Sector",
       "info": "Information",
       "service": "Service",
-      "details": "Details"
+      "message": "Message"
     },
     "step0": {
       "title": "What's your industry?",
       "subtitle": "Select one or more sectors that apply",
       "sectors": {
-        "ecommerce": "E-commerce / Retail",
+        "ecommerce": "E-commerce",
         "health": "Health & Wellness",
-        "entertainment": "Entertainment & Media",
-        "education": "Education & Training",
+        "entertainment": "Entertainment",
+        "education": "Education",
         "realestate": "Real Estate",
         "food": "Food & Restaurant",
         "travel": "Travel & Tourism",
-        "tech": "Technology & SaaS",
-        "ngo": "NGO / Non-profit",
         "other": "Other"
       }
     },
     "step1": {
       "title": "Your information",
-      "fullName": "Full name",
-      "fullNamePlaceholder": "Your full name",
+      "typePersonal": "Personal",
+      "typeOrg": "Organization",
+      "personName": "Your name",
+      "orgName": "Organization name",
+      "personNamePlaceholder": "Your full name",
+      "orgNamePlaceholder": "Your organization name",
       "email": "Email address",
       "emailPlaceholder": "your@email.com",
-      "company": "Company / Organization",
-      "companyPlaceholder": "Your company name (optional)",
       "phone": "Phone",
-      "phonePlaceholder": "6 XX XX XX XX",
+      "phonePlaceholder": "6 12 34 56 78",
       "employees": "Number of employees",
       "employeesPlaceholder": "Select",
       "employeesOptions": {
@@ -237,11 +237,9 @@
       }
     },
     "step3": {
-      "title": "Project details",
-      "subject": "Project subject",
-      "subjectPlaceholder": "e.g., Redesign of our e-commerce website",
-      "description": "Detailed description",
-      "descriptionPlaceholder": "Describe your project, objectives, timeline...",
+      "title": "Your message",
+      "description": "Tell us about your project",
+      "descriptionPlaceholder": "Describe your project, your goals, your vision, your timeline...",
       "privacy": "I agree that my data will be used to process my request in accordance with the privacy policy."
     },
     "buttons": {

@@ -86,14 +86,12 @@ export default function FormStep2({ data, onChange, errors }: FormStep2Props) {
       <div>
         <label className="flex items-center gap-2 text-white/60 text-sm mb-2">
           <Wallet className="w-4 h-4" />
-          {t('budget')} <span className="text-red-400">*</span>
+          {t('budget')}
         </label>
         <select
           value={data.budget}
           onChange={(e) => onChange({ ...data, budget: e.target.value })}
-          className={`w-full bg-white/5 border ${
-            errors.budget ? 'border-red-500/60' : 'border-white/10'
-          } rounded-xl px-4 py-3.5 text-white text-sm focus:border-[#F4B223]/50 focus:outline-none focus:ring-1 focus:ring-[#F4B223]/30 transition-all`}
+          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:border-[#F4B223]/50 focus:outline-none focus:ring-1 focus:ring-[#F4B223]/30 transition-all"
         >
           <option value="" className="bg-[#0D1230] text-white/50">{t('budgetPlaceholder')}</option>
           {budgetOptions.map((opt) => (
@@ -102,7 +100,6 @@ export default function FormStep2({ data, onChange, errors }: FormStep2Props) {
             </option>
           ))}
         </select>
-        {errors.budget && <p className="text-red-400 text-xs mt-1">{errors.budget}</p>}
       </div>
     </div>
   );

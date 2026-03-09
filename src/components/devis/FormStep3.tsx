@@ -2,10 +2,9 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { FileText, MessageSquare, ShieldCheck } from 'lucide-react';
+import { MessageSquare, ShieldCheck } from 'lucide-react';
 
 export interface Step3Data {
-  subject: string;
   description: string;
   privacyAccepted: boolean;
 }
@@ -19,11 +18,6 @@ interface FormStep3Props {
 export default function FormStep3({ data, onChange, errors }: FormStep3Props) {
   const t = useTranslations('devis.step3');
 
-  const inputClass = (field: keyof Step3Data) =>
-    `w-full bg-white/5 border ${
-      errors[field] ? 'border-red-500/60' : 'border-white/10'
-    } rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:border-[#F4B223]/50 focus:outline-none focus:ring-1 focus:ring-[#F4B223]/30 transition-all text-sm`;
-
   return (
     <div className="space-y-5">
       <h3
@@ -33,36 +27,19 @@ export default function FormStep3({ data, onChange, errors }: FormStep3Props) {
         {t('title')}
       </h3>
 
-      {/* Subject */}
-      <div>
-        <label className="flex items-center gap-2 text-white/60 text-sm mb-2">
-          <FileText className="w-4 h-4" />
-          {t('subject')} <span className="text-red-400">*</span>
-        </label>
-        <input
-          type="text"
-          value={data.subject}
-          onChange={(e) => onChange({ ...data, subject: e.target.value })}
-          placeholder={t('subjectPlaceholder')}
-          className={inputClass('subject')}
-        />
-        {errors.subject && <p className="text-red-400 text-xs mt-1">{errors.subject}</p>}
-      </div>
-
-      {/* Description */}
+      {/* Message */}
       <div>
         <label className="flex items-center gap-2 text-white/60 text-sm mb-2">
           <MessageSquare className="w-4 h-4" />
-          {t('description')} <span className="text-red-400">*</span>
+          {t('description')}
         </label>
         <textarea
-          rows={6}
+          rows={7}
           value={data.description}
           onChange={(e) => onChange({ ...data, description: e.target.value })}
           placeholder={t('descriptionPlaceholder')}
-          className={`${inputClass('description')} resize-none`}
+          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/30 focus:border-[#F4B223]/50 focus:outline-none focus:ring-1 focus:ring-[#F4B223]/30 transition-all text-sm resize-none"
         />
-        {errors.description && <p className="text-red-400 text-xs mt-1">{errors.description}</p>}
       </div>
 
       {/* Privacy checkbox */}

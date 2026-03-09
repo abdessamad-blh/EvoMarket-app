@@ -177,7 +177,7 @@
       "sector": "القطاع",
       "info": "المعلومات",
       "service": "الخدمة",
-      "details": "التفاصيل"
+      "message": "الرسالة"
     },
     "step0": {
       "title": "ما هو قطاعك؟",
@@ -185,26 +185,26 @@
       "sectors": {
         "ecommerce": "التجارة الإلكترونية",
         "health": "الصحة والعافية",
-        "entertainment": "الترفيه والإعلام",
-        "education": "التعليم والتدريب",
+        "entertainment": "الترفيه",
+        "education": "التعليم",
         "realestate": "العقارات",
         "food": "الغذاء والمطاعم",
         "travel": "السفر والسياحة",
-        "tech": "التكنولوجيا والبرمجيات",
-        "ngo": "المنظمات غير الربحية",
         "other": "أخرى"
       }
     },
     "step1": {
       "title": "معلوماتك",
-      "fullName": "الاسم الكامل",
-      "fullNamePlaceholder": "اسمك الكامل",
+      "typePersonal": "شخصي",
+      "typeOrg": "منظمة",
+      "personName": "اسمك",
+      "orgName": "اسم المنظمة",
+      "personNamePlaceholder": "اسمك الكامل",
+      "orgNamePlaceholder": "اسم منظمتك",
       "email": "البريد الإلكتروني",
       "emailPlaceholder": "your@email.com",
-      "company": "الشركة / المنظمة",
-      "companyPlaceholder": "اسم شركتك (اختياري)",
       "phone": "الهاتف",
-      "phonePlaceholder": "6 XX XX XX XX",
+      "phonePlaceholder": "6 12 34 56 78",
       "employees": "عدد الموظفين",
       "employeesPlaceholder": "اختر",
       "employeesOptions": {
@@ -237,11 +237,9 @@
       }
     },
     "step3": {
-      "title": "تفاصيل المشروع",
-      "subject": "موضوع المشروع",
-      "subjectPlaceholder": "مثال: إعادة تصميم موقع التجارة الإلكترونية",
-      "description": "وصف مفصل",
-      "descriptionPlaceholder": "صف مشروعك، أهدافك، جدولك الزمني...",
+      "title": "رسالتك",
+      "description": "حدثنا عن مشروعك",
+      "descriptionPlaceholder": "صف مشروعك، أهدافك، رؤيتك، جدولك الزمني...",
       "privacy": "أوافق على استخدام بياناتي لمعالجة طلبي وفقاً لسياسة الخصوصية."
     },
     "buttons": {

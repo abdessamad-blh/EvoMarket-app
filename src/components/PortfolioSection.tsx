@@ -24,17 +24,17 @@ const projects = [
     // year: '2024',
   },
   {
-    id:4,
+    id: 3,
     title: 'Content creation',
     image: '/images/projects/7.jpg',
-    tags: ['Social Media','Content creation'],
+    tags: ['Social Media', 'Content creation'],
   },
-  {
-    id: 3,
-    title: 'Construction Website',
-    image: '/images/projects/4.jpg',
-    tags: ['React.js', 'Next.js', 'Node.js'],
-  }
+  // {
+  //   id: 4,
+  //   title: 'Construction Website',
+  //   image: '/images/projects/4.jpg',
+  //   tags: ['React.js', 'Next.js', 'Node.js'],
+  // }
 ];
 
 export default function PortfolioSection() {
@@ -115,7 +115,7 @@ export default function PortfolioSection() {
                 transition={{ duration: 0.35, ease: 'easeInOut' }}
                 className="relative group rounded-2xl overflow-hidden
                            border border-white/5 hover:border-[#F4B223]/20
-                           transition-colors duration-500 max-w-[85%] mx-auto"
+                           transition-colors duration-500 sm:max-w-[100%] mx-auto"
               >
                 {/* Image — aspect matches 1600×1000 */}
                 <div className="relative w-full aspect-[16/10]">
@@ -139,7 +139,7 @@ export default function PortfolioSection() {
                           {projects[current].category} · {projects[current].year}
                         </span> */}
                         <h3
-                          className="text-3xl sm:text-4xl md:text-5xl text-white tracking-wide leading-none"
+                          className="text-2xl sm:text-2xl md:text-5xl text-white tracking-wide leading-none"
                           style={{ fontFamily: 'var(--font-bebas)' }}
                         >
                           {projects[current].title}
@@ -147,12 +147,12 @@ export default function PortfolioSection() {
                       </div>
 
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5 sm:gap-2 sm:max-w-[240px] sm:justify-end">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-1 sm:max-w-[240px] sm:justify-end">
                         {projects[current].tags.map((tag) => (
                           <span
                             key={tag}
                             className="bg-white/10 backdrop-blur-sm text-white/70
-                                       px-2.5 py-1 rounded-full text-[11px] sm:text-xs
+                                       px-2.5 py-1 sm:px-1.5 sm:py-0.5 rounded-full text-[11px] sm:text-xs
                                        border border-white/10"
                           >
                             {tag}
@@ -188,11 +188,10 @@ export default function PortfolioSection() {
             <button
               key={i}
               onClick={() => { setCurrent(i); resetTimer(); }}
-              className={`rounded-full transition-all duration-300 ${
-                i === current
+              className={`rounded-full transition-all duration-300 ${i === current
                   ? 'w-7 h-2 bg-[#F4B223]'
                   : 'w-2 h-2 bg-white/20 hover:bg-white/40'
-              }`}
+                }`}
               aria-label={`Go to project ${i + 1}`}
             />
           ))}
