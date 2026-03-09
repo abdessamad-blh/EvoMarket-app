@@ -9,7 +9,7 @@ import ScrollAnimationWrapper from './ScrollAnimationWrapper';
 const projects = [
   {
     id: 1,
-    title: 'Health Care ',
+    title: 'Health Care Website',
     image: '/images/projects/5.jpg',
     // category: 'Health',
     tags: ['React.js', 'Tailwind CSS', 'Express.js', 'My SQL'],
@@ -17,20 +17,24 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Real Estate',
+    title: 'Real Estate Website',
     image: '/images/projects/6.jpg',
     // category: 'Real Estate',
     tags: ['Next.js', 'TypeScript', 'Express.js', 'Tailwind CSS', 'PostgreSQL'],
     // year: '2024',
   },
   {
-    id: 3,
-    title: 'Construction',
-    image: '/images/projects/4.jpg',
-    // category: 'Construction',
-    tags: ['React.js', 'Next.js', 'Node.js'],
-    // year: '2024',
+    id:4,
+    title: 'Content creation',
+    image: '/images/projects/7.jpg',
+    tags: ['Social Media','Content creation'],
   },
+  {
+    id: 3,
+    title: 'Construction Website',
+    image: '/images/projects/4.jpg',
+    tags: ['React.js', 'Next.js', 'Node.js'],
+  }
 ];
 
 export default function PortfolioSection() {
@@ -70,11 +74,11 @@ export default function PortfolioSection() {
 
         {/* Section Header */}
         <ScrollAnimationWrapper className="text-center mb-16">
-          <span className="inline-block bg-[#F4B223]/10 border border-[#F4B223]/30 text-[#F4B223] text-sm font-medium px-5 py-2 rounded-full mb-4">
+          {/* <span className="inline-block bg-[#F4B223]/10 border border-[#F4B223]/30 text-[#F4B223] text-sm font-medium px-5 py-2 rounded-full mb-4">
             {t('badge')}
-          </span>
+          </span> */}
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl text-white mb-4 tracking-tight"
+            className="text-4xl sm:text-5xl md:text-6xl text-[#F4B223] mb-4 tracking-tight"
             style={{ fontFamily: 'var(--font-bebas)' }}
           >
             {t('title')}
@@ -111,7 +115,7 @@ export default function PortfolioSection() {
                 transition={{ duration: 0.35, ease: 'easeInOut' }}
                 className="relative group rounded-2xl overflow-hidden
                            border border-white/5 hover:border-[#F4B223]/20
-                           transition-colors duration-500 max-w-[90%] mx-auto"
+                           transition-colors duration-500 max-w-[85%] mx-auto"
               >
                 {/* Image — aspect matches 1600×1000 */}
                 <div className="relative w-full aspect-[16/10]">

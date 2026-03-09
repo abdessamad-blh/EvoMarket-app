@@ -9,7 +9,7 @@
     "portfolio": "Portfolio",
     "blog": "Blog",
     "contact": "Contact",
-    "cta": "Obtenir un devis",
+    "cta": "Parlons-en",
     "academy": "Academy",
     "devis": "Devis"
   },
@@ -174,9 +174,26 @@
     "title": "Demander un devis",
     "subtitle": "Parlez-nous de votre projet et recevez une proposition personnalisée sous 24h.",
     "steps": {
+      "sector": "Secteur",
       "info": "Informations",
       "service": "Service",
       "details": "Détails"
+    },
+    "step0": {
+      "title": "Dans quel secteur êtes-vous ?",
+      "subtitle": "Sélectionnez un ou plusieurs secteurs",
+      "sectors": {
+        "ecommerce": "E-commerce / Commerce",
+        "health": "Santé & Bien-être",
+        "entertainment": "Divertissement & Médias",
+        "education": "Éducation & Formation",
+        "realestate": "Immobilier",
+        "food": "Restauration & Alimentation",
+        "travel": "Voyage & Tourisme",
+        "tech": "Technologie & SaaS",
+        "ngo": "ONG / Associatif",
+        "other": "Autre"
+      }
     },
     "step1": {
       "title": "Vos informations",
@@ -242,6 +259,7 @@
     "validation": {
       "required": "Ce champ est requis",
       "invalidEmail": "Adresse email invalide",
+      "selectSector": "Veuillez sélectionner au moins un secteur",
       "selectService": "Veuillez sélectionner au moins un service",
       "acceptPrivacy": "Vous devez accepter la politique de confidentialité"
     }

@@ -9,7 +9,7 @@ interface StepIndicatorProps {
   totalSteps: number;
 }
 
-const stepKeys = ['info', 'service', 'details'] as const;
+const stepKeys = ['sector', 'info', 'service', 'details'] as const;
 
 export default function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
   const t = useTranslations('devis.steps');

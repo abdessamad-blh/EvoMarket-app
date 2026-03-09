@@ -9,7 +9,7 @@
     "portfolio": "Portfolio",
     "blog": "Blog",
     "contact": "Contact",
-    "cta": "Get a quote",
+    "cta": "Let's talk",
     "academy": "Academy",
     "devis": "Quote"
   },
@@ -84,7 +84,7 @@
   "portfolio": {
     "badge": "Our Work",
     "title": "Recent Projects",
-    "description": "A glimpse of our work in Website creation across diverse sectors.",
+    "description": "A glimpse of our work in Website development and content creation across diverse sectors.",
     "viewProject": "View project",
     "viewAll": "View all projects",
     "categories": {
@@ -174,9 +174,26 @@
     "title": "Request a quote",
     "subtitle": "Tell us about your project and receive a personalized proposal within 24 hours.",
     "steps": {
+      "sector": "Sector",
       "info": "Information",
       "service": "Service",
       "details": "Details"
+    },
+    "step0": {
+      "title": "What's your industry?",
+      "subtitle": "Select one or more sectors that apply",
+      "sectors": {
+        "ecommerce": "E-commerce / Retail",
+        "health": "Health & Wellness",
+        "entertainment": "Entertainment & Media",
+        "education": "Education & Training",
+        "realestate": "Real Estate",
+        "food": "Food & Restaurant",
+        "travel": "Travel & Tourism",
+        "tech": "Technology & SaaS",
+        "ngo": "NGO / Non-profit",
+        "other": "Other"
+      }
     },
     "step1": {
       "title": "Your information",
@@ -242,6 +259,7 @@
     "validation": {
       "required": "This field is required",
       "invalidEmail": "Invalid email address",
+      "selectSector": "Please select at least one sector",
       "selectService": "Please select at least one service",
       "acceptPrivacy": "You must accept the privacy policy"
     }

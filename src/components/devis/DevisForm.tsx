@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Send } from 'lucide-react';
 import StepIndicator from './StepIndicator';
+import FormStep0, { Step0Data } from './FormStep0';
 import FormStep1, { Step1Data } from './FormStep1';
 import FormStep2, { Step2Data } from './FormStep2';
 import FormStep3, { Step3Data } from './FormStep3';
@@ -26,6 +27,9 @@ export default function DevisForm() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+
+  const [step0Data, setStep0Data] = useState<Step0Data>({ sectors: [] });
+  const [step0Errors, setStep0Errors] = useState<Partial<Record<keyof Step0Data, string>>>({});
 
   const [step1Data, setStep1Data] = useState<Step1Data>({
     fullName: '',
@@ -63,6 +67,13 @@ export default function DevisForm() {
       }));
     }
   }, [searchParams]);
+
+  const validateStep0 = (): boolean => {
+    const errors: Partial<Record<keyof Step0Data, string>> = {};
+    if (step0Data.sectors.length === 0) errors.sectors = t('validation.selectSector');
+    setStep0Errors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const validateStep1 = (): boolean => {
     const errors: Partial<Record<keyof Step1Data, string>> = {};
@@ -104,10 +115,12 @@ export default function DevisForm() {
   };
 
   const handleNext = () => {
-    if (currentStep === 1 && validateStep1()) {
+    if (currentStep === 1 && validateStep0()) {
       setCurrentStep(2);
-    } else if (currentStep === 2 && validateStep2()) {
+    } else if (currentStep === 2 && validateStep1()) {
       setCurrentStep(3);
+    } else if (currentStep === 3 && validateStep2()) {
+      setCurrentStep(4);
     }
   };
 
@@ -121,6 +134,7 @@ export default function DevisForm() {
     setIsSubmitting(true);
 
     const formData = {
+      sectors: step0Data.sectors,
       ...step1Data,
       phoneNumber: `${step1Data.phoneCode}${step1Data.phone}`,
       ...step2Data,
@@ -143,9 +157,11 @@ export default function DevisForm() {
   const handleNewRequest = () => {
     setShowSuccess(false);
     setCurrentStep(1);
+    setStep0Data({ sectors: [] });
     setStep1Data({ fullName: '', email: '', company: '', phoneCode: '+212', phone: '', employees: '' });
     setStep2Data({ services: [], budget: '' });
     setStep3Data({ subject: '', description: '', privacyAccepted: false });
+    setStep0Errors({});
     setStep1Errors({});
     setStep2Errors({});
     setStep3Errors({});
@@ -163,7 +179,7 @@ export default function DevisForm() {
     <>
       <div className="w-full max-w-2xl mx-auto">
         {/* Step Indicator */}
-        <StepIndicator currentStep={currentStep} totalSteps={3} />
+        <StepIndicator currentStep={currentStep} totalSteps={4} />
 
         {/* Form Card */}
         <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10">
@@ -179,12 +195,15 @@ export default function DevisForm() {
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
               {currentStep === 1 && (
-                <FormStep1 data={step1Data} onChange={setStep1Data} errors={step1Errors} />
+                <FormStep0 data={step0Data} onChange={setStep0Data} errors={step0Errors} />
               )}
               {currentStep === 2 && (
-                <FormStep2 data={step2Data} onChange={setStep2Data} errors={step2Errors} />
+                <FormStep1 data={step1Data} onChange={setStep1Data} errors={step1Errors} />
               )}
               {currentStep === 3 && (
+                <FormStep2 data={step2Data} onChange={setStep2Data} errors={step2Errors} />
+              )}
+              {currentStep === 4 && (
                 <FormStep3 data={step3Data} onChange={setStep3Data} errors={step3Errors} />
               )}
             </motion.div>
@@ -205,7 +224,7 @@ export default function DevisForm() {
               <div />
             )}
 
-            {currentStep < 3 ? (
+            {currentStep < 4 ? (
               <button
                 type="button"
                 onClick={handleNext}

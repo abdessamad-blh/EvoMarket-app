@@ -86,14 +86,14 @@ export default function HeroSection() {
         <div className="w-full md:w-[58%] lg:w-[60%]
                         text-center md:text-left
                         flex flex-col items-center md:items-start
-                        order-1 mt-16 lg:mt-20">
+                        order-1 mt-6 lg:mt-20">
 
           {/* Heading — Archivo for true mixed case */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6 tracking-tight overflow-visible"
+            className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-18 tracking-tight overflow-visible"
           >
             {/* Line 1: "In EvoMarket Agency" — kept on one line */}
             <span className="block whitespace-nowrap">
