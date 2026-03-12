@@ -69,8 +69,9 @@ function PartnersTicker({ label }: { label: string }) {
           <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#0A0E27] to-transparent z-10 pointer-events-none" />
           <motion.div
             className="flex gap-10 items-center"
+            style={{ width: 'max-content' }}
             animate={{ x: ['0%', '-50%'] }}
-            transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
+            transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
           >
             {LOGOS_LOOP.map((src, i) => (
               <div key={i} className="flex-shrink-0 relative w-36 h-15 opacity-55 hover:opacity-85 transition-opacity duration-300">
@@ -290,7 +291,7 @@ function MobileArcCarousel({
   ];
 
   return (
-    <div className="select-none">
+    <div className="select-none relative">
       {/* Arc strip */}
       <div
         ref={arcRef}
@@ -357,63 +358,67 @@ function MobileArcCarousel({
         })}
       </div>
 
-      {/* Content box with tiny side arrows */}
-      <div className="flex items-center gap-2 mx-2 mt-2">
-        {/* Left arrow */}
-        <button
-          onClick={() => go(-1)}
-          aria-label="Previous service"
-          className="flex-shrink-0 w-8 h-8 rounded-full border border-white/10 hover:border-[#F4B223]/40 flex items-center justify-center text-white/35 hover:text-[#F4B223] transition-all duration-200"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
+      {/* Left arrow — absolutely positioned at arc endpoint, ~60% visible */}
+      <button
+        onClick={() => go(-1)}
+        aria-label="Previous service"
+        className="absolute z-10 w-8 h-8 rounded-full border border-white/10 hover:border-[#F4B223]/40
+                   flex items-center justify-center text-white/35 hover:text-[#F4B223] transition-all duration-200"
+        style={{ top: 149, left: -13 }}
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
 
+      {/* Right arrow — same */}
+      <button
+        onClick={() => go(1)}
+        aria-label="Next service"
+        className="absolute z-10 w-8 h-8 rounded-full border border-white/10 hover:border-[#F4B223]/40
+                   flex items-center justify-center text-white/35 hover:text-[#F4B223] transition-all duration-200"
+        style={{ top: 149, right: -13 }}
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+
+      {/* Content box */}
+      <div className="mx-2 mt-2">
         <div
-          className="flex-1 bg-[#0D1230]/95 border border-white/8 rounded-2xl px-5 py-7 text-center overflow-hidden"
+          className="bg-[#0D1230]/95 border border-white/8 rounded-2xl px-5 py-7 text-center overflow-hidden"
           style={{ minHeight: 192 }}
         >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -14 }}
-            transition={{ duration: 0.26, ease: 'easeOut' }}
-            className="flex flex-col items-center"
-          >
-            <span className="text-[#F4B223]/40 text-xs font-mono mb-2 block">
-              0{activeIndex + 1}
-            </span>
-            <h3
-              className="text-[26px] leading-tight text-white tracking-wide mb-3"
-              style={{ fontFamily: 'var(--font-bebas)' }}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -14 }}
+              transition={{ duration: 0.26, ease: 'easeOut' }}
+              className="flex flex-col items-center"
             >
-              {t(`${serviceKeys[activeIndex]}.title`)}
-            </h3>
-            <p className="text-white/55 text-sm leading-relaxed mb-5 max-w-[280px]">
-              {t(`${serviceKeys[activeIndex]}.description`)}
-            </p>
-            <Link
-              href={`/${locale}/devis?service=${serviceDevisParams[activeIndex]}`}
-              className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
-            >
-              {t('requestQuote')}
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </motion.div>
-        </AnimatePresence>
+              <span className="text-[#F4B223]/40 text-xs font-mono mb-2 block">
+                0{activeIndex + 1}
+              </span>
+              <h3
+                className="text-[26px] leading-tight text-white tracking-wide mb-3"
+                style={{ fontFamily: 'var(--font-bebas)' }}
+              >
+                {t(`${serviceKeys[activeIndex]}.title`)}
+              </h3>
+              <p className="text-white/55 text-sm leading-relaxed mb-5 max-w-[280px]">
+                {t(`${serviceKeys[activeIndex]}.description`)}
+              </p>
+              <Link
+                href={`/${locale}/devis?service=${serviceDevisParams[activeIndex]}`}
+                className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
+              >
+                {t('requestQuote')}
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </motion.div>
+          </AnimatePresence>
         </div>
-
-        {/* Right arrow */}
-        <button
-          onClick={() => go(1)}
-          aria-label="Next service"
-          className="flex-shrink-0 w-8 h-8 rounded-full border border-white/10 hover:border-[#F4B223]/40 flex items-center justify-center text-white/35 hover:text-[#F4B223] transition-all duration-200"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
       </div>
 
       {/* Dots */}

@@ -166,6 +166,10 @@
     "publishedOn": "Publié le",
     "by": "par"
   },
+  "devisSection": {
+    "title": "Parlons de votre projet",
+    "description": "En moins de 2 minutes, décrivez votre projet et recevez un devis gratuit et personnalisé."
+  },
   "devis": {
     "meta": {
       "title": "Demander un devis gratuit",

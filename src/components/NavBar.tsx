@@ -79,13 +79,16 @@ export default function NavBar() {
               </Link>
             </div>
 
-            {/* Mobile menu button */}
-            <button
-              className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile: Language switcher + menu button */}
+            <div className="lg:hidden flex items-center gap-2">
+              <LanguageSwitcher />
+              <button
+                className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -116,8 +119,7 @@ export default function NavBar() {
                     </Link>
                   </motion.div>
                 ))}
-                <div className="pt-4 flex items-center gap-4 px-4">
-                  <LanguageSwitcher />
+                <div className="pt-4 px-4">
                   <Link
                     href={`/${locale}#contact`}
                     className="bg-[#F4B223] hover:bg-[#E09800] text-[#0A0E27] font-semibold py-2.5 px-6 rounded-full transition-all duration-200 text-sm"

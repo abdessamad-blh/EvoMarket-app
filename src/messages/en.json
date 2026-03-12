@@ -98,7 +98,7 @@
   "about": {
     "badge": "About Us",
     "title": "Your trusted digital partner",
-    "description": "EvoMarket is more than just a digital agency. We are your strategic partner, dedicated to transforming your vision into digital reality. Based in Rabat, we combine local expertise with international standards.",
+    "description": "EvoMarket is more than just a digital agency. We are your strategic partner, dedicated to transforming your vision into digital reality. Rabat, we combine local expertise with international standards.",
     "mission": "Our mission is to make digital accessible and performant for every Moroccan business.",
     "stats": {
       "projects": "Projects completed",
@@ -165,6 +165,10 @@
     "relatedArticles": "Related articles",
     "publishedOn": "Published on",
     "by": "by"
+  },
+  "devisSection": {
+    "title": "Let's talk about your project",
+    "description": "In less than 2 minutes, describe your project and receive a free personalized quote."
   },
   "devis": {
     "meta": {

@@ -93,7 +93,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-18 tracking-tight overflow-visible"
+            className="text-[1.7rem] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-[3.6rem] md:mb-18 tracking-tight overflow-visible"
           >
             {/* Line 1: "In EvoMarket Agency" — kept on one line */}
             <span className="block whitespace-nowrap">
@@ -211,13 +211,13 @@ export default function HeroSection() {
               initial={{ clipPath: "inset(0% 100% 0% 0%)" }}
               animate={{
                 clipPath: "inset(0% 0% 0% 0%)",
-                y: [0, -8]
+                y: [8, -16]
               }}
               transition={{
                 clipPath: { duration: 1.1, ease: "circOut" },
                 y: {
                   delay: 2.7,
-                  duration: 2.5,
+                  duration: 2.0,
                   repeat: Infinity,
                   repeatType: "mirror",
                   ease: "easeInOut"
@@ -241,11 +241,11 @@ export default function HeroSection() {
                     "brightness(1) drop-shadow(0 0 0px rgba(244, 178, 35, 0))",
                     "brightness(1.3) drop-shadow(0 0 20px rgba(244, 178, 35, 0.4))"
                   ],
-                  y: [0, -8]
+                  y: [8, -16]
                 }}
                 transition={{
                   delay: 2.7,
-                  duration: 2.5,
+                  duration: 2.0,
                   repeat: Infinity,
                   repeatType: "mirror",
                   ease: "easeInOut"

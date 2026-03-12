@@ -89,14 +89,14 @@ export default function PortfolioSection() {
         </ScrollAnimationWrapper>
 
         {/* Slider — extra side padding to fit the nav arrows */}
-        <div className="relative px-10 sm:px-14">
+        <div className="relative px-[2.5%] sm:px-14">
 
           {/* ← Prev */}
           <button
             onClick={prev}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-20
                        w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center
-                       bg-[#0D1230] border border-white/10 rounded-full
+                       bg-[#0D1230]/25 border border-white/10 rounded-full
                        text-white/50 hover:text-[#F4B223] hover:border-[#F4B223]/50
                        transition-all duration-300 hover:scale-110 active:scale-95"
             aria-label="Previous project"
@@ -112,7 +112,7 @@ export default function PortfolioSection() {
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.35, ease: 'easeInOut' }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
                 className="relative group rounded-2xl overflow-hidden
                            border border-white/5 hover:border-[#F4B223]/20
                            transition-colors duration-500 sm:max-w-[100%] mx-auto"
@@ -172,7 +172,7 @@ export default function PortfolioSection() {
             onClick={next}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-20
                        w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center
-                       bg-[#0D1230] border border-white/10 rounded-full
+                       bg-[#0D1230]/25 border border-white/10 rounded-full
                        text-white/50 hover:text-[#F4B223] hover:border-[#F4B223]/50
                        transition-all duration-300 hover:scale-110 active:scale-95"
             aria-label="Next project"
