@@ -35,7 +35,6 @@ export default function DevisForm() {
     nameType: 'person',
     fullName: '',
     email: '',
-    phoneCode: '+212',
     phone: '',
     employees: '',
   });
@@ -130,21 +129,27 @@ export default function DevisForm() {
     setIsSubmitting(true);
 
     const formData = {
-      sectors: step0Data.sectors,
-      ...step1Data,
-      phoneNumber: `${step1Data.phoneCode}${step1Data.phone}`,
-      ...step2Data,
-      ...step3Data,
+      nameType:    step1Data.nameType,
+      fullName:    step1Data.fullName,
+      email:       step1Data.email,
+      phone:       step1Data.phone,
+      employees:   step1Data.employees,
+      sectors:     step0Data.sectors,
+      services:    step2Data.services,
+      budget:      step2Data.budget,
+      description: step3Data.description,
       submittedAt: new Date().toISOString(),
     };
 
-    // Log to console (no backend yet)
-    console.log('=== DEVIS FORM SUBMISSION ===');
-    console.log(JSON.stringify(formData, null, 2));
-    console.log('============================');
-
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      await fetch('/api/send-devis', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(formData),
+      });
+    } catch (e) {
+      console.error('Failed to send email:', e);
+    }
 
     setIsSubmitting(false);
     setShowSuccess(true);
@@ -154,7 +159,7 @@ export default function DevisForm() {
     setShowSuccess(false);
     setCurrentStep(1);
     setStep0Data({ sectors: [] });
-    setStep1Data({ nameType: 'person', fullName: '', email: '', phoneCode: '+212', phone: '', employees: '' });
+    setStep1Data({ nameType: 'person', fullName: '', email: '', phone: '', employees: '' });
     setStep2Data({ services: [], budget: '' });
     setStep3Data({ description: '', privacyAccepted: false });
     setStep0Errors({});

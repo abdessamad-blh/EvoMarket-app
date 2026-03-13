@@ -2,7 +2,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import { getPostBySlug, getAllSlugs } from '@/lib/blog';
 import { notFound } from 'next/navigation';
-import NavBar from '@/components/NavBar';
+import NavBar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BlogPostContent from './BlogPostContent';
 

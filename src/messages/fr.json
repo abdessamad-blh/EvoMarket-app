@@ -54,7 +54,13 @@
       "description": "SEO, publicité en ligne, stratégie digitale et analyse de données pour maximiser votre ROI."
     },
     "learnMore": "En savoir plus",
-    "requestQuote": "Demander un devis"
+    "requestQuote": "Demander un devis",
+    "seeAllServices": "Voir tous les services",
+    "training": {
+      "title": "Formation d'Équipe",
+      "description": "Formez votre équipe aux métiers du digital : marketing, comptabilité, montage vidéo et tournage professionnel.",
+      "tags": "Marketing · Comptabilité · Montage · Tournage"
+    }
   },
   "process": {
     "badge": "Notre Méthodologie",
@@ -122,6 +128,7 @@
   },
   "contact": {
     "badge": "Contactez-nous",
+    "heroLabel": "Parlons-en",
     "title": "Prêt à lancer votre projet ?",
     "description": "Discutons de vos objectifs et trouvons ensemble la meilleure solution digitale pour votre entreprise.",
     "form": {
@@ -233,11 +240,10 @@
       "budget": "Budget estimé",
       "budgetPlaceholder": "Sélectionnez votre budget",
       "budgetOptions": {
-        "less5k": "Moins de 5 000 MAD",
-        "5k-10k": "5 000 - 10 000 MAD",
-        "10k-30k": "10 000 - 30 000 MAD",
-        "30k-60k": "30 000 - 60 000 MAD",
-        "60k+": "60 000 MAD et plus"
+        "sub500": "> $500",
+        "500-2000": "$500 – $2 000",
+        "2000-6000": "$2 000 – $6 000",
+        "6000plus": "$6 000 <"
       }
     },
     "step3": {
@@ -273,5 +279,11 @@
     "title": "Page non trouvée",
     "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
     "backHome": "Retour à l'accueil"
+  },
+  "servicesPage": {
+    "label": "Ce que nous proposons",
+    "title": "Nos Services",
+    "subtitle": "Tout ce dont votre marque a besoin pour grandir dans le monde digital.",
+    "requestQuote": "Demander un devis"
   }
 }

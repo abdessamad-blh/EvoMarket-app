@@ -177,8 +177,8 @@ function ArcCarousel({
 
         {/* Static text card */}
         <div
-          className="flex-1 bg-[#0D1230]/95 border border-white/8 rounded-2xl px-8 py-7 text-center overflow-hidden"
-          style={{ minHeight: 192 }}
+          className="flex-1 bg-[#0D1230]/95 rounded-2xl px-8 py-6 text-center overflow-hidden"
+          style={{ minHeight: 164 }}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -189,11 +189,8 @@ function ArcCarousel({
               transition={{ duration: 0.26, ease: 'easeOut' }}
               className="flex flex-col items-center"
             >
-              <span className="text-[#F4B223]/40 text-xs font-mono mb-2 block">
-                0{activeIndex + 1}
-              </span>
               <h3
-                className="text-[28px] leading-tight text-white tracking-wide mb-3"
+                className="text-[36px] leading-tight text-white tracking-wide mb-3"
                 style={{ fontFamily: 'var(--font-bebas)' }}
               >
                 {t(`${serviceKeys[activeIndex]}.title`)}
@@ -202,10 +199,10 @@ function ArcCarousel({
                 {t(`${serviceKeys[activeIndex]}.description`)}
               </p>
               <Link
-                href={`/${locale}/devis?service=${serviceDevisParams[activeIndex]}`}
+                href={`/${locale}/services`}
                 className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
               >
-                {t('requestQuote')}
+                {t('seeAllServices')}
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -383,8 +380,8 @@ function MobileArcCarousel({
       {/* Content box */}
       <div className="mx-2 mt-2">
         <div
-          className="bg-[#0D1230]/95 border border-white/8 rounded-2xl px-5 py-7 text-center overflow-hidden"
-          style={{ minHeight: 192 }}
+          className="bg-[#0D1230]/95 rounded-2xl px-5 py-6 text-center overflow-hidden"
+          style={{ minHeight: 164 }}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -395,11 +392,8 @@ function MobileArcCarousel({
               transition={{ duration: 0.26, ease: 'easeOut' }}
               className="flex flex-col items-center"
             >
-              <span className="text-[#F4B223]/40 text-xs font-mono mb-2 block">
-                0{activeIndex + 1}
-              </span>
               <h3
-                className="text-[26px] leading-tight text-white tracking-wide mb-3"
+                className="text-[34px] leading-tight text-white tracking-wide mb-3"
                 style={{ fontFamily: 'var(--font-bebas)' }}
               >
                 {t(`${serviceKeys[activeIndex]}.title`)}
@@ -408,10 +402,10 @@ function MobileArcCarousel({
                 {t(`${serviceKeys[activeIndex]}.description`)}
               </p>
               <Link
-                href={`/${locale}/devis?service=${serviceDevisParams[activeIndex]}`}
+                href={`/${locale}/services`}
                 className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
               >
-                {t('requestQuote')}
+                {t('seeAllServices')}
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

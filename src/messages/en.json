@@ -54,7 +54,13 @@
       "description": "SEO, online advertising, digital strategy and data analysis to maximize your ROI."
     },
     "learnMore": "Learn more",
-    "requestQuote": "Request a quote"
+    "requestQuote": "Request a quote",
+    "seeAllServices": "See all services",
+    "training": {
+      "title": "Team Training",
+      "description": "Empower your team with expert training in content creation, digital marketing, accounting management, video editing and professional filming.",
+      "tags": "Marketing · Accounting · Editing · Filming"
+    }
   },
   "process": {
     "badge": "Our Methodology",
@@ -122,6 +128,7 @@
   },
   "contact": {
     "badge": "Contact Us",
+    "heroLabel": "Let's talk",
     "title": "Ready to launch your project?",
     "description": "Let's discuss your goals and find the best digital solution for your business together.",
     "form": {
@@ -233,11 +240,10 @@
       "budget": "Estimated budget",
       "budgetPlaceholder": "Select your budget",
       "budgetOptions": {
-        "less5k": "Less than 5,000 MAD",
-        "5k-10k": "5,000 - 10,000 MAD",
-        "10k-30k": "10,000 - 30,000 MAD",
-        "30k-60k": "30,000 - 60,000 MAD",
-        "60k+": "60,000 MAD and above"
+        "sub500": "> $500",
+        "500-2000": "$500 – $2,000",
+        "2000-6000": "$2,000 – $6,000",
+        "6000plus": "$6,000 <"
       }
     },
     "step3": {
@@ -273,5 +279,11 @@
     "title": "Page not found",
     "description": "The page you are looking for does not exist or has been moved.",
     "backHome": "Back to home"
+  },
+  "servicesPage": {
+    "label": "What we offer",
+    "title": "Our Services",
+    "subtitle": "Everything your brand needs to grow in the digital world.",
+    "requestQuote": "Request a quote"
   }
 }

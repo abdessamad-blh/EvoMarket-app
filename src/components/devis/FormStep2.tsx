@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { Check, Globe, Smartphone, Search, Share2, Video, Megaphone, Wallet } from 'lucide-react';
+import { Globe, Smartphone, Search, Share2, Video, Megaphone, Wallet } from 'lucide-react';
 
 export interface Step2Data {
   services: string[];
@@ -16,15 +16,15 @@ interface FormStep2Props {
 }
 
 const serviceOptions = [
-  { key: 'website', icon: Globe },
-  { key: 'mobile', icon: Smartphone },
-  { key: 'seo', icon: Search },
+  { key: 'website',     icon: Globe },
+  { key: 'mobile',      icon: Smartphone },
+  { key: 'seo',         icon: Search },
   { key: 'socialMedia', icon: Share2 },
-  { key: 'content', icon: Video },
-  { key: 'ads', icon: Megaphone },
+  { key: 'content',     icon: Video },
+  { key: 'ads',         icon: Megaphone },
 ] as const;
 
-const budgetOptions = ['less5k', '5k-10k', '10k-30k', '30k-60k', '60k+'] as const;
+const budgetOptions = ['sub500', '500-2000', '2000-6000', '6000plus'] as const;
 
 export default function FormStep2({ data, onChange, errors }: FormStep2Props) {
   const t = useTranslations('devis.step2');
@@ -45,36 +45,29 @@ export default function FormStep2({ data, onChange, errors }: FormStep2Props) {
         {t('title')}
       </h3>
 
-      {/* Services checkboxes */}
+      {/* Services — card grid matching FormStep0 style */}
       <div>
         <label className="text-white/60 text-sm mb-3 block">
           {t('serviceLabel')} <span className="text-red-400">*</span>
         </label>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {serviceOptions.map(({ key, icon: Icon }) => {
-            const isSelected = data.services.includes(key);
+            const active = data.services.includes(key);
             return (
               <button
                 key={key}
                 type="button"
                 onClick={() => toggleService(key)}
-                className={`flex items-center gap-3 p-4 rounded-xl border text-left transition-all duration-200 ${
-                  isSelected
-                    ? 'bg-[#F4B223]/10 border-[#F4B223]/40 text-white'
-                    : 'bg-white/5 border-white/10 text-white/60 hover:border-white/20 hover:bg-white/[0.07]'
+                className={`flex flex-col items-center gap-2.5 p-4 rounded-xl border transition-all duration-200 ${
+                  active
+                    ? 'bg-[#F4B223]/15 border-[#F4B223] text-[#F4B223]'
+                    : 'bg-white/5 border-white/10 text-white/60 hover:border-white/25 hover:text-white'
                 }`}
               >
-                <div
-                  className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-all ${
-                    isSelected
-                      ? 'bg-[#F4B223] border-[#F4B223]'
-                      : 'border-white/20'
-                  }`}
-                >
-                  {isSelected && <Check className="w-3 h-3 text-[#0A0E27]" />}
-                </div>
-                <Icon className={`w-4.5 h-4.5 shrink-0 ${isSelected ? 'text-[#F4B223]' : ''}`} />
-                <span className="text-sm leading-tight">{t(`services.${key}`)}</span>
+                <Icon className="w-6 h-6 shrink-0" />
+                <span className="text-xs font-medium text-center leading-tight">
+                  {t(`services.${key}`)}
+                </span>
               </button>
             );
           })}

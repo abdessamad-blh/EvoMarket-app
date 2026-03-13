@@ -112,7 +112,7 @@ export default function PortfolioSection() {
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.6, ease: 'easeInOut' }}
+                transition={{ duration: 0.7, ease: 'easeInOut' }}
                 className="relative group rounded-2xl overflow-hidden
                            border border-white/5 hover:border-[#F4B223]/20
                            transition-colors duration-500 sm:max-w-[100%] mx-auto"

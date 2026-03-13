@@ -32,11 +32,11 @@ export default function ContactSection({ standalone = false }: { standalone?: bo
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <ScrollAnimationWrapper className="text-center mb-16">
-          <span className="inline-block bg-[#F4B223]/10 border border-[#F4B223]/30 text-[#F4B223] text-sm font-medium px-5 py-2 rounded-full mb-4">
+          {/* <span className="inline-block bg-[#F4B223]/10 border border-[#F4B223]/30 text-[#F4B223] text-sm font-medium px-5 py-2 rounded-full mb-4">
             {t('badge')}
-          </span>
+          </span> */}
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl text-white mb-4 tracking-tight"
+            className="text-lg sm:text-4xl md:text-6xl text-[#F4B223] mb-4 mt-6 tracking-tight"
             style={{ fontFamily: 'var(--font-bebas)' }}
           >
             {t('title')}
@@ -188,6 +188,25 @@ export default function ContactSection({ standalone = false }: { standalone?: bo
             </div>
           </motion.div>
         </div>
+
+        {/* Map */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-12 rounded-2xl overflow-hidden border border-white/10"
+          style={{ height: 360 }}
+        >
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-6.857072%2C34.00981%2C-6.817072%2C34.02981&layer=mapnik&marker=34.01981%2C-6.837072"
+            width="100%"
+            height="100%"
+            style={{ border: 'none', filter: 'invert(90%) hue-rotate(180deg) brightness(0.85) contrast(1.1)' }}
+            loading="lazy"
+            title="EvoMarket location"
+          />
+        </motion.div>
       </div>
     </section>
   );
