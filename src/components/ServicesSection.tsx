@@ -165,7 +165,7 @@ function ArcCarousel({
       </div>
 
       {/* ── Content box with arrows flanking it ── */}
-      <div className="flex items-center gap-4 max-w-lg mx-auto mt-2">
+      <div className="flex items-center gap-4 max-w-lg mx-auto mt-0.5">
         {/* Left arrow — slightly bigger */}
         <button
           onClick={prev}
@@ -190,17 +190,17 @@ function ArcCarousel({
               className="flex flex-col items-center"
             >
               <h3
-                className="text-[36px] leading-tight text-white tracking-wide mb-3"
+                className="text-[36px] leading-tight text-[#F4B223] tracking-wide mb-3"
                 style={{ fontFamily: 'var(--font-bebas)' }}
               >
                 {t(`${serviceKeys[activeIndex]}.title`)}
               </h3>
-              <p className="text-white/55 text-sm leading-relaxed mb-5 max-w-xs">
+              <p className="text-white text-sm leading-relaxed mb-5 max-w-xs">
                 {t(`${serviceKeys[activeIndex]}.description`)}
               </p>
               <Link
                 href={`/${locale}/services`}
-                className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
+                className="text-[#fbd78b] text-sm font-medium hover:underline flex items-center gap-1.5"
               >
                 {t('seeAllServices')}
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

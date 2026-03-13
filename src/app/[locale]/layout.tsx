@@ -34,6 +34,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       template: `%s | EvoMarket`,
     },
     description: meta.description,
+    icons: {
+      icon: '/images/evologo.png',
+      shortcut: '/images/evologo.png',
+      apple: '/images/evologo.png',
+    },
     metadataBase: new URL('https://evomarket.ma'),
     alternates: {
       canonical: `https://evomarket.ma/${locale}`,
