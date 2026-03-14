@@ -299,7 +299,7 @@
       "title": "Demande envoyée !",
       "message": "Merci pour votre demande de devis. Notre équipe vous contactera dans les 24 heures.",
       "backHome": "Retour à l'accueil",
-      "newRequest": "Nouvelle demande"
+      "followUs": "Suivez-nous sur les réseaux sociaux"
     },
     "validation": {
       "required": "Ce champ est requis",

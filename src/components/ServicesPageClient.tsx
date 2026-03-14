@@ -44,8 +44,8 @@ export default function ServicesPageClient() {
               alt="EvoMarket projects mockup"
               width={720}
               height={1000}
-              className="rounded-2xl shadow-2xl shadow-black/40 w-full max-w-[320px] lg:max-w-none object-cover"
-              style={{ maxHeight: '72vh', objectFit: 'cover' }}
+              className="rounded-2xl shadow-2xl shadow-black/40 w-full max-w-[320px] lg:max-w-none"
+              style={{ maxHeight: '80vh', objectFit: 'contain' }}
             />
           </div>
 

@@ -18,7 +18,7 @@ export default function ContactSection({ standalone = false }: { standalone?: bo
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Form submission logic here
-    const mailtoLink = `mailto:evomarketagency@gmail.com?subject=Nouveau projet - ${formState.name}&body=${encodeURIComponent(
+    const mailtoLink = `mailto:contact@evomarket.ma?subject=Nouveau projet - ${formState.name}&body=${encodeURIComponent(
       `Nom: ${formState.name}\nEmail: ${formState.email}\nTéléphone: ${formState.phone}\n\nMessage:\n${formState.message}`
     )}`;
     window.location.href = mailtoLink;
@@ -144,8 +144,8 @@ export default function ContactSection({ standalone = false }: { standalone?: bo
                 </div>
                 <div>
                   <h4 className="text-white font-medium mb-1">{t('info.email')}</h4>
-                  <a href="mailto:evomarketagency@gmail.com" className="text-white/50 text-sm hover:text-[#F4B223] transition-colors">
-                    evomarketagency@gmail.com
+                  <a href="mailto:contact@evomarket.ma" className="text-white/50 text-sm hover:text-[#F4B223] transition-colors">
+                    contact@evomarket.ma
                   </a>
                 </div>
               </div>

@@ -52,7 +52,7 @@ export default function Footer() {
                 { icon: Instagram, href: 'https://www.instagram.com/evomarket.agency/', label: 'Instagram' },
                 { icon: Facebook, href: 'https://www.facebook.com/people/EvoMarket/61577177497761/', label: 'Facebook' },
                 { icon: Linkedin, href: 'https://www.linkedin.com/company/evomarket/', label: 'LinkedIn' },
-                { icon: Mail, href: 'mailto:evomarketagency@gmail.com', label: 'Email' },
+                { icon: Mail, href: 'mailto:contact@evomarket.ma', label: 'Email' },
               ].map((social) => (
                 <a
                   key={social.label}
@@ -145,7 +145,7 @@ export default function Footer() {
               </h4>
               <p className="text-white/40 text-sm">06 24 45 88 47</p>
               <p className="text-white/40 text-sm">05 37 70 59 11</p>
-              <p className="text-white/40 text-sm">evomarketagency@gmail.com</p>
+              <p className="text-white/40 text-sm">contact@evomarket.ma</p>
             </div>
           </div>
         </div>

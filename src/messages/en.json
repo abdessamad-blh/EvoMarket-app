@@ -299,7 +299,7 @@
       "title": "Request sent!",
       "message": "Thank you for your quote request. Our team will contact you within 24 hours.",
       "backHome": "Back to home",
-      "newRequest": "New request"
+      "followUs": "Follow us on social media"
     },
     "validation": {
       "required": "This field is required",

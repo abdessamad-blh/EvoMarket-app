@@ -64,6 +64,15 @@ export async function POST(request: Request) {
     </html>
   `;
 
+  // Send to Google Sheet (fire-and-forget, don't block on failure)
+  if (process.env.GOOGLE_SHEET_WEBHOOK_URL) {
+    fetch(process.env.GOOGLE_SHEET_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).catch((err) => console.error('Google Sheet webhook error:', err));
+  }
+
   try {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL ?? 'EvoMarket <onboarding@resend.dev>',
