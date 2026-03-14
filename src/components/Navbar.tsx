@@ -121,7 +121,7 @@ export default function NavBar() {
                 ))}
                 <div className="pt-4 px-4">
                   <Link
-                    href={`/${locale}#contact`}
+                    href={`/${locale}devis`}
                     className="bg-[#F4B223] hover:bg-[#E09800] text-[#0A0E27] font-semibold py-2.5 px-6 rounded-full transition-all duration-200 text-sm"
                     onClick={() => setIsMenuOpen(false)}
                   >

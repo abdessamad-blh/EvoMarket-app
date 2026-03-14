@@ -395,14 +395,15 @@ function MobileArcCarousel({
               {t(`${serviceKeys[activeIndex]}.description`)}
             </p>
             <Link
-              href={`/${locale}/devis?service=${serviceDevisParams[activeIndex]}`}
+              href={`/${locale}/services`}
               className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
             >
-              {t('requestQuote')}
+              {t('seeAllServices')}
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
+
           </motion.div>
         </AnimatePresence>
       </div>
