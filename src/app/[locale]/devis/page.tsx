@@ -43,11 +43,11 @@ export default async function DevisPage({ params }: { params: Promise<{ locale: 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
           <div className="text-center mb-12">
-            <span className="inline-block bg-[#F4B223]/10 border border-[#F4B223]/30 text-[#F4B223] text-sm font-medium px-5 py-2 rounded-full mb-4">
+            {/* <span className="inline-block bg-[#F4B223]/10 border border-[#F4B223]/30 text-[#F4B223] text-sm font-medium px-5 py-2 rounded-full mb-4">
               EvoMarket
-            </span>
+            </span> */}
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-4 tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#F4B223] mb-4 mt-6 tracking-tight"
               style={{ fontFamily: 'var(--font-bebas)' }}
             >
               {t('title')}

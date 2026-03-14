@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { Share2, Film, Code2, Smartphone, TrendingUp, GraduationCap, Plus, Minus } from 'lucide-react';
+import { Share2, Film, Code2, Smartphone, TrendingUp, GraduationCap, Plus, Minus, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from './PageHero';
 
@@ -112,9 +112,16 @@ export default function ServicesPageClient() {
                             className="pt-3 pb-1"
                             style={{ paddingLeft: isRTL ? 0 : 60, paddingRight: isRTL ? 60 : 0 }}
                           >
-                            <p className="text-white/55 text-sm leading-relaxed mb-4 max-w-sm">
+                            <p className="text-white/55 text-sm leading-relaxed mb-4 max-w-lg">
                               {t(`${key}.description`)}
                             </p>
+
+                            {key === 'training' && (
+                              <div className={`flex items-start gap-2 text-xs bg-[#F4B223]/5 border border-[#F4B223]/20 rounded-lg px-3 py-2.5 mb-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                                <span className="text-[#F4B223] shrink-0 mt-0.5">⚠</span>
+                                <span className="text-[#F4B223]/70">{t('training.note')}</span>
+                              </div>
+                            )}
 
                             {tags.length > 0 && (
                               <div className={`flex flex-wrap gap-2 mb-4 ${isRTL ? 'justify-end' : ''}`}>
@@ -129,15 +136,28 @@ export default function ServicesPageClient() {
                               </div>
                             )}
 
-                            <Link
-                              href={`/${locale}/devis?service=${param}`}
-                              className={`inline-flex items-center gap-1.5 text-[#F4B223] text-sm font-medium hover:underline ${isRTL ? 'flex-row-reverse' : ''}`}
-                            >
-                              {tp('requestQuote')}
-                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isRTL ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'} />
-                              </svg>
-                            </Link>
+                            <div className={`flex items-center gap-4 flex-wrap ${isRTL ? 'flex-row-reverse' : ''}`}>
+                              <Link
+                                href={`/${locale}/devis?service=${param}`}
+                                className={`inline-flex items-center gap-1.5 text-[#F4B223] text-sm font-medium hover:underline ${isRTL ? 'flex-row-reverse' : ''}`}
+                              >
+                                {tp('requestQuote')}
+                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isRTL ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'} />
+                                </svg>
+                              </Link>
+                              {key === 'training' && (
+                                <a
+                                  href="https://academy.evomarket.ma"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={`inline-flex items-center gap-1.5 text-white/40 hover:text-white/70 text-sm font-medium hover:underline transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
+                                >
+                                  {t('training.seeMore')}
+                                  <ExternalLink className="w-3.5 h-3.5" />
+                                </a>
+                              )}
+                            </div>
                           </div>
                         </motion.div>
                       )}

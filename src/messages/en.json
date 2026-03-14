@@ -36,30 +36,32 @@
     "description": "Complete digital solutions to propel your business towards success.",
     "socialMedia": {
       "title": "Social Media Management",
-      "description": "Content strategy, planning, community management and growth of your social media presence."
+      "description": "We take full charge of your social media presence — from strategy and content planning to daily publishing, community management, and performance reporting. We create tailored content for Instagram, Facebook, LinkedIn, and TikTok to keep your brand visible, consistent, and engaging across every platform."
     },
     "contentCreation": {
       "title": "Content Creation",
-      "description": "Video production, graphic design, copywriting and creative content that captivates your audience."
+      "description": "Our creative team produces high-quality content that tells your brand's story: professional photo & video shoots, motion graphics, Reels, Stories, and branded visuals. We also provide copywriting in French, Arabic, and English to ensure your message resonates with every audience."
     },
     "webDev": {
       "title": "Web Development",
-      "description": "Elegant showcase sites and custom web applications, built with the most modern technologies."
+      "description": "We design and develop fast, modern, and fully custom websites — from elegant showcase sites to complex web applications. Built with Next.js, React, TypeScript, and Tailwind CSS, every site we deliver is responsive, SEO-optimized, and engineered to convert visitors into clients."
     },
     "mobileApp": {
       "title": "Mobile Development",
-      "description": "High-performing iOS and Android applications, with intuitive design and optimal user experience."
+      "description": "We build cross-platform mobile applications for iOS and Android that combine performance with intuitive design. Whether you need a client portal, an e-commerce app, or a fully custom solution, we deliver polished mobile experiences that your users will love."
     },
     "digitalMarketing": {
       "title": "Digital Marketing & Strategy",
-      "description": "SEO, online advertising, digital strategy and data analysis to maximize your ROI."
+      "description": "We drive real, measurable results through targeted digital strategies: SEO, Google Ads, Meta Ads (Facebook & Instagram), and in-depth campaign analytics. We manage your entire advertising ecosystem — continuously optimizing campaigns and maximizing your return on investment."
     },
     "learnMore": "Learn more",
     "requestQuote": "Request a quote",
     "seeAllServices": "See all services",
     "training": {
       "title": "Team Training",
-      "description": "Empower your team with expert training in content creation, digital marketing, accounting management, video editing and professional filming.",
+      "description": "We offer professional in-person training workshops for your teams, covering content creation, digital marketing strategy, accounting management, video editing, and professional filming techniques. Our expert-led sessions are designed to upskill your staff and empower them to handle your digital presence independently.",
+      "note": "This service is only available for companies based in Morocco, as all sessions are conducted in person.",
+      "seeMore": "See more details",
       "tags": "Marketing · Accounting · Editing · Filming"
     }
   },
@@ -272,7 +274,8 @@
         "seo": "SEO optimization",
         "socialMedia": "Social media management",
         "content": "Content creation (Video / Design / Copywriting)",
-        "ads": "Online advertising (Meta Ads / Google Ads)"
+        "ads": "Online advertising (Meta Ads / Google Ads)",
+        "training": "Team Training"
       },
       "budget": "Estimated budget",
       "budgetPlaceholder": "Select your budget",

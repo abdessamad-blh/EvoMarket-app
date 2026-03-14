@@ -6,6 +6,7 @@ import ServicesSection from '@/components/ServicesSection';
 import ProcessSection from '@/components/ProcessSection';
 import DevisForm from '@/components/devis/DevisForm';
 import Footer from '@/components/Footer';
+import PortfolioSection from '@/components/PortfolioSection';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -17,6 +18,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <NavBar />
       <HeroSection />
       <ServicesSection />
+      <PortfolioSection/>
       <ProcessSection />
 
       {/* Quick Quote Section */}

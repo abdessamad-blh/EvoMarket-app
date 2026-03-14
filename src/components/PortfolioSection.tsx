@@ -89,7 +89,7 @@ export default function PortfolioSection() {
         </ScrollAnimationWrapper>
 
         {/* Slider — extra side padding to fit the nav arrows */}
-        <div className="relative px-[2.5%] sm:px-14">
+        <div className="relative px-0 sm:px-14">
 
           {/* ← Prev */}
           <button

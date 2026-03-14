@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { Globe, Smartphone, Search, Share2, Video, Megaphone, Wallet } from 'lucide-react';
+import { Globe, Smartphone, Search, Share2, Video, Megaphone, Wallet, GraduationCap } from 'lucide-react';
 
 export interface Step2Data {
   services: string[];
@@ -22,6 +22,7 @@ const serviceOptions = [
   { key: 'socialMedia', icon: Share2 },
   { key: 'content',     icon: Video },
   { key: 'ads',         icon: Megaphone },
+  { key: 'training',    icon: GraduationCap },
 ] as const;
 
 const budgetOptions = ['sub500', '500-2000', '2000-6000', '6000plus'] as const;

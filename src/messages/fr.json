@@ -36,30 +36,32 @@
     "description": "Des solutions digitales complètes pour propulser votre entreprise vers le succès.",
     "socialMedia": {
       "title": "Gestion des Réseaux Sociaux",
-      "description": "Stratégie de contenu, planification, community management et croissance de votre présence sur les réseaux sociaux."
+      "description": "Nous prenons en charge l'intégralité de votre présence sur les réseaux sociaux — de la stratégie à la publication quotidienne, en passant par la gestion de communauté et l'analyse des performances. Nous créons du contenu sur mesure pour Instagram, Facebook, LinkedIn et TikTok pour maintenir votre marque visible, cohérente et engageante."
     },
     "contentCreation": {
       "title": "Création de Contenu",
-      "description": "Production de vidéos, design graphique, copywriting et contenu créatif qui captive votre audience."
+      "description": "Notre équipe créative produit du contenu de haute qualité qui raconte l'histoire de votre marque : shooting photo et vidéo professionnels, motion design, Reels, Stories et visuels brandés. Nous proposons également du copywriting en français, arabe et anglais pour toucher chaque audience."
     },
     "webDev": {
       "title": "Développement Web",
-      "description": "Sites vitrines élégants et applications web sur mesure, construits avec les technologies les plus modernes."
+      "description": "Nous concevons et développons des sites web modernes, rapides et entièrement personnalisés — des sites vitrine élégants aux applications web complexes. Construits avec Next.js, React, TypeScript et Tailwind CSS, chaque site est responsive, optimisé SEO et conçu pour convertir les visiteurs en clients."
     },
     "mobileApp": {
       "title": "Développement Mobile",
-      "description": "Applications iOS et Android performantes, avec un design intuitif et une expérience utilisateur optimale."
+      "description": "Nous développons des applications mobiles cross-platform pour iOS et Android alliant performance et design intuitif. Portail client, application e-commerce ou solution sur mesure — nous livrons des expériences mobiles soignées que vos utilisateurs adorent."
     },
     "digitalMarketing": {
       "title": "Marketing Digital & Stratégie",
-      "description": "SEO, publicité en ligne, stratégie digitale et analyse de données pour maximiser votre ROI."
+      "description": "Nous générons des résultats concrets et mesurables grâce à des stratégies de marketing digital ciblées : SEO, Google Ads, Meta Ads (Facebook & Instagram) et analyse approfondie des campagnes. Nous gérons votre écosystème publicitaire en ligne — optimisation continue et maximisation de votre ROI."
     },
     "learnMore": "En savoir plus",
     "requestQuote": "Demander un devis",
     "seeAllServices": "Voir tous les services",
     "training": {
       "title": "Formation d'Équipe",
-      "description": "Formez votre équipe aux métiers du digital : marketing, comptabilité, montage vidéo et tournage professionnel.",
+      "description": "Nous proposons des ateliers de formation professionnelle en présentiel pour vos équipes, couvrant la création de contenu, la stratégie marketing digital, la gestion comptable, le montage vidéo et les techniques de tournage professionnel. Nos sessions animées par des experts sont conçues pour développer les compétences de votre personnel et le rendre autonome dans la gestion de votre présence digitale.",
+      "note": "Ce service est uniquement disponible pour les entreprises basées au Maroc, toutes les sessions étant dispensées en présentiel.",
+      "seeMore": "Voir plus de détails",
       "tags": "Marketing · Comptabilité · Montage · Tournage"
     }
   },
@@ -272,7 +274,8 @@
         "seo": "Référencement SEO",
         "socialMedia": "Gestion des réseaux sociaux",
         "content": "Création de contenu (Vidéo / Design / Copywriting)",
-        "ads": "Publicité en ligne (Meta Ads / Google Ads)"
+        "ads": "Publicité en ligne (Meta Ads / Google Ads)",
+        "training": "Formation d'Équipe"
       },
       "budget": "Budget estimé",
       "budgetPlaceholder": "Sélectionnez votre budget",
