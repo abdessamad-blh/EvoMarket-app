@@ -14,7 +14,7 @@ const blogPosts = [
     excerpt: 'Découvrez les étapes clés pour créer une stratégie digitale qui génère des résultats concrets pour votre entreprise.',
     date: '2025-01-15',
     readingTime: '5',
-    image: '/images/blog/marketing-strategy.jpg', // 600x400 placeholder
+    image: '/images/blogs/marketing-strategy.jpg', // 600x400 placeholder
     tags: ['Marketing Digital', 'Stratégie'],
   },
   {
@@ -23,7 +23,7 @@ const blogPosts = [
     excerpt: "Un site web n'est plus un luxe mais une nécessité. Voici pourquoi investir dans un site professionnel est crucial.",
     date: '2025-01-10',
     readingTime: '4',
-    image: '/images/blog/website-importance.jpg', // 600x400 placeholder
+    image: '/images/blogs/Importance-of-Website.jpg', // 600x400 placeholder
     tags: ['Développement Web', 'Business'],
   },
   {
@@ -32,7 +32,7 @@ const blogPosts = [
     excerpt: 'Apprenez comment les réseaux sociaux peuvent transformer la visibilité et les ventes de votre entreprise au Maroc.',
     date: '2025-01-05',
     readingTime: '6',
-    image: '/images/blog/social-media.jpg', // 600x400 placeholder
+    image: '/images/blogs/Les-réseaux-sociaux-un-levier.jpg', // 600x400 placeholder
     tags: ['Réseaux Sociaux', 'Croissance'],
   },
 ];

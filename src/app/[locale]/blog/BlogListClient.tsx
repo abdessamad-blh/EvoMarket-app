@@ -20,26 +20,10 @@ export default function BlogListClient({ posts }: { posts: BlogPostMeta[] }) {
     : posts;
 
   return (
-    <section className="py-24 min-h-screen relative">
+    <section className="pt-12 pb-24 min-h-screen relative">
       <div className="absolute inset-0 bg-[#0A0E27]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block bg-[#F4B223]/10 border border-[#F4B223]/30 text-[#F4B223] text-sm font-medium px-5 py-2 rounded-full mb-4">
-            {t('subtitle')}
-          </span>
-          <h1
-            className="text-5xl sm:text-6xl md:text-7xl text-white mb-4 tracking-tight"
-            style={{ fontFamily: 'var(--font-bebas)' }}
-          >
-            {t('title')}
-          </h1>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            {t('description')}
-          </p>
-        </div>
-
         {/* Category Filters */}
         {allTags.length > 0 && (
           <div className="flex flex-wrap gap-3 justify-center mb-12">

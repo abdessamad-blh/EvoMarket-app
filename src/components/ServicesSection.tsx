@@ -49,14 +49,14 @@ const ARC_SLOTS = [
 // distance from activeIndex → visual slot
 const DIST_TO_SLOT = [2, 3, 4, 0, 1] as const;
 
-const ICON_SIZE = 116; // base icon circle diameter (px)
+const ICON_SIZE = 132; // base icon circle diameter (px)
 
 /* ─────────────────────────────────────────────
    PARTNERS TICKER
 ───────────────────────────────────────────── */
 function PartnersTicker({ label }: { label: string }) {
   return (
-    <div className="mt-16 pt-10 border-t border-white/6">
+    <div className="pb-6 border-b border-white/6">
       <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
         <div className="flex-shrink-0 text-center sm:text-left">
           <p className="text-white/45 text-xs uppercase tracking-[0.18em] font-medium whitespace-nowrap">
@@ -115,7 +115,7 @@ function ArcCarousel({
           preserveAspectRatio="none"
         >
           <path
-            d="M 0 175 C 200 30, 800 30, 1000 175"
+            d="M 0 175 C 300 60, 700 60, 1000 175"
             fill="none"
             stroke="rgba(244,178,35,0.1)"
             strokeWidth="1.5"
@@ -164,43 +164,40 @@ function ArcCarousel({
         })}
       </div>
 
-      {/* ── Content box with arrows flanking it ── */}
-      <div className="flex items-center gap-4 max-w-lg mx-auto mt-0.5">
-        {/* Left arrow — slightly bigger */}
+      {/* ── Text content + arrows, centered below the active icon ── */}
+      <div className="relative flex items-start justify-center gap-4 mt-4 max-w-lg mx-auto">
+        {/* Left arrow */}
         <button
           onClick={prev}
           aria-label="Previous service"
-          className="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 hover:border-[#F4B223]/50 flex items-center justify-center text-white/40 hover:text-[#F4B223] transition-all duration-200"
+          className="flex-shrink-0 mt-2 w-10 h-10 rounded-full border border-white/10 hover:border-[#F4B223]/50 flex items-center justify-center text-white/40 hover:text-[#F4B223] transition-all duration-200"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-4 h-4" />
         </button>
 
-        {/* Static text card */}
-        <div
-          className="flex-1 bg-[#0D1230]/95 rounded-2xl px-8 py-6 text-center overflow-hidden"
-          style={{ minHeight: 164 }}
-        >
+        {/* Inline text — no card, just content */}
+        <div className="flex-1 text-center overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -14 }}
-              transition={{ duration: 0.26, ease: 'easeOut' }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.24, ease: 'easeOut' }}
               className="flex flex-col items-center"
             >
               <h3
-                className="text-[36px] leading-tight text-[#F4B223] tracking-wide mb-3"
+                className="text-[36px] leading-tight text-white tracking-wide mb-2"
                 style={{ fontFamily: 'var(--font-bebas)' }}
               >
                 {t(`${serviceKeys[activeIndex]}.title`)}
               </h3>
-              <p className="text-white text-sm leading-relaxed mb-5 max-w-xs">
+              <p className="text-white/55 text-sm leading-relaxed mb-4 max-w-xs">
                 {t(`${serviceKeys[activeIndex]}.description`)}
               </p>
               <Link
                 href={`/${locale}/services`}
-                className="text-[#fbd78b] text-sm font-medium hover:underline flex items-center gap-1.5"
+                className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
               >
                 {t('seeAllServices')}
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -215,9 +212,9 @@ function ArcCarousel({
         <button
           onClick={next}
           aria-label="Next service"
-          className="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 hover:border-[#F4B223]/50 flex items-center justify-center text-white/40 hover:text-[#F4B223] transition-all duration-200"
+          className="flex-shrink-0 mt-2 w-10 h-10 rounded-full border border-white/10 hover:border-[#F4B223]/50 flex items-center justify-center text-white/40 hover:text-[#F4B223] transition-all duration-200"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-4 h-4" />
         </button>
       </div>
 
@@ -308,7 +305,7 @@ function MobileArcCarousel({
           preserveAspectRatio="none"
         >
           <path
-            d="M 0 165 C 250 30, 750 30, 1000 165"
+            d="M 0 165 C 300 55, 700 55, 1000 165"
             fill="none"
             stroke="rgba(244,178,35,0.1)"
             strokeWidth="2"
@@ -377,42 +374,37 @@ function MobileArcCarousel({
         <ChevronRight className="w-4 h-4" />
       </button>
 
-      {/* Content box */}
-      <div className="mx-2 mt-2">
-        <div
-          className="bg-[#0D1230]/95 rounded-2xl px-5 py-6 text-center overflow-hidden"
-          style={{ minHeight: 164 }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -14 }}
-              transition={{ duration: 0.26, ease: 'easeOut' }}
-              className="flex flex-col items-center"
+      {/* Inline text content — no card */}
+      <div className="mt-4 px-4 text-center overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeIndex}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.24, ease: 'easeOut' }}
+            className="flex flex-col items-center"
+          >
+            <h3
+              className="text-[34px] leading-tight text-white tracking-wide mb-2"
+              style={{ fontFamily: 'var(--font-bebas)' }}
             >
-              <h3
-                className="text-[34px] leading-tight text-white tracking-wide mb-3"
-                style={{ fontFamily: 'var(--font-bebas)' }}
-              >
-                {t(`${serviceKeys[activeIndex]}.title`)}
-              </h3>
-              <p className="text-white/55 text-sm leading-relaxed mb-5 max-w-[280px]">
-                {t(`${serviceKeys[activeIndex]}.description`)}
-              </p>
-              <Link
-                href={`/${locale}/services`}
-                className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
-              >
-                {t('seeAllServices')}
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+              {t(`${serviceKeys[activeIndex]}.title`)}
+            </h3>
+            <p className="text-white/55 text-sm leading-relaxed mb-4 max-w-[280px]">
+              {t(`${serviceKeys[activeIndex]}.description`)}
+            </p>
+            <Link
+              href={`/${locale}/devis?service=${serviceDevisParams[activeIndex]}`}
+              className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
+            >
+              {t('requestQuote')}
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Dots */}
@@ -453,12 +445,17 @@ export default function ServicesSection() {
     'They trust us';
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
+    <section id="services" className="pt-6 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#0D1230] to-[#0A0E27]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Partners ticker — very top, just below HeroSection */}
+        <ScrollAnimationWrapper>
+          <PartnersTicker label={trustLabel} />
+        </ScrollAnimationWrapper>
+
         {/* Section header */}
-        <ScrollAnimationWrapper className="text-center mb-14">
+        <ScrollAnimationWrapper className="text-center mb-14 mt-28">
           {/* Badge removed — gold title replaces it */}
           {/* <span className="...">{t('badge')}</span> */}
           <h2
@@ -489,11 +486,6 @@ export default function ServicesSection() {
               locale={locale}
             />
           )}
-        </ScrollAnimationWrapper>
-
-        {/* Partners ticker — BOTTOM */}
-        <ScrollAnimationWrapper delay={0.1}>
-          <PartnersTicker label={trustLabel} />
         </ScrollAnimationWrapper>
       </div>
     </section>

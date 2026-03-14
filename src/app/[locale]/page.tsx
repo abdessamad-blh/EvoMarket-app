@@ -4,7 +4,6 @@ import NavBar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import ProcessSection from '@/components/ProcessSection';
-import PortfolioSection from '@/components/PortfolioSection';
 import DevisForm from '@/components/devis/DevisForm';
 import Footer from '@/components/Footer';
 
@@ -18,7 +17,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <NavBar />
       <HeroSection />
       <ServicesSection />
-      <PortfolioSection />
       <ProcessSection />
 
       {/* Quick Quote Section */}
