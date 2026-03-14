@@ -8,7 +8,7 @@ import { CheckCircle2, ArrowLeft, Instagram, Facebook, Linkedin } from 'lucide-r
 
 interface SuccessModalProps {
   isOpen: boolean;
-  onNewRequest: () => void;
+  onClose: () => void;
 }
 
 const SOCIAL_LINKS = [
@@ -17,7 +17,7 @@ const SOCIAL_LINKS = [
   { icon: Linkedin,  href: 'https://www.linkedin.com/company/evomarket/', label: 'LinkedIn' },
 ];
 
-export default function SuccessModal({ isOpen }: Omit<SuccessModalProps, 'onNewRequest'> & { onNewRequest?: () => void }) {
+export default function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
   const t = useTranslations('devis.success');
   const locale = useLocale();
 
@@ -66,6 +66,7 @@ export default function SuccessModal({ isOpen }: Omit<SuccessModalProps, 'onNewR
             {/* Back to home button */}
             <Link
               href={`/${locale}`}
+              onClick={onClose}
               className="inline-flex items-center justify-center gap-2 bg-[#F4B223] hover:bg-[#E09800] text-[#0A0E27] font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105 text-sm mb-8"
             >
               <ArrowLeft className="w-4 h-4" />

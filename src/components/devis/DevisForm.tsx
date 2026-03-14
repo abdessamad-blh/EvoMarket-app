@@ -258,7 +258,7 @@ export default function DevisForm() {
         </div>
       </div>
 
-      <SuccessModal isOpen={showSuccess} />
+      <SuccessModal isOpen={showSuccess} onClose={() => setShowSuccess(false)} />
     </>
   );
 }
