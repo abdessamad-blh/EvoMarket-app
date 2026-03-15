@@ -79,7 +79,7 @@ export default function HeroSection() {
       {/* Main two-column layout */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
                       flex flex-col md:flex-row items-center
-                      gap-10 md:gap-8 lg:gap-16
+                      gap-2 md:gap-8 lg:gap-16
                       pt-28 pb-20 md:pt-0 md:pb-0 md:min-h-screen">
 
         {/* ── LEFT: Hero Content ── (first on mobile + desktop) */}
@@ -108,7 +108,7 @@ export default function HeroSection() {
           {/* ── Floating service labels ── */}
 
           {/* MOBILE: depth via size + opacity + blur, scattered horizontally */}
-          <div className="block md:hidden relative w-full h-[250px] mb-8">
+          <div className="block md:hidden relative w-full h-[250px] mb-1">
             {mobileFloatingItems.map((item, index) => (
               <motion.div
                 key={`mobile-${item.key}`}
@@ -196,7 +196,7 @@ export default function HeroSection() {
         {/* ── RIGHT: Motion Logo ── (second on mobile + desktop) */}
         <div className="w-full md:w-[42%] lg:w-[30%]
                         flex items-center justify-center
-                        order-2 mt-6 md:mt-16 lg:mt-20">
+                        order-2 mt-0 md:mt-16 lg:mt-20">
 
           <div className="relative
                           w-[180px] h-[180px]

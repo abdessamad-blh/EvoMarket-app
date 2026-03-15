@@ -46,7 +46,7 @@ export default function PortfolioSection() {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setCurrent((c) => (c + 1) % projects.length);
-    }, 2000);
+    }, 2500);
   }, []);
 
   const prev = useCallback(() => {
