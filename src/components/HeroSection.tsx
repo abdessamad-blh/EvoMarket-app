@@ -80,7 +80,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
                       flex flex-col md:flex-row items-center
                       gap-2 md:gap-8 lg:gap-16
-                      pt-28 pb-20 md:pt-0 md:pb-0 md:min-h-screen">
+                      pt-20 pb-20 md:pt-0 md:pb-0 md:min-h-screen">
 
         {/* ── LEFT: Hero Content ── (first on mobile + desktop) */}
         <div className="w-full md:w-[58%] lg:w-[60%]
@@ -93,7 +93,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="text-[1.7rem] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-[3.6rem] md:mb-18 tracking-tight overflow-visible"
+            className="text-[1.45rem] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-5 md:mb-18 tracking-tight overflow-visible"
           >
             {/* Line 1: "In EvoMarket Agency" — kept on one line */}
             <span className="block whitespace-nowrap">

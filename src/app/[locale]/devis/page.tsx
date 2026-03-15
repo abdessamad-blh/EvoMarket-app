@@ -22,7 +22,7 @@ export default async function DevisPage({ params }: { params: Promise<{ locale: 
   const t = await getTranslations({ locale, namespace: 'devis' });
 
   return (
-    <main className="relative">
+    <main className="relative overflow-x-hidden">
       <NavBar />
 
       <section className="py-16 sm:py-24 relative min-h-screen">
