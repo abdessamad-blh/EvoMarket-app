@@ -1,7 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import { getAllPosts } from '@/lib/blog';
-import NavBar from '@/components/Navbar';
+import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
 import BlogListClient from './BlogListClient';

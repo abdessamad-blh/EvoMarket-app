@@ -44,10 +44,10 @@ const floatingItems = [
 
 // Mobile depth items — 2D only, scattered horizontally
 const mobileFloatingItems = [
-  { key: 'service2', top: '4%',  left: '75%', translateX: '-50%', opacity: 0.72, blur: '0px',   size: 'text-4xl sm:text-5xl', color: 'text-white/80' },
+  { key: 'service2', top: '10%', left: '75%', translateX: '-50%', opacity: 0.72, blur: '0px',   size: 'text-4xl sm:text-5xl', color: 'text-white/80' },
   { key: 'service1', top: '31%', left: '50%', translateX: '-50%', opacity: 1,    blur: '0px',   size: 'text-5xl sm:text-6xl', color: 'text-gradient-gold' },
-  { key: 'service4', top: '63%', left: '4%',  translateX: '0%',   opacity: 0.60, blur: '0.5px', size: 'text-3xl sm:text-4xl', color: 'text-white/70' },
-  { key: 'service3', top: '81%', left: '52%', translateX: '0%',   opacity: 0.45, blur: '1px',   size: 'text-2xl sm:text-3xl', color: 'text-white/55' },
+  { key: 'service4', top: '55%', left: '4%',  translateX: '0%',   opacity: 0.60, blur: '0.5px', size: 'text-3xl sm:text-4xl', color: 'text-white/70' },
+  { key: 'service3', top: '70%', left: '52%', translateX: '0%',   opacity: 0.45, blur: '1px',   size: 'text-2xl sm:text-3xl', color: 'text-white/55' },
 ] as const;
 
 export default function HeroSection() {

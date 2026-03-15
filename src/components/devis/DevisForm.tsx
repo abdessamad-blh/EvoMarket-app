@@ -183,7 +183,7 @@ export default function DevisForm() {
         <StepIndicator currentStep={currentStep} totalSteps={4} />
 
         {/* Form Card */}
-        <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10">
+        <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 overflow-hidden">
           {/* Animated step content */}
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div

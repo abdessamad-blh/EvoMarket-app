@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
-import NavBar from '@/components/Navbar';
+import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import DevisForm from '@/components/devis/DevisForm';
 

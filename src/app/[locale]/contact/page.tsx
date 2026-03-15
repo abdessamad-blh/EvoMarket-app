@@ -1,5 +1,5 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import NavBar from '@/components/Navbar';
+import NavBar from '@/components/NavBar';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
