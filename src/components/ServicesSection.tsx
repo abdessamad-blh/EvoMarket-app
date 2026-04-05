@@ -35,6 +35,9 @@ const PARTNER_LOGOS = [
 ];
 const LOGOS_LOOP = [...PARTNER_LOGOS, ...PARTNER_LOGOS];
 
+const truncate = (s: string, max = 100) =>
+  s.length > max ? s.slice(0, max).trimEnd() + '…' : s;
+
 // Desktop arc — ~90 % screen width
 // Slots: 0=far-left · 1=near-left · 2=center · 3=near-right · 4=far-right
 // x,y = translateX/Y from container center
@@ -193,7 +196,7 @@ function ArcCarousel({
                 {t(`${serviceKeys[activeIndex]}.title`)}
               </h3>
               <p className="text-white/55 text-sm leading-relaxed mb-4 max-w-xs">
-                {t(`${serviceKeys[activeIndex]}.description`)}
+                {truncate(t(`${serviceKeys[activeIndex]}.description`))}
               </p>
               <Link
                 href={`/${locale}/services`}
@@ -392,7 +395,7 @@ function MobileArcCarousel({
               {t(`${serviceKeys[activeIndex]}.title`)}
             </h3>
             <p className="text-white/55 text-sm leading-relaxed mb-4 max-w-[280px]">
-              {t(`${serviceKeys[activeIndex]}.description`)}
+              {truncate(t(`${serviceKeys[activeIndex]}.description`))}
             </p>
             <Link
               href={`/${locale}/services`}
