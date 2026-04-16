@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ScrollAnimationWrapper from './ScrollAnimationWrapper';
@@ -119,11 +120,12 @@ export default function PortfolioSection() {
               >
                 {/* Image — aspect matches 1600×1000 */}
                 <div className="relative w-full aspect-[16/10]">
-                  <img
+                  <Image
                     src={projects[current].image}
                     alt={projects[current].title}
-                    className="w-full h-full object-cover
-                               transition-transform duration-700 group-hover:scale-[1.03]"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
 
                   {/* Gradient overlay */}

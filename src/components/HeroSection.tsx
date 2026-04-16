@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import React from 'react';
 
@@ -224,7 +225,7 @@ export default function HeroSection() {
                 }
               }}
             >
-              <img src="/images/4.png" alt="Base Logo" className="w-full h-auto" />
+              <Image src="/images/4.png" alt="Base Logo" fill sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 300px, (max-width: 1280px) 360px, 400px" priority className="object-contain" />
             </motion.div>
 
             {/* Image 2 : Fade-in + glow loop */}
@@ -235,7 +236,7 @@ export default function HeroSection() {
               transition={{ delay: 1.5, duration: 0.4 }}
             >
               <motion.div
-                className="w-full"
+                className="absolute inset-0"
                 animate={{
                   filter: [
                     "brightness(1) drop-shadow(0 0 0px rgba(244, 178, 35, 0))",
@@ -251,7 +252,7 @@ export default function HeroSection() {
                   ease: "easeInOut"
                 }}
               >
-                <img src="/images/5.png" alt="Digital Service Icon" className="w-full h-auto" />
+                <Image src="/images/5.png" alt="Digital Service Icon" fill sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 300px, (max-width: 1280px) 360px, 400px" priority className="object-contain" />
               </motion.div>
             </motion.div>
 
