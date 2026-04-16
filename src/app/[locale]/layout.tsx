@@ -7,6 +7,7 @@ import React from 'react';
 import Script from 'next/script';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import UmamiTracker from '@/components/UmamiTracker';
+import LogoIntro from '@/components/LogoIntro';
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -143,6 +144,7 @@ export default async function LocaleLayout({
           strategy="afterInteractive"
         />
         <NextIntlClientProvider messages={messages}>
+          <LogoIntro />
           <UmamiTracker />
           {children}
           <WhatsAppButton />

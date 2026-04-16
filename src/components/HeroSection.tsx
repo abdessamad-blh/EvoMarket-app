@@ -2,24 +2,74 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ChevronDown } from 'lucide-react';
 import React from 'react';
 
-// Desktop floating cloud items
+const PARTNER_LOGOS = [
+  '/images/partners/partner9.png',
+  '/images/partners/partner7.png',
+  '/images/partners/partner10.png',
+  '/images/partners/partner11.png',
+  '/images/partners/partner1.png',
+  '/images/partners/partner2.png',
+  '/images/partners/partner3.png',
+  '/images/partners/partner4.png',
+  '/images/partners/partner5.png',
+  '/images/partners/partner6.png',
+  '/images/partners/partner8.png',
+];
+const LOGOS_LOOP = [...PARTNER_LOGOS, ...PARTNER_LOGOS];
+
+function PartnersTicker({ label }: { label: string }) {
+  return (
+    <div className="pt-4 border-t border-white/6">
+      <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+        <div className="flex-shrink-0 text-center sm:text-left">
+          <p className="text-white/45 text-xs uppercase tracking-[0.18em] font-medium whitespace-nowrap">
+            {label}
+          </p>
+          <div className="w-8 h-px bg-[#F4B223]/50 mt-1.5 mx-auto sm:mx-0" />
+        </div>
+        <div className="relative flex-1 w-full overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-[#0A0E27] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#0A0E27] to-transparent z-10 pointer-events-none" />
+          <motion.div
+            className="flex gap-10 items-center"
+            style={{ width: 'max-content' }}
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
+          >
+            {LOGOS_LOOP.map((src, i) => (
+              <div key={i} className="flex-shrink-0 relative w-36 h-12 opacity-55 hover:opacity-85 transition-opacity duration-300">
+                <Image
+                  src={src}
+                  alt={`Partner ${(i % PARTNER_LOGOS.length) + 1}`}
+                  fill
+                  sizes="96px"
+                  className="object-contain grayscale invert brightness-125"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Desktop floating cloud items — centered, full width
 const floatingItems = [
   {
     key: 'service1',
-    top: '35%', left: '25%',
+    top: '35%', left: '32%',
     z: 0, scale: 1, opacity: 1,
     blur: '0px', zIndex: 50,
     color: 'text-gradient-gold',
     size: 'text-5xl lg:text-6xl',
   },
   {
-    key: 'service2',
-    top: '5%', left: '12%',
+    key: 'service5',
+    top: '5%', left: '18%',
     z: -50, scale: 0.86, opacity: 0.72,
     blur: '0.8px', zIndex: 30,
     color: 'text-white',
@@ -27,7 +77,7 @@ const floatingItems = [
   },
   {
     key: 'service3',
-    top: '65%', left: '8%',
+    top: '65%', left: '12%',
     z: -100, scale: 0.80, opacity: 0.55,
     blur: '1.2px', zIndex: 10,
     color: 'text-white',
@@ -35,17 +85,26 @@ const floatingItems = [
   },
   {
     key: 'service4',
-    top: '60%', left: '45%',
+    top: '60%', left: '52%',
     z: -70, scale: 0.83, opacity: 0.65,
     blur: '1px', zIndex: 20,
     color: 'text-white',
     size: 'text-4xl lg:text-5xl',
   },
+  {
+    key: 'service2',
+    top: '10%', left: '62%',
+    z: -85, scale: 0.81, opacity: 0.52,
+    blur: '1.1px', zIndex: 15,
+    color: 'text-white',
+    size: 'text-3xl lg:text-4xl',
+  },
 ] as const;
 
 // Mobile depth items — 2D only, scattered horizontally
 const mobileFloatingItems = [
-  { key: 'service2', top: '10%', left: '75%', translateX: '-50%', opacity: 0.72, blur: '0px',   size: 'text-4xl sm:text-5xl', color: 'text-white/80' },
+  { key: 'service5', top: '10%', left: '75%', translateX: '-50%', opacity: 0.72, blur: '0px',   size: 'text-4xl sm:text-5xl', color: 'text-white/80' },
+  { key: 'service2', top: '13%', left: '0%',  translateX: '0%',   opacity: 0.45, blur: '0.8px', size: 'text-2xl sm:text-3xl', color: 'text-white/55' },
   { key: 'service1', top: '31%', left: '50%', translateX: '-50%', opacity: 1,    blur: '0px',   size: 'text-5xl sm:text-6xl', color: 'text-gradient-gold' },
   { key: 'service4', top: '55%', left: '4%',  translateX: '0%',   opacity: 0.60, blur: '0.5px', size: 'text-3xl sm:text-4xl', color: 'text-white/70' },
   { key: 'service3', top: '70%', left: '52%', translateX: '0%',   opacity: 0.45, blur: '1px',   size: 'text-2xl sm:text-3xl', color: 'text-white/55' },
@@ -54,6 +113,10 @@ const mobileFloatingItems = [
 export default function HeroSection() {
   const t = useTranslations('hero');
   const locale = useLocale();
+  const trustLabel =
+    locale === 'fr' ? 'Ils nous font confiance' :
+    locale === 'ar' ? 'يثقون بنا' :
+    'They trust us';
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -77,196 +140,89 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Main two-column layout */}
+      {/* Single-column centered layout */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
-                      flex flex-col md:flex-row items-center
-                      gap-2 md:gap-8 lg:gap-16
-                      pt-20 pb-20 md:pt-0 md:pb-0 md:min-h-screen">
+                      flex flex-col items-center
+                      pt-20 pb-20 md:pt-20 md:pb-24 md:min-h-screen justify-center">
 
-        {/* ── LEFT: Hero Content ── (first on mobile + desktop) */}
-        <div className="w-full md:w-[58%] lg:w-[60%]
-                        text-center md:text-left
-                        flex flex-col items-center md:items-start
-                        order-1 mt-6 lg:mt-20">
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="text-[1.2rem] sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-5 md:mb-10 tracking-tight overflow-visible text-center md:text-left w-full"
+        >
+          <span className="block whitespace-nowrap">
+            <span className="text-white">{t('title1')} </span>
+            <span className="text-gradient-gold">{t('title2')}</span>
+            <span className="text-white"> {t('title3')}</span>
+          </span>
+          <span className="text-white">{t('title4')}</span>
+        </motion.h1>
 
-          {/* Heading — Archivo for true mixed case */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="text-[1.45rem] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-5 md:mb-18 tracking-tight overflow-visible"
-          >
-            {/* Line 1: "In EvoMarket Agency" — kept on one line */}
-            <span className="block whitespace-nowrap">
-              <span className="text-white">{t('title1')} </span>
-              <span className="text-gradient-gold">{t('title2')}</span>
-              <span className="text-white"> {t('title3')}</span>
-            </span>
-            {/* Line 2: "we create" */}
-            <span className="text-white">{t('title4')}</span>
-          </motion.h1>
+        {/* ── Floating service labels ── */}
 
-          {/* ── Floating service labels ── */}
-
-          {/* MOBILE: depth via size + opacity + blur, scattered horizontally */}
-          <div className="block md:hidden relative w-full h-[250px] mb-1">
-            {mobileFloatingItems.map((item, index) => (
-              <motion.div
-                key={`mobile-${item.key}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: item.opacity }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`absolute whitespace-nowrap
-                            font-medium uppercase tracking-tighter
-                            ${item.size} ${item.color}`}
-                style={{
-                  fontFamily: 'var(--font-bebas)',
-                  top: item.top,
-                  left: item.left,
-                  filter: `blur(${item.blur})`,
-                  transform: `translateX(${item.translateX})`,
-                }}
-              >
-                {t(`floating.${item.key}`)}
-              </motion.div>
-            ))}
-          </div>
-
-          {/* DESKTOP: layered 3D cloud */}
-          <div
-            className="hidden md:block relative w-full h-[200px] lg:h-[240px] mb-1 mt-5"
-            style={{ perspective: '1000px' }}
-          >
-            {floatingItems.map((item, index) => (
-              <motion.div
-                key={item.key}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: item.opacity, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{
-                  opacity: 1,
-                  scale: item.scale + 0.05,
-                  filter: 'blur(0px)',
-                  transition: { duration: 0.2 },
-                }}
-                className={`
-                  absolute whitespace-nowrap cursor-default
-                  ${item.size}
-                  uppercase tracking-tighter
-                  ${item.color} transition-all duration-300
-                `}
-                style={{
-                  fontFamily: 'var(--font-bebas)',
-                  top: item.top,
-                  left: item.left,
-                  filter: `blur(${item.blur})`,
-                  transform: `scale(${item.scale}) translateZ(${item.z}px)`,
-                  transformStyle: 'preserve-3d',
-                  zIndex: item.zIndex,
-                }}
-              >
-                {t(`floating.${item.key}`)}
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CTAs */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center w-full sm:w-auto"
-          >
-            <Link
-              href={`/${locale}/devis`}
-              className="w-full sm:w-auto group bg-[#F4B223] hover:bg-[#E09800] text-[#0A0E27] font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:scale-105 text-base shadow-lg shadow-[#F4B223]/25 hover:shadow-[#F4B223]/40 flex items-center justify-center gap-2"
+        {/* MOBILE */}
+        <div className="block md:hidden relative w-full h-[250px] mb-1">
+          {mobileFloatingItems.map((item, index) => (
+            <motion.div
+              key={`mobile-${item.key}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: item.opacity }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`absolute whitespace-nowrap font-medium uppercase tracking-tighter ${item.size} ${item.color}`}
+              style={{
+                fontFamily: 'var(--font-bebas)',
+                top: item.top,
+                left: item.left,
+                filter: `blur(${item.blur})`,
+                transform: `translateX(${item.translateX})`,
+              }}
             >
-              {t('cta1')}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            <Link
-              href={`/${locale}#services`}
-              className="w-full sm:w-auto group border-2 border-white/20 hover:border-[#F4B223]/50 text-white hover:text-[#F4B223] font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:scale-105 text-base hover:bg-[#F4B223]/5 flex items-center justify-center"
-            >
-              {t('cta2')}
-            </Link>
-          </motion.div> */}
+              {t(`floating.${item.key}`)}
+            </motion.div>
+          ))}
         </div>
 
-        {/* ── RIGHT: Motion Logo ── (second on mobile + desktop) */}
-        <div className="w-full md:w-[42%] lg:w-[30%]
-                        flex items-center justify-center
-                        order-2 mt-0 md:mt-16 lg:mt-20">
-
-          <div className="relative
-                          w-[180px] h-[180px]
-                          sm:w-[220px] sm:h-[220px]
-                          md:w-[300px] md:h-[300px]
-                          lg:w-[360px] lg:h-[360px]
-                          xl:w-[400px] xl:h-[400px]">
-
-            {/* Image 1 : Fade-in then float */}
+        {/* DESKTOP: layered 3D cloud */}
+        <div
+          className="hidden md:block relative w-full h-[200px] lg:h-[240px] mb-1 mt-5"
+          style={{ perspective: '1000px' }}
+        >
+          {floatingItems.map((item, index) => (
             <motion.div
-              className="absolute inset-0"
-              initial={{ opacity: 0 }}
-              animate={{
+              key={item.key}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: item.opacity, x: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              whileHover={{
                 opacity: 1,
-                y: [8, -16]
+                scale: item.scale + 0.05,
+                filter: 'blur(0px)',
+                transition: { duration: 0.2 },
               }}
-              transition={{
-                opacity: { duration: 0.7, ease: "easeOut" },
-                y: {
-                  delay: 2.7,
-                  duration: 2.0,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut"
-                }
+              className={`absolute whitespace-nowrap cursor-default ${item.size} uppercase tracking-tighter ${item.color} transition-all duration-300`}
+              style={{
+                fontFamily: 'var(--font-bebas)',
+                top: item.top,
+                left: item.left,
+                filter: `blur(${item.blur})`,
+                transform: `scale(${item.scale}) translateZ(${item.z}px)`,
+                transformStyle: 'preserve-3d',
+                zIndex: item.zIndex,
               }}
             >
-              <Image src="/images/4.png" alt="Base Logo" fill sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 300px, (max-width: 1280px) 360px, 400px" priority className="object-contain" />
+              {t(`floating.${item.key}`)}
             </motion.div>
-
-            {/* Image 2 : Fade-in + float (static glow via CSS) */}
-            <motion.div
-              className="absolute inset-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, y: [8, -16] }}
-              transition={{
-                opacity: { delay: 0.4, duration: 0.6 },
-                y: {
-                  delay: 2.7,
-                  duration: 2.0,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut"
-                }
-              }}
-              style={{ filter: "drop-shadow(0 0 18px rgba(244, 178, 35, 0.35))" }}
-            >
-              <Image src="/images/5.png" alt="Digital Service Icon" fill sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 300px, (max-width: 1280px) 360px, 400px" priority className="object-contain" />
-            </motion.div>
-
-          </div>
+          ))}
         </div>
 
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ChevronDown className="w-6 h-6 text-white/40" />
-        </motion.div>
-      </motion.div>
+      {/* Partners ticker — bottom of hero */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 px-4 sm:px-6 lg:px-8 pb-4">
+        <PartnersTicker label={trustLabel} />
+      </div>
     </section>
   );
 }

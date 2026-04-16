@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import { Code2, ChevronLeft, ChevronRight } from 'lucide-react';
 import Lottie from 'lottie-react';
 import ScrollAnimationWrapper from './ScrollAnimationWrapper';
@@ -18,22 +17,6 @@ import emailAnim      from '../../public/images/serviceicons/email-marketing.jso
 const serviceAnimations: any[] = [socialMediaAnim, videoAnim, webAnim, mobileAnim, emailAnim];
 const serviceKeys  = ['socialMedia', 'contentCreation', 'webDev', 'mobileApp', 'digitalMarketing'];
 const serviceDevisParams = ['social', 'content', 'web', 'mobile', 'ads'];
-
-const PARTNER_LOGOS = [
-  '/images/partners/partner9.png',
-  '/images/partners/partner7.png',
-  '/images/partners/partner10.png',
-  '/images/partners/partner11.png',
-  '/images/partners/partner1.png',
-  '/images/partners/partner2.png',
-  '/images/partners/partner3.png',
-  '/images/partners/partner4.png',
-  '/images/partners/partner5.png',
-  '/images/partners/partner6.png',
-  '/images/partners/partner8.png',
-
-];
-const LOGOS_LOOP = [...PARTNER_LOGOS, ...PARTNER_LOGOS];
 
 const truncate = (s: string, max = 100) =>
   s.length > max ? s.slice(0, max).trimEnd() + '…' : s;
@@ -53,45 +36,6 @@ const ARC_SLOTS = [
 const DIST_TO_SLOT = [2, 3, 4, 0, 1] as const;
 
 const ICON_SIZE = 132; // base icon circle diameter (px)
-
-/* ─────────────────────────────────────────────
-   PARTNERS TICKER
-───────────────────────────────────────────── */
-function PartnersTicker({ label }: { label: string }) {
-  return (
-    <div className="pb-6 border-b border-white/6">
-      <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
-        <div className="flex-shrink-0 text-center sm:text-left">
-          <p className="text-white/45 text-xs uppercase tracking-[0.18em] font-medium whitespace-nowrap">
-            {label}
-          </p>
-          <div className="w-8 h-px bg-[#F4B223]/50 mt-1.5 mx-auto sm:mx-0" />
-        </div>
-        <div className="relative flex-1 w-full overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-[#0A0E27] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#0A0E27] to-transparent z-10 pointer-events-none" />
-          <motion.div
-            className="flex gap-10 items-center"
-            style={{ width: 'max-content' }}
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
-          >
-            {LOGOS_LOOP.map((src, i) => (
-              <div key={i} className="flex-shrink-0 relative w-36 h-15 opacity-55 hover:opacity-85 transition-opacity duration-300">
-                <Image
-                  src={src}
-                  alt={`Partner ${(i % PARTNER_LOGOS.length) + 1}`}
-                  fill sizes="96px"
-                  className="object-contain grayscale invert brightness-125"
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 /* ─────────────────────────────────────────────
    DESKTOP ARC CAROUSEL
@@ -443,23 +387,13 @@ export default function ServicesSection() {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  const trustLabel =
-    locale === 'fr' ? 'Ils nous font confiance' :
-    locale === 'ar' ? 'يثقون بنا' :
-    'They trust us';
-
   return (
-    <section id="services" className="pt-6 pb-24 relative overflow-hidden">
+    <section id="services" className="pt-20 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#0D1230] to-[#0A0E27]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Partners ticker — very top, just below HeroSection */}
-        <ScrollAnimationWrapper>
-          <PartnersTicker label={trustLabel} />
-        </ScrollAnimationWrapper>
-
         {/* Section header */}
-        <ScrollAnimationWrapper className="text-center mb-14 mt-28">
+        <ScrollAnimationWrapper className="text-center mb-14 mt-0">
           {/* Badge removed — gold title replaces it */}
           {/* <span className="...">{t('badge')}</span> */}
           <h2
