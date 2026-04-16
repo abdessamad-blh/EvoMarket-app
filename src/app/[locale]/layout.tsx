@@ -4,7 +4,9 @@ import { Bebas_Neue, Archivo } from 'next/font/google';
 import { routing, Locale } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import React from 'react';
+import Script from 'next/script';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import UmamiTracker from '@/components/UmamiTracker';
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -135,7 +137,13 @@ export default async function LocaleLayout({
         />
       </head>
       <body className={`min-h-screen bg-[#0A0E27] text-white ${archivo.className}`}>
+        <Script
+          src="https://analytics.evomarket.ma/script.js"
+          data-website-id="c5a4610c-6a9d-4acc-b376-0c228b0e5ae3"
+          strategy="afterInteractive"
+        />
         <NextIntlClientProvider messages={messages}>
+          <UmamiTracker />
           {children}
           <WhatsAppButton />
         </NextIntlClientProvider>
