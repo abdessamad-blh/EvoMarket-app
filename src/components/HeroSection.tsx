@@ -206,16 +206,16 @@ export default function HeroSection() {
                           lg:w-[360px] lg:h-[360px]
                           xl:w-[400px] xl:h-[400px]">
 
-            {/* Image 1 : Reveal then float */}
+            {/* Image 1 : Fade-in then float */}
             <motion.div
               className="absolute inset-0"
-              initial={{ clipPath: "inset(0% 100% 0% 0%)" }}
+              initial={{ opacity: 0 }}
               animate={{
-                clipPath: "inset(0% 0% 0% 0%)",
+                opacity: 1,
                 y: [8, -16]
               }}
               transition={{
-                clipPath: { duration: 1.1, ease: "circOut" },
+                opacity: { duration: 0.7, ease: "easeOut" },
                 y: {
                   delay: 2.7,
                   duration: 2.0,
@@ -228,32 +228,24 @@ export default function HeroSection() {
               <Image src="/images/4.png" alt="Base Logo" fill sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 300px, (max-width: 1280px) 360px, 400px" priority className="object-contain" />
             </motion.div>
 
-            {/* Image 2 : Fade-in + glow loop */}
+            {/* Image 2 : Fade-in + float (static glow via CSS) */}
             <motion.div
               className="absolute inset-0"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5, duration: 0.4 }}
-            >
-              <motion.div
-                className="absolute inset-0"
-                animate={{
-                  filter: [
-                    "brightness(1) drop-shadow(0 0 0px rgba(244, 178, 35, 0))",
-                    "brightness(1.3) drop-shadow(0 0 20px rgba(244, 178, 35, 0.4))"
-                  ],
-                  y: [8, -16]
-                }}
-                transition={{
+              animate={{ opacity: 1, y: [8, -16] }}
+              transition={{
+                opacity: { delay: 0.4, duration: 0.6 },
+                y: {
                   delay: 2.7,
                   duration: 2.0,
                   repeat: Infinity,
                   repeatType: "mirror",
                   ease: "easeInOut"
-                }}
-              >
-                <Image src="/images/5.png" alt="Digital Service Icon" fill sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 300px, (max-width: 1280px) 360px, 400px" priority className="object-contain" />
-              </motion.div>
+                }
+              }}
+              style={{ filter: "drop-shadow(0 0 18px rgba(244, 178, 35, 0.35))" }}
+            >
+              <Image src="/images/5.png" alt="Digital Service Icon" fill sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 300px, (max-width: 1280px) 360px, 400px" priority className="object-contain" />
             </motion.div>
 
           </div>
