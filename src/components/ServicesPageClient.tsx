@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { Share2, Film, Code2, Smartphone, TrendingUp, GraduationCap, Plus, Minus, ExternalLink } from 'lucide-react';
+import { Share2, Film, Code2, Smartphone, TrendingUp, GraduationCap, Search, Plus, Minus, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from './PageHero';
 
@@ -13,6 +13,7 @@ const SERVICES = [
   { key: 'webDev',           param: 'web',        Icon: Code2 },
   { key: 'mobileApp',        param: 'mobile',     Icon: Smartphone },
   { key: 'digitalMarketing', param: 'ads',        Icon: TrendingUp },
+  { key: 'seoPerf',          param: 'seo',        Icon: Search },
   { key: 'training',         param: 'training',   Icon: GraduationCap },
 ] as const;
 

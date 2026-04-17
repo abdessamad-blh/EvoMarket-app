@@ -37,27 +37,31 @@
     "description": "Des solutions digitales complètes pour propulser votre entreprise vers le succès.",
     "socialMedia": {
       "title": "Gestion des Réseaux Sociaux",
-      "description": "Nous prenons en charge l'intégralité de votre présence sur les réseaux sociaux — de la stratégie à la publication quotidienne, en passant par la gestion de communauté et l'analyse des performances. Nous créons du contenu sur mesure pour Instagram, Facebook, LinkedIn et TikTok pour maintenir votre marque visible, cohérente et engageante."
+      "description": "Nous prenons en charge l'intégralité de votre présence sur les réseaux sociaux — de la stratégie et la planification du contenu à la publication quotidienne, la gestion de communauté et l'analyse des performances. Nous créons du contenu sur mesure pour Instagram, Facebook, LinkedIn et TikTok pour maintenir votre marque visible, cohérente et engageante. Chaque mois, nous vous fournissons un rapport analytique détaillé pour suivre votre croissance."
     },
     "contentCreation": {
       "title": "Création de Contenu",
-      "description": "Notre équipe créative produit du contenu de haute qualité qui raconte l'histoire de votre marque : shooting photo et vidéo professionnels, motion design, Reels, Stories et visuels brandés. Nous proposons également du copywriting en français, arabe et anglais pour toucher chaque audience."
+      "description": "Notre équipe créative produit du contenu de haute qualité qui raconte l'histoire de votre marque : shooting photo et vidéo professionnels, motion design, Reels, Stories, visuels brandés et production de podcasts — du concept à l'enregistrement, au montage et à la distribution. Nous gérons chaque format que consomme votre audience. Nous proposons également du copywriting en français, arabe et anglais pour toucher chaque cible."
     },
     "webDev": {
       "title": "Développement Web",
-      "description": "Nous concevons et développons des sites web modernes, rapides et entièrement personnalisés — des sites vitrine élégants aux applications web complexes. Construits avec Next.js, React, TypeScript et Tailwind CSS, chaque site est responsive, optimisé SEO et conçu pour convertir les visiteurs en clients."
+      "description": "Nous concevons et développons des sites web modernes, rapides et entièrement personnalisés — des sites vitrine élégants aux applications web complexes et plateformes e-commerce. Construits avec Next.js, React, TypeScript et Tailwind CSS, chaque site est responsive, optimisé SEO, accessible et conçu pour convertir les visiteurs en clients. Nous assurons également le déploiement, la configuration du domaine et la maintenance continue."
     },
     "mobileApp": {
       "title": "Développement Mobile",
-      "description": "Nous développons des applications mobiles cross-platform pour iOS et Android alliant performance et design intuitif. Portail client, application e-commerce ou solution sur mesure — nous livrons des expériences mobiles soignées que vos utilisateurs adorent."
+      "description": "Nous développons des applications mobiles cross-platform pour iOS et Android alliant haute performance et design intuitif soigné. Portail client, application e-commerce, système de réservation ou solution entièrement sur mesure — nous vous accompagnons des wireframes et du design UI jusqu'au lancement sur l'App Store et le Play Store, avec des tests approfondis et un support post-lancement."
     },
     "digitalMarketing": {
       "title": "Marketing Digital & Stratégie",
-      "description": "Nous générons des résultats concrets et mesurables grâce à des stratégies de marketing digital ciblées : SEO, Google Ads, Meta Ads (Facebook & Instagram) et analyse approfondie des campagnes. Nous gérons votre écosystème publicitaire en ligne — optimisation continue et maximisation de votre ROI."
+      "description": "Nous générons des résultats concrets et mesurables grâce à des stratégies ciblées : Google Ads, Meta Ads (Facebook & Instagram), TikTok Ads et analyse approfondie des campagnes. Nous construisons des écosystèmes publicitaires full-funnel — de la recherche d'audience et la production créative aux tests A/B et à l'optimisation continue. Chaque campagne est suivie avec précision pour maximiser votre ROI."
+    },
+    "seoPerf": {
+      "title": "SEO & Optimisation des Performances",
+      "description": "Nous améliorons la visibilité et la vitesse de votre site grâce aux audits SEO technique, à la recherche de mots-clés, à l'optimisation des Core Web Vitals, aux données structurées et à l'amélioration du contenu on-page. Nous couvrons également le SEO local pour les entreprises marocaines et le SEO multilingue français, arabe et anglais — avec des rapports mensuels transparents et une croissance de classement mesurable."
     },
     "learnMore": "En savoir plus",
     "requestQuote": "Demander un devis",
-    "seeAllServices": "Voir les détails",
+    "seeAllServices": "Lire la suite",
     "training": {
       "title": "Formation d'Équipe",
       "description": "Nous proposons des ateliers de formation professionnelle en présentiel pour vos équipes, couvrant la création de contenu, la stratégie marketing digital, la gestion comptable, le montage vidéo et les techniques de tournage professionnel. Nos sessions animées par des experts sont conçues pour développer les compétences de votre personnel et le rendre autonome dans la gestion de votre présence digitale.",
@@ -273,7 +277,7 @@
       "services": {
         "website": "Création de site web (Vitrine / Sur Mesure)",
         "mobile": "Développement d'application mobile",
-        "seo": "Référencement SEO",
+        "seo": "SEO & Optimisation des performances",
         "socialMedia": "Gestion des réseaux sociaux",
         "content": "Création de contenu (Vidéo / Design / Copywriting)",
         "ads": "Publicité en ligne (Meta Ads / Google Ads)",

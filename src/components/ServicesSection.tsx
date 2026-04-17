@@ -1,401 +1,39 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, ChevronLeft, ChevronRight } from 'lucide-react';
-import Lottie from 'lottie-react';
+import { Share2, Film, Code2, Smartphone, TrendingUp, Search } from 'lucide-react';
 import ScrollAnimationWrapper from './ScrollAnimationWrapper';
-import socialMediaAnim from '../../public/images/serviceicons/social-media-influencer.json';
-import videoAnim      from '../../public/images/serviceicons/video-marketing.json';
-import webAnim        from '../../public/images/serviceicons/web-address-registration.json';
-import mobileAnim     from '../../public/images/serviceicons/mobile-development.json';
-import emailAnim      from '../../public/images/serviceicons/email-marketing.json';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const serviceAnimations: any[] = [socialMediaAnim, videoAnim, webAnim, mobileAnim, emailAnim];
-const serviceKeys  = ['socialMedia', 'contentCreation', 'webDev', 'mobileApp', 'digitalMarketing'];
-const serviceDevisParams = ['social', 'content', 'web', 'mobile', 'ads'];
-
-const truncate = (s: string, max = 100) =>
-  s.length > max ? s.slice(0, max).trimEnd() + '…' : s;
-
-// Desktop arc — ~90 % screen width
-// Slots: 0=far-left · 1=near-left · 2=center · 3=near-right · 4=far-right
-// x,y = translateX/Y from container center
-const ARC_SLOTS = [
-  { x: -480, y: 30,  scale: 0.52, opacity: 0.22, zIndex: 1 },
-  { x: -260, y: 8,   scale: 0.72, opacity: 0.55, zIndex: 2 },
-  { x:    0, y: -28, scale: 1.00, opacity: 1.00, zIndex: 5 },
-  { x:  260, y: 8,   scale: 0.72, opacity: 0.55, zIndex: 2 },
-  { x:  480, y: 30,  scale: 0.52, opacity: 0.22, zIndex: 1 },
+const SERVICES = [
+  { key: 'socialMedia',      param: 'social',  Icon: Share2 },
+  { key: 'contentCreation',  param: 'content', Icon: Film },
+  { key: 'webDev',           param: 'web',     Icon: Code2 },
+  { key: 'mobileApp',        param: 'mobile',  Icon: Smartphone },
+  { key: 'digitalMarketing', param: 'ads',     Icon: TrendingUp },
+  { key: 'seoPerf',          param: 'seo',     Icon: Search },
 ] as const;
 
-// distance from activeIndex → visual slot
-const DIST_TO_SLOT = [2, 3, 4, 0, 1] as const;
-
-const ICON_SIZE = 132; // base icon circle diameter (px)
-
 /* ─────────────────────────────────────────────
-   DESKTOP ARC CAROUSEL
+   THE MIX — Numbered accordion  (active design)
+   Option A (numbers + lines) + click-to-expand
 ───────────────────────────────────────────── */
-function ArcCarousel({
-  activeIndex, setActiveIndex, t, locale,
-}: {
-  activeIndex: number;
-  setActiveIndex: (i: number) => void;
-  t: ReturnType<typeof useTranslations>;
-  locale: string;
-}) {
-  const prev = () => setActiveIndex((activeIndex - 1 + serviceKeys.length) % serviceKeys.length);
-  const next = () => setActiveIndex((activeIndex + 1) % serviceKeys.length);
 
-  return (
-    <div className="select-none">
-      {/* Arc icon strip — full-width, overflow visible so icons can bleed to section edge */}
-      <div className="relative w-full overflow-visible" style={{ height: 180 }}>
-        {/* Dashed arc spanning ~full container width */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          viewBox="0 0 1000 180"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M 0 175 C 300 60, 700 60, 1000 175"
-            fill="none"
-            stroke="rgba(244,178,35,0.1)"
-            strokeWidth="1.5"
-            strokeDasharray="6 9"
-          />
-        </svg>
-
-        {/* Icon bubbles */}
-        {serviceKeys.map((key, dataIdx) => {
-          const dist     = (dataIdx - activeIndex + serviceKeys.length) % serviceKeys.length;
-          const slot     = DIST_TO_SLOT[dist];
-          const pos      = ARC_SLOTS[slot];
-          const anim     = serviceAnimations[dataIdx];
-          const isCenter = slot === 2;
-
-          return (
-            <motion.div
-              key={key}
-              className="absolute"
-              style={{
-                left: `calc(50% - ${ICON_SIZE / 2}px)`,
-                top:  `calc(50% - ${ICON_SIZE / 2}px)`,
-                zIndex: pos.zIndex,
-                cursor: isCenter ? 'default' : 'pointer',
-              }}
-              animate={{ x: pos.x, y: pos.y, scale: pos.scale, opacity: pos.opacity }}
-              transition={{ type: 'spring', stiffness: 270, damping: 30 }}
-              onClick={() => !isCenter && setActiveIndex(dataIdx)}
-            >
-              <div
-                className={`
-                  rounded-full flex items-center justify-center transition-colors duration-300
-                  ${isCenter
-                    ? 'bg-[#F4B223]/15 border-2 border-[#F4B223] shadow-[0_0_14px_rgba(244,178,35,0.22),0_0_32px_rgba(244,178,35,0.08)]'
-                    : 'bg-[#0D1230] border border-white/12 hover:border-[#F4B223]/30'}
-                `}
-                style={{ width: ICON_SIZE, height: ICON_SIZE }}
-              >
-                {anim
-                  ? <Lottie animationData={anim} loop style={{ width: 82, height: 82 }} />
-                  : <Code2 className="w-10 h-10 text-[#F4B223]" />
-                }
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* ── Text content + arrows, centered below the active icon ── */}
-      <div className="relative flex items-start justify-center gap-4 mt-4 max-w-lg mx-auto">
-        {/* Left arrow */}
-        <button
-          onClick={prev}
-          aria-label="Previous service"
-          className="flex-shrink-0 mt-2 w-10 h-10 rounded-full border border-white/10 hover:border-[#F4B223]/50 flex items-center justify-center text-white/40 hover:text-[#F4B223] transition-all duration-200"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
-
-        {/* Inline text — no card, just content */}
-        <div className="flex-1 text-center overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.24, ease: 'easeOut' }}
-              className="flex flex-col items-center"
-            >
-              <h3
-                className="text-[36px] leading-tight text-white tracking-wide mb-2"
-                style={{ fontFamily: 'var(--font-bebas)' }}
-              >
-                {t(`${serviceKeys[activeIndex]}.title`)}
-              </h3>
-              <p className="text-white/55 text-sm leading-relaxed mb-4 max-w-xs">
-                {truncate(t(`${serviceKeys[activeIndex]}.description`))}
-              </p>
-              <Link
-                href={`/${locale}/services`}
-                className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
-              >
-                {t('seeAllServices')}
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Right arrow */}
-        <button
-          onClick={next}
-          aria-label="Next service"
-          className="flex-shrink-0 mt-2 w-10 h-10 rounded-full border border-white/10 hover:border-[#F4B223]/50 flex items-center justify-center text-white/40 hover:text-[#F4B223] transition-all duration-200"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
-      </div>
-
-      {/* Dots */}
-      <div className="flex justify-center gap-2 mt-5">
-        {serviceKeys.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setActiveIndex(i)}
-            className={`rounded-full transition-all duration-300 ${
-              i === activeIndex ? 'w-6 h-2 bg-[#F4B223]' : 'w-2 h-2 bg-white/20 hover:bg-white/40'
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────────
-   MOBILE ARC CAROUSEL
-   • 3 icons on the arc: left-peek · center · right-peek
-   • Arc spans full phone width (overflow:hidden clips side icons)
-   • Touch-swipe to navigate — no arrows
-   • Content box below (same as desktop)
-───────────────────────────────────────────── */
-function MobileArcCarousel({
-  activeIndex, setActiveIndex, t, locale,
-}: {
-  activeIndex: number;
-  setActiveIndex: (i: number) => void;
-  t: ReturnType<typeof useTranslations>;
-  locale: string;
-}) {
-  // Measure container half-width to compute exact peek offset
-  const [halfW, setHalfW] = useState<number>(() =>
-    typeof window !== 'undefined' ? window.innerWidth / 2 :187.5
-  );
-  const arcRef      = useRef<HTMLDivElement>(null);
-  const touchStartX = useRef(0);
-
-  useEffect(() => {
-    const measure = () => {
-      if (arcRef.current) setHalfW(arcRef.current.offsetWidth / 2);
-    };
-    measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
-  }, []);
-
-  const go = (dir: 1 | -1) =>
-    setActiveIndex((activeIndex + dir + serviceKeys.length) % serviceKeys.length);
-
-  // Side icon peek:  PEEK_PX of the visual icon is visible at the edge
-  const PEEK_PX    = 32;
-  const SCALE_SIDE = 0.75;
-  const VISUAL_R   = (ICON_SIZE * SCALE_SIDE) / 2; // 27 px
-  // sideX positions icon CENTER just beyond the container edge so only PEEK_PX is visible
-  const sideX = halfW + VISUAL_R - PEEK_PX; // ≈ halfW + 5
-
-  // 5 mobile slots (same DIST_TO_SLOT mapping as desktop)
-  const MOBILE_SLOTS = [
-    { x: -sideX, y: 12, scale: SCALE_SIDE, opacity: 0,   zIndex: 0 }, // 0 hidden-left
-    { x: -sideX, y: 12, scale: SCALE_SIDE, opacity: 0.5, zIndex: 2 }, // 1 left-peek
-    { x: 0,      y:-18, scale: 1.00,       opacity: 1.0, zIndex: 5 }, // 2 center
-    { x: sideX,  y: 12, scale: SCALE_SIDE, opacity: 0.5, zIndex: 2 }, // 3 right-peek
-    { x: sideX,  y: 12, scale: SCALE_SIDE, opacity: 0,   zIndex: 0 }, // 4 hidden-right
-  ];
-
-  return (
-    <div className="select-none relative">
-      {/* Arc strip */}
-      <div
-        ref={arcRef}
-        className="relative overflow-hidden w-full"
-        style={{ height: 175 }}
-        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
-        onTouchEnd={(e) => {
-          const dx = e.changedTouches[0].clientX - touchStartX.current;
-          if (dx < -50) go(1);
-          else if (dx > 50) go(-1);
-        }}
-      >
-        {/* Dashed arc — spans full width via preserveAspectRatio="none" */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          viewBox="0 0 1000 175"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M 0 165 C 300 55, 700 55, 1000 165"
-            fill="none"
-            stroke="rgba(244,178,35,0.1)"
-            strokeWidth="2"
-            strokeDasharray="6 9"
-          />
-        </svg>
-
-        {/* Icons */}
-        {serviceKeys.map((key, dataIdx) => {
-          const dist     = (dataIdx - activeIndex + serviceKeys.length) % serviceKeys.length;
-          const slot     = DIST_TO_SLOT[dist];
-          const pos      = MOBILE_SLOTS[slot];
-          const anim     = serviceAnimations[dataIdx];
-          const isCenter = slot === 2;
-
-          return (
-            <motion.div
-              key={key}
-              className="absolute"
-              style={{
-                left: `calc(50% - ${ICON_SIZE / 2}px)`,
-                top:  `calc(50% - ${ICON_SIZE / 2}px)`,
-                zIndex: pos.zIndex,
-              }}
-              animate={{ x: pos.x, y: pos.y, scale: pos.scale, opacity: pos.opacity }}
-              transition={{ type: 'spring', stiffness: 270, damping: 30 }}
-            >
-              <div
-                className={`
-                  rounded-full flex items-center justify-center
-                  ${isCenter
-                    ? 'bg-[#F4B223]/15 border-2 border-[#F4B223] shadow-[0_0_14px_rgba(244,178,35,0.22),0_0_32px_rgba(244,178,35,0.08)]'
-                    : 'bg-[#0D1230] border border-white/12'}
-                `}
-                style={{ width: ICON_SIZE, height: ICON_SIZE }}
-              >
-                {anim
-                  ? <Lottie animationData={anim} loop style={{ width: 82, height: 82 }} />
-                  : <Code2 className="w-10 h-10 text-[#F4B223]" />
-                }
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* Left arrow — absolutely positioned at arc endpoint, ~60% visible */}
-      <button
-        onClick={() => go(-1)}
-        aria-label="Previous service"
-        className="absolute z-10 w-8 h-8 rounded-full border border-white/10 hover:border-[#F4B223]/40
-                   flex items-center justify-center text-white/35 hover:text-[#F4B223] transition-all duration-200"
-        style={{ top: 149, left: -13 }}
-      >
-        <ChevronLeft className="w-4 h-4" />
-      </button>
-
-      {/* Right arrow — same */}
-      <button
-        onClick={() => go(1)}
-        aria-label="Next service"
-        className="absolute z-10 w-8 h-8 rounded-full border border-white/10 hover:border-[#F4B223]/40
-                   flex items-center justify-center text-white/35 hover:text-[#F4B223] transition-all duration-200"
-        style={{ top: 149, right: -13 }}
-      >
-        <ChevronRight className="w-4 h-4" />
-      </button>
-
-      {/* Inline text content — no card */}
-      <div className="mt-4 px-4 text-center overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.24, ease: 'easeOut' }}
-            className="flex flex-col items-center"
-          >
-            <h3
-              className="text-[34px] leading-tight text-white tracking-wide mb-2"
-              style={{ fontFamily: 'var(--font-bebas)' }}
-            >
-              {t(`${serviceKeys[activeIndex]}.title`)}
-            </h3>
-            <p className="text-white/55 text-sm leading-relaxed mb-4 max-w-[280px]">
-              {truncate(t(`${serviceKeys[activeIndex]}.description`))}
-            </p>
-            <Link
-              href={`/${locale}/services`}
-              className="text-[#F4B223] text-sm font-medium hover:underline flex items-center gap-1.5"
-            >
-              {t('seeAllServices')}
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Dots */}
-      <div className="flex justify-center gap-2 mt-5">
-        {serviceKeys.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setActiveIndex(i)}
-            className={`rounded-full transition-all duration-300 ${
-              i === activeIndex ? 'w-6 h-2 bg-[#F4B223]' : 'w-2 h-2 bg-white/20 hover:bg-white/40'
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────────
-   MAIN EXPORT
-───────────────────────────────────────────── */
 export default function ServicesSection() {
   const t      = useTranslations('services');
   const locale = useLocale();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile]       = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
+  const [open, setOpen] = useState<number>(0);
 
   return (
     <section id="services" className="pt-20 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#0D1230] to-[#0A0E27]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Section header */}
-        <ScrollAnimationWrapper className="text-center mb-14 mt-0">
-          {/* Badge removed — gold title replaces it */}
-          {/* <span className="...">{t('badge')}</span> */}
+        <ScrollAnimationWrapper className="text-center mb-14">
           <h2
             className="text-4xl sm:text-5xl md:text-6xl text-[#F4B223] mb-4 tracking-tight"
             style={{ fontFamily: 'var(--font-bebas)' }}
@@ -407,25 +45,233 @@ export default function ServicesSection() {
           </p>
         </ScrollAnimationWrapper>
 
-        {/* Carousel */}
+        {/* GIF + Accordion */}
         <ScrollAnimationWrapper>
-          {isMobile ? (
-            <MobileArcCarousel
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-              t={t}
-              locale={locale}
-            />
-          ) : (
-            <ArcCarousel
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-              t={t}
-              locale={locale}
-            />
-          )}
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+
+            {/* GIF — top on mobile, sticky left on desktop */}
+            <div className="w-full lg:w-[38%] lg:sticky lg:top-28 flex justify-center lg:justify-start">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/projects/Mockup.gif"
+                alt="EvoMarket services mockup"
+                loading="lazy"
+                decoding="async"
+                className="rounded-2xl shadow-2xl shadow-black/40 w-full max-w-[300px] sm:max-w-[360px] lg:max-w-none"
+                style={{ maxHeight: '80vh', objectFit: 'contain' }}
+              />
+            </div>
+
+            {/* Accordion */}
+            <div className="w-full lg:w-[62%]">
+          <div className="divide-y divide-white/8">
+            {SERVICES.map(({ key, param, Icon }, i) => {
+              const isOpen = open === i;
+              return (
+                <div key={key}>
+                  {/* ── Row header (always visible) ── */}
+                  <button
+                    onClick={() => setOpen(isOpen ? -1 : i)}
+                    className="w-full group relative flex items-center gap-6 sm:gap-10 py-6 px-2 sm:px-4 text-left"
+                  >
+                    {/* Subtle gold bg when open */}
+                    <div
+                      className="absolute inset-0 rounded-xl transition-opacity duration-300 pointer-events-none"
+                      style={{
+                        background: 'linear-gradient(90deg, rgba(244,178,35,0.05) 0%, transparent 100%)',
+                        opacity: isOpen ? 1 : 0,
+                      }}
+                    />
+
+                    {/* Number */}
+                    <span
+                      className="relative flex-shrink-0 text-5xl sm:text-6xl md:text-7xl leading-none select-none transition-colors duration-300"
+                      style={{
+                        fontFamily: 'var(--font-bebas)',
+                        color: isOpen ? 'rgba(244,178,35,0.95)' : 'rgba(244,178,35,0.15)',
+                      }}
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+
+                    {/* Title */}
+                    <span
+                      className="relative flex-1 text-2xl sm:text-3xl md:text-4xl leading-tight transition-colors duration-300"
+                      style={{
+                        fontFamily: 'var(--font-bebas)',
+                        color: isOpen ? '#ffffff' : 'rgba(255,255,255,0.65)',
+                      }}
+                    >
+                      {t(`${key}.title`)}
+                    </span>
+
+                    {/* Right side: icon + toggle */}
+                    <div className="relative flex-shrink-0 flex items-center gap-3 sm:gap-5">
+                      {/* Icon circle */}
+                      <div
+                        className="w-11 h-11 sm:w-13 sm:h-13 rounded-full border flex items-center justify-center transition-all duration-300"
+                        style={{
+                          borderColor: isOpen ? 'rgba(244,178,35,0.5)' : 'rgba(255,255,255,0.1)',
+                          backgroundColor: isOpen ? 'rgba(244,178,35,0.1)' : 'transparent',
+                        }}
+                      >
+                        <Icon
+                          className="w-5 h-5 transition-colors duration-300"
+                          style={{ color: isOpen ? '#F4B223' : 'rgba(255,255,255,0.3)' }}
+                          strokeWidth={1.5}
+                        />
+                      </div>
+
+                      {/* +/- toggle */}
+                      <div
+                        className="w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-300 flex-shrink-0"
+                        style={{
+                          borderColor: isOpen ? '#F4B223' : 'rgba(255,255,255,0.15)',
+                          color: isOpen ? '#F4B223' : 'rgba(255,255,255,0.3)',
+                        }}
+                      >
+                        <motion.svg
+                          className="w-3 h-3"
+                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                          animate={{ rotate: isOpen ? 45 : 0 }}
+                          transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 5v14M5 12h14" />
+                        </motion.svg>
+                      </div>
+                    </div>
+                  </button>
+
+                  {/* ── Expandable content ── */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-7 px-2 sm:px-4 flex flex-col sm:flex-row items-start gap-6"
+                             style={{ paddingLeft: 'calc(0.5rem + 64px + 1.5rem)' }}>
+                          <p className="text-white/55 text-sm sm:text-base leading-relaxed flex-1 max-w-2xl">
+                            {(() => { const d = t(`${key}.description`); return d.length > 120 ? d.slice(0, 120).trimEnd() + '…' : d; })()}
+                          </p>
+                          <Link
+                            href={`/${locale}/services`}
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full
+                                       border border-[#F4B223]/40 text-[#F4B223] text-sm font-medium
+                                       hover:bg-[#F4B223]/10 transition-colors duration-200 whitespace-nowrap"
+                          >
+                            {t('seeAllServices')}
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+            </div>{/* end accordion wrapper */}
+
+          </div>{/* end flex row */}
+        </ScrollAnimationWrapper>
+
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   OPTION A — NUMBERED LIST hover only (commented out)
+───────────────────────────────────────────── */
+
+/*
+function ServicesSection_NumberedHover() {
+  const t = useTranslations('services'); const locale = useLocale();
+  const [hovered, setHovered] = useState<number | null>(null);
+  return (
+    <section id="services" className="pt-20 pb-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#0D1230] to-[#0A0E27]" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollAnimationWrapper className="text-center mb-14">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl text-[#F4B223] mb-4 tracking-tight" style={{ fontFamily: 'var(--font-bebas)' }}>{t('title')}</h2>
+          <p className="text-lg text-white/60 max-w-2xl mx-auto">{t('description')}</p>
+        </ScrollAnimationWrapper>
+        <ScrollAnimationWrapper>
+          <div className="divide-y divide-white/8">
+            {SERVICES.map(({ key, param, Icon }, i) => {
+              const isHovered = hovered === i;
+              return (
+                <motion.div key={key} onHoverStart={() => setHovered(i)} onHoverEnd={() => setHovered(null)} className="group relative">
+                  <motion.div className="absolute inset-0 bg-[#F4B223]/[0.04] rounded-xl pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: isHovered ? 1 : 0 }} transition={{ duration: 0.2 }} />
+                  <div className="relative flex items-center gap-6 sm:gap-10 py-7 px-2 sm:px-4">
+                    <span className="flex-shrink-0 text-5xl sm:text-6xl md:text-7xl leading-none select-none transition-colors duration-300" style={{ fontFamily: 'var(--font-bebas)', color: isHovered ? 'rgba(244,178,35,0.9)' : 'rgba(244,178,35,0.15)' }}>{String(i + 1).padStart(2, '0')}</span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl leading-tight transition-colors duration-300" style={{ fontFamily: 'var(--font-bebas)', color: isHovered ? '#ffffff' : 'rgba(255,255,255,0.75)' }}>{t(`${key}.title`)}</h3>
+                      <AnimatePresence>{isHovered && (<motion.p initial={{ opacity: 0, height: 0, marginTop: 0 }} animate={{ opacity: 1, height: 'auto', marginTop: 6 }} exit={{ opacity: 0, height: 0, marginTop: 0 }} transition={{ duration: 0.22 }} className="text-white/50 text-sm leading-relaxed max-w-xl overflow-hidden">{t(`${key}.description`)}</motion.p>)}</AnimatePresence>
+                    </div>
+                    <div className="flex-shrink-0 flex items-center gap-4 sm:gap-6">
+                      <motion.div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full border flex items-center justify-center" animate={{ borderColor: isHovered ? 'rgba(244,178,35,0.5)' : 'rgba(255,255,255,0.1)', backgroundColor: isHovered ? 'rgba(244,178,35,0.1)' : 'transparent' }} transition={{ duration: 0.2 }}><Icon className="w-5 h-5 sm:w-6 sm:h-6 transition-colors duration-300" style={{ color: isHovered ? '#F4B223' : 'rgba(255,255,255,0.35)' }} strokeWidth={1.5} /></motion.div>
+                      <Link href={`/${locale}/devis?service=${param}`} onClick={(e) => e.stopPropagation()} className="hidden sm:flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 whitespace-nowrap" style={{ color: isHovered ? '#F4B223' : 'rgba(255,255,255,0.2)' }}>{t('seeAllServices')} <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></Link>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </ScrollAnimationWrapper>
       </div>
     </section>
   );
 }
+*/
+
+/* ─────────────────────────────────────────────
+   OPTION C — TAB SWITCHER  (commented out)
+───────────────────────────────────────────── */
+
+/*
+function ServicesSection_TabSwitcher() {
+  const t = useTranslations('services'); const locale = useLocale();
+  const [active, setActive] = useState(0);
+  const { Icon } = SERVICES[active];
+  return (
+    <section id="services" className="pt-20 pb-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#0D1230] to-[#0A0E27]" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollAnimationWrapper className="text-center mb-14">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl text-[#F4B223] mb-4 tracking-tight" style={{ fontFamily: 'var(--font-bebas)' }}>{t('title')}</h2>
+          <p className="text-lg text-white/60 max-w-2xl mx-auto">{t('description')}</p>
+        </ScrollAnimationWrapper>
+        <ScrollAnimationWrapper>
+          <div className="relative flex overflow-x-auto scrollbar-hide border-b border-white/8 mb-10 gap-0">
+            {SERVICES.map(({ key }, i) => (<button key={key} onClick={() => setActive(i)} className={`relative flex-shrink-0 px-5 py-3 text-sm sm:text-base uppercase tracking-widest transition-colors duration-200 whitespace-nowrap ${active === i ? 'text-[#F4B223]' : 'text-white/40 hover:text-white/70'}`} style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.12em' }}>{t(`${key}.title`)}{active === i && <motion.div layoutId="tab-indicator" className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#F4B223]" transition={{ type: 'spring', stiffness: 400, damping: 35 }} />}</button>))}
+          </div>
+          <AnimatePresence mode="wait">
+            <motion.div key={active} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.22 }} className="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
+              <div className="flex-shrink-0 w-28 h-28 md:w-36 md:h-36 rounded-2xl bg-[#F4B223]/8 border border-[#F4B223]/20 flex items-center justify-center shadow-[0_0_40px_rgba(244,178,35,0.08)]"><Icon className="w-12 h-12 md:w-16 md:h-16 text-[#F4B223]" strokeWidth={1.25} /></div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-4xl sm:text-5xl text-white mb-4 leading-tight" style={{ fontFamily: 'var(--font-bebas)' }}>{t(`${SERVICES[active].key}.title`)}</h3>
+                <p className="text-white/55 text-base leading-relaxed mb-6 max-w-xl">{t(`${SERVICES[active].key}.description`)}</p>
+                <Link href={`/${locale}/devis?service=${SERVICES[active].param}`} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#F4B223]/40 text-[#F4B223] text-sm font-medium hover:bg-[#F4B223]/10 transition-colors duration-200">{t('seeAllServices')} <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></Link>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </ScrollAnimationWrapper>
+      </div>
+    </section>
+  );
+}
+*/
+
+/* ─────────────────────────────────────────────
+   ORIGINAL — ARC CAROUSEL + LOTTIE  (commented out)
+   Heavy: lottie-react ~150KB + 5 JSON files ~400KB
+   Full code preserved in git history (commit fbf54a5)
+───────────────────────────────────────────── */

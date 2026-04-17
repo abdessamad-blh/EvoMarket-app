@@ -37,27 +37,31 @@
     "description": "Complete digital solutions to propel your business towards success.",
     "socialMedia": {
       "title": "Social Media Management",
-      "description": "We take full charge of your social media presence — from strategy and content planning to daily publishing, community management, and performance reporting. We create tailored content for Instagram, Facebook, LinkedIn, and TikTok to keep your brand visible, consistent, and engaging across every platform."
+      "description": "We take full charge of your social media presence — from strategy and content planning to daily publishing, community management, and performance reporting. We create tailored content for Instagram, Facebook, LinkedIn, and TikTok to keep your brand visible, consistent, and genuinely engaging. Every month we deliver detailed analytics so you always know what's working, what's growing, and where to improve next."
     },
     "contentCreation": {
       "title": "Content Creation",
-      "description": "Our creative team produces high-quality content that tells your brand's story: professional photo & video shoots, motion graphics, Reels, Stories, and branded visuals. We also provide copywriting in French, Arabic, and English to ensure your message resonates with every audience."
+      "description": "Our creative team produces high-quality content that tells your brand's story: professional photo & video shoots, motion graphics, Reels, Stories, branded visuals, and podcast production — from concept and recording to editing and distribution. We handle every format your audience consumes. We also provide copywriting in French, Arabic, and English to ensure your message resonates with every audience."
     },
     "webDev": {
       "title": "Web Development",
-      "description": "We design and develop fast, modern, and fully custom websites — from elegant showcase sites to complex web applications. Built with Next.js, React, TypeScript, and Tailwind CSS, every site we deliver is responsive, SEO-optimized, and engineered to convert visitors into clients."
+      "description": "We design and develop fast, modern, and fully custom websites — from elegant showcase sites to complex web applications and e-commerce platforms. Built with Next.js, React, TypeScript, and Tailwind CSS, every site we deliver is responsive, SEO-optimized, accessible, and engineered to convert visitors into clients. We also handle deployment, domain configuration, and ongoing maintenance so your site stays fast and up to date."
     },
     "mobileApp": {
       "title": "Mobile Development",
-      "description": "We build cross-platform mobile applications for iOS and Android that combine performance with intuitive design. Whether you need a client portal, an e-commerce app, or a fully custom solution, we deliver polished mobile experiences that your users will love."
+      "description": "We build cross-platform mobile applications for iOS and Android that combine high performance with intuitive, polished design. Whether you need a client portal, an e-commerce app, a booking system, or a fully custom solution, we guide you from wireframes and UI design all the way to App Store and Play Store launch — with thorough testing and post-launch support."
     },
     "digitalMarketing": {
       "title": "Digital Marketing & Strategy",
-      "description": "We drive real, measurable results through targeted digital strategies: SEO, Google Ads, Meta Ads (Facebook & Instagram), and in-depth campaign analytics. We manage your entire advertising ecosystem — continuously optimizing campaigns and maximizing your return on investment."
+      "description": "We drive real, measurable results through targeted digital strategies: Google Ads, Meta Ads (Facebook & Instagram), TikTok Ads, and in-depth campaign analytics. We build full-funnel advertising ecosystems — from audience research and creative production to A/B testing and continuous optimization. Every campaign is tracked with precision so you always know your ROI and exactly where every dirham is going."
+    },
+    "seoPerf": {
+      "title": "SEO & Performance Optimization",
+      "description": "We boost your website's visibility and speed through technical SEO audits, keyword research, Core Web Vitals optimization, structured data, and on-page content improvements. We also cover local SEO for Moroccan businesses and multilingual SEO for French, Arabic, and English audiences — with transparent monthly reporting and measurable ranking growth."
     },
     "learnMore": "Learn more",
     "requestQuote": "Request a quote",
-    "seeAllServices": "See details",
+    "seeAllServices": "Read more",
     "training": {
       "title": "Team Training",
       "description": "We offer professional in-person training workshops for your teams, covering content creation, digital marketing strategy, accounting management, video editing, and professional filming techniques. Our expert-led sessions are designed to upskill your staff and empower them to handle your digital presence independently.",
@@ -273,7 +277,7 @@
       "services": {
         "website": "Website creation (Showcase / Custom)",
         "mobile": "Mobile app development",
-        "seo": "SEO optimization",
+        "seo": "SEO & Performance optimization",
         "socialMedia": "Social media management",
         "content": "Content creation (Video / Design / Copywriting)",
         "ads": "Online advertising (Meta Ads / Google Ads)",

@@ -104,10 +104,10 @@ const floatingItems = [
 // Mobile depth items — 2D only, scattered horizontally
 const mobileFloatingItems = [
   { key: 'service5', top: '10%', left: '75%', translateX: '-50%', opacity: 0.72, blur: '0px',   size: 'text-4xl sm:text-5xl', color: 'text-white/80' },
-  { key: 'service2', top: '13%', left: '0%',  translateX: '0%',   opacity: 0.45, blur: '0.8px', size: 'text-2xl sm:text-3xl', color: 'text-white/55' },
+  { key: 'service2', top: '-5%', left: '10%',  translateX: '0%',   opacity: 0.45, blur: '0.8px', size: 'text-2xl sm:text-3xl', color: 'text-white/55' },
   { key: 'service1', top: '31%', left: '50%', translateX: '-50%', opacity: 1,    blur: '0px',   size: 'text-5xl sm:text-6xl', color: 'text-gradient-gold' },
   { key: 'service4', top: '55%', left: '4%',  translateX: '0%',   opacity: 0.60, blur: '0.5px', size: 'text-3xl sm:text-4xl', color: 'text-white/70' },
-  { key: 'service3', top: '70%', left: '52%', translateX: '0%',   opacity: 0.45, blur: '1px',   size: 'text-2xl sm:text-3xl', color: 'text-white/55' },
+  { key: 'service3', top: '75%', left: '52%', translateX: '0%',   opacity: 0.45, blur: '1px',   size: 'text-2xl sm:text-3xl', color: 'text-white/55' },
 ] as const;
 
 export default function HeroSection() {
@@ -119,7 +119,7 @@ export default function HeroSection() {
     'They trust us';
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col md:flex-row md:items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 opacity-5 bg-gradient-to-br from-[#0A0E27] via-[#0D1230] to-[#112258]">
         <div className="absolute inset-0" style={{
@@ -142,15 +142,15 @@ export default function HeroSection() {
 
       {/* Single-column centered layout */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
-                      flex flex-col items-center
-                      pt-20 pb-20 md:pt-20 md:pb-24 md:min-h-screen justify-center">
+                      flex flex-col items-center flex-1
+                      pt-20 pb-4 md:pt-20 md:pb-24 md:min-h-screen justify-center md:justify-center">
 
         {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-[1.2rem] sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-5 md:mb-10 tracking-tight overflow-visible text-center md:text-left w-full"
+          className="text-[1.2rem] sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight pt-18 pb-15 md:pt-0 md:pb-0 mb-0 md:mb-10 tracking-tight overflow-visible text-center md:text-left w-full"
         >
           <span className="block whitespace-nowrap">
             <span className="text-white">{t('title1')} </span>
@@ -220,7 +220,7 @@ export default function HeroSection() {
       </div>
 
       {/* Partners ticker — bottom of hero */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 px-4 sm:px-6 lg:px-8 pb-4">
+      <div className="relative md:absolute md:bottom-0 md:left-0 md:right-0 z-10 w-full px-4 sm:px-6 lg:px-8 pb-4">
         <PartnersTicker label={trustLabel} />
       </div>
     </section>
