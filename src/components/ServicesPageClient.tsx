@@ -47,7 +47,7 @@ export default function ServicesPageClient() {
               className="rounded-2xl shadow-2xl shadow-black/40 w-full max-w-[320px] lg:max-w-none"
               style={{ maxHeight: '80vh', objectFit: 'contain' }}
             >
-              <source src="/Mockup.mp4" type="video/mp4" />
+              <source src="/Mockup2.mp4" type="video/mp4" />
             </video>
           </div>
 
