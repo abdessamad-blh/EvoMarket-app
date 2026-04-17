@@ -42,7 +42,7 @@ export default function NavBar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <Link href={`/${locale}`} className="flex items-center shrink-0">
+            <Link href={`/${locale}`} aria-label="EvoMarket – Home" className="flex items-center shrink-0">
               <Image
                 src="/images/evologo.png"
                 alt="EvoMarket Logo"

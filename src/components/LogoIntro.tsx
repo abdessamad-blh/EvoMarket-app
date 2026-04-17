@@ -18,7 +18,7 @@ export default function LogoIntro() {
       // First visit — play intro then fade out
       sessionStorage.setItem('evo_intro', '1');
       isIntro.current = true;
-      const t = setTimeout(() => setShow(false), 2200);
+      const t = setTimeout(() => setShow(false), 1000);
       return () => clearTimeout(t);
     }
   }, []);
@@ -32,7 +32,7 @@ export default function LogoIntro() {
           style={{ backgroundColor: '#0A0E27' }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: isIntro.current ? 0.5 : 0, ease: 'easeInOut' }}
+          transition={{ duration: isIntro.current ? 0.3 : 0, ease: 'easeInOut' }}
         >
 
           {/* Same grid background as hero section */}
