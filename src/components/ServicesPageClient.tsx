@@ -37,19 +37,18 @@ export default function ServicesPageClient() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className={`flex flex-col lg:flex-row gap-10 lg:gap-16 items-start ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
 
-          {/* ── LEFT: Mockup GIF ── */}
+          {/* ── LEFT: Mockup video ── */}
           <div className="w-full lg:w-[38%] lg:sticky lg:top-28 flex justify-center lg:justify-start">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/projects/Mockup.gif"
-              alt="EvoMarket projects mockup"
-              width={720}
-              height={1000}
-              loading="lazy"
-              decoding="async"
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
               className="rounded-2xl shadow-2xl shadow-black/40 w-full max-w-[320px] lg:max-w-none"
               style={{ maxHeight: '80vh', objectFit: 'contain' }}
-            />
+            >
+              <source src="/Mockup.mp4" type="video/mp4" />
+            </video>
           </div>
 
           {/* ── RIGHT: Services Accordion ── */}

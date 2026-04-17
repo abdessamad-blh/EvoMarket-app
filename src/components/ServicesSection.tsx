@@ -27,7 +27,7 @@ export default function ServicesSection() {
   const [open, setOpen] = useState<number>(0);
 
   return (
-    <section id="services" className="pt-20 pb-24 relative overflow-hidden">
+    <section id="services" className="pt-20 pb-10 md:pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#0D1230] to-[#0A0E27]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,17 +49,18 @@ export default function ServicesSection() {
         <ScrollAnimationWrapper>
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
-            {/* GIF — top on mobile, sticky left on desktop */}
+            {/* Video — top on mobile, sticky left on desktop */}
             <div className="w-full lg:w-[38%] lg:sticky lg:top-28 flex justify-center lg:justify-start">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/projects/Mockup.gif"
-                alt="EvoMarket services mockup"
-                loading="lazy"
-                decoding="async"
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="rounded-2xl shadow-2xl shadow-black/40 w-full max-w-[300px] sm:max-w-[360px] lg:max-w-none"
                 style={{ maxHeight: '80vh', objectFit: 'contain' }}
-              />
+              >
+                <source src="/Mockup.mp4" type="video/mp4" />
+              </video>
             </div>
 
             {/* Accordion */}
@@ -107,32 +108,30 @@ export default function ServicesSection() {
 
                     {/* Right side: icon + toggle */}
                     <div className="relative flex-shrink-0 flex items-center gap-3 sm:gap-5">
-                      {/* Icon circle */}
-                      <div
-                        className="w-11 h-11 sm:w-13 sm:h-13 rounded-full border flex items-center justify-center transition-all duration-300"
-                        style={{
-                          borderColor: isOpen ? 'rgba(244,178,35,0.5)' : 'rgba(255,255,255,0.1)',
-                          backgroundColor: isOpen ? 'rgba(244,178,35,0.1)' : 'transparent',
-                        }}
-                      >
+                      {/* Icon circle — opacity layers avoid non-composited border-color animation */}
+                      <div className="relative w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="absolute inset-0 rounded-full border border-white/10" />
+                        <div className={`absolute inset-0 rounded-full border border-[#F4B223]/50 bg-[#F4B223]/10 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`} />
                         <Icon
-                          className="w-5 h-5 transition-colors duration-300"
-                          style={{ color: isOpen ? '#F4B223' : 'rgba(255,255,255,0.3)' }}
+                          className={`relative w-5 h-5 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}
+                          style={{ color: 'rgba(255,255,255,0.3)' }}
+                          strokeWidth={1.5}
+                        />
+                        <Icon
+                          className={`absolute w-5 h-5 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+                          style={{ color: '#F4B223' }}
                           strokeWidth={1.5}
                         />
                       </div>
 
-                      {/* +/- toggle */}
-                      <div
-                        className="w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-300 flex-shrink-0"
-                        style={{
-                          borderColor: isOpen ? '#F4B223' : 'rgba(255,255,255,0.15)',
-                          color: isOpen ? '#F4B223' : 'rgba(255,255,255,0.3)',
-                        }}
-                      >
+                      {/* +/- toggle — gold ring via opacity, rotate via transform (both composited) */}
+                      <div className="relative w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="absolute inset-0 rounded-full border border-white/15" />
+                        <div className={`absolute inset-0 rounded-full border border-[#F4B223] transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`} />
                         <motion.svg
-                          className="w-3 h-3"
+                          className="relative w-3 h-3"
                           fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                          style={{ color: isOpen ? '#F4B223' : 'rgba(255,255,255,0.3)' }}
                           animate={{ rotate: isOpen ? 45 : 0 }}
                           transition={{ duration: 0.25, ease: 'easeInOut' }}
                         >
@@ -196,7 +195,7 @@ function ServicesSection_NumberedHover() {
   const t = useTranslations('services'); const locale = useLocale();
   const [hovered, setHovered] = useState<number | null>(null);
   return (
-    <section id="services" className="pt-20 pb-24 relative overflow-hidden">
+    <section id="services" className="pt-20 pb-10 md:pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#0D1230] to-[#0A0E27]" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollAnimationWrapper className="text-center mb-14">
@@ -242,7 +241,7 @@ function ServicesSection_TabSwitcher() {
   const [active, setActive] = useState(0);
   const { Icon } = SERVICES[active];
   return (
-    <section id="services" className="pt-20 pb-24 relative overflow-hidden">
+    <section id="services" className="pt-20 pb-10 md:pb-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#0D1230] to-[#0A0E27]" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollAnimationWrapper className="text-center mb-14">
