@@ -55,7 +55,7 @@ export default function LogoIntro() {
               className="absolute inset-0"
               initial={{ clipPath: 'inset(0% 100% 0% 0%)' }}
               animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
-              transition={{ duration: 1.1, ease: 'circOut' }}
+              transition={{ duration: 0.65, ease: 'circOut' }}
             >
               <Image src="/images/4.png" alt="EvoMarket" fill className="object-contain" priority />
             </motion.div>
@@ -65,7 +65,7 @@ export default function LogoIntro() {
               className="absolute inset-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
+              transition={{ delay: 0.4, duration: 0.35 }}
               style={{ filter: 'drop-shadow(0 0 20px rgba(244, 178, 35, 0.4))' }}
             >
               <Image src="/images/5.png" alt="EvoMarket Logo" fill className="object-contain" priority />

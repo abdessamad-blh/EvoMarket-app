@@ -130,7 +130,7 @@ export default function Footer() {
                 placeholder={t('emailPlaceholder')}
                 className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-white text-sm placeholder-white/30 focus:border-[#F4B223]/50 focus:outline-none transition-all"
               />
-              <button className="bg-[#F4B223] hover:bg-[#E09800] text-[#0A0E27] px-3 py-2.5 rounded-lg transition-colors shrink-0">
+              <button aria-label="Subscribe to newsletter" className="bg-[#F4B223] hover:bg-[#E09800] text-[#0A0E27] px-3 py-2.5 rounded-lg transition-colors shrink-0">
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

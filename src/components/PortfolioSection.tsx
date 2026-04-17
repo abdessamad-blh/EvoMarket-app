@@ -190,12 +190,14 @@ export default function PortfolioSection() {
             <button
               key={i}
               onClick={() => { setCurrent(i); resetTimer(); }}
-              className={`rounded-full transition-all duration-300 ${i === current
-                  ? 'w-7 h-2 bg-[#F4B223]'
-                  : 'w-2 h-2 bg-white/20 hover:bg-white/40'
-                }`}
+              className="flex items-center justify-center w-6 h-6"
               aria-label={`Go to project ${i + 1}`}
-            />
+            >
+              <span className={`rounded-full transition-all duration-300 ${i === current
+                ? 'w-7 h-2 bg-[#F4B223]'
+                : 'w-2 h-2 bg-white/20 hover:bg-white/40'
+              }`} />
+            </button>
           ))}
         </div>
 

@@ -46,6 +46,7 @@ function PartnersTicker({ label }: { label: string }) {
                   alt={`Partner ${(i % PARTNER_LOGOS.length) + 1}`}
                   fill
                   sizes="96px"
+                  priority={i === 0}
                   className="object-contain grayscale invert brightness-125"
                 />
               </div>
@@ -150,7 +151,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-[1.2rem] sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight pt-15 pb-18 md:pt-0 md:pb-0 mb-0 md:mb-10 tracking-tight overflow-visible text-center md:text-left w-full"
+          className="text-[1.3rem] sm:text-6xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight pt-15 pb-18 md:pt-0 md:pb-0 mb-0 md:mb-10 tracking-tight overflow-visible text-center md:text-left w-full"
         >
           <span className="block whitespace-nowrap">
             <span className="text-white">{t('title1')} </span>
