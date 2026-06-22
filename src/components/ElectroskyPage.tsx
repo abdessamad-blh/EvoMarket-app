@@ -135,7 +135,7 @@ export default function ElectroskyPage() {
 
             {/* Subtitle */}
             <p className="text-white/50 text-base mt-4 max-w-xl leading-relaxed">
-              Plateforme e-commerce full-stack pour un magasin d'électronique à Rabat — click-and-collect,
+              Plateforme e-commerce full-stack pour un magasin d&apos;électronique à Rabat — click-and-collect,
               tableau admin en temps réel, gestion des stocks et analytics avancés.
             </p>
           </div>
@@ -153,13 +153,13 @@ export default function ElectroskyPage() {
           <div>
             <SectionHeading title="Contexte" />
             <p className="text-white/55 text-sm leading-[1.9] mb-4">
-              Electro Sky est un magasin d'électronique physique situé à Rabat. Le projet consistait à construire
+              Electro Sky est un magasin d&apos;électronique physique situé à Rabat. Le projet consistait à construire
               une plateforme e-commerce complète avec un modèle <strong className="text-white/80">click-and-collect</strong> — les clients
               commandent en ligne et récupèrent leurs achats en magasin en environ 30 minutes.
             </p>
             <p className="text-white/55 text-sm leading-[1.9]">
-              La plateforme gère tout le cycle de vie d'une commande : de la navigation produit et la gestion
-              du panier jusqu'à la livraison en caisse, avec des mises à jour en temps réel pour le personnel.
+              La plateforme gère tout le cycle de vie d&apos;une commande : de la navigation produit et la gestion
+              du panier jusqu&apos;à la livraison en caisse, avec des mises à jour en temps réel pour le personnel.
             </p>
           </div>
           <div>

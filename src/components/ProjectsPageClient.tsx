@@ -73,15 +73,22 @@ const PROJECTS: Project[] = [
     tags: ['React.js', 'Tailwind CSS', 'Express.js', 'MySQL'],
     year: '2025',
   },
-  // {
-  //   id: 4,
-  //   key: 'realEstate',
-  //   image: '/images/projects/6.jpg',
-  //   category: 'web',
-  //   tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS'],
-  //   year: '2024',
-  // },
-  
+  {
+    id: 5,
+    key: 'fifap',
+    image: '/projects/fifap.jpg',
+    tags: ['React', 'JavaScript', 'Responsive Design'],
+    year: '2025',
+    link: 'https://fifap.info',
+  },
+  {
+    id: 6,
+    key: 'drcherkaouiabir',
+    image: '/projects/drcherkaouiabir.jpg',
+    tags: ['React', 'JavaScript', 'Responsive Design'],
+    year: '2025',
+    link: 'https://drcherkaouiabir.com',
+  },
 ];
 
 /* ─── Image with placeholder fallback ───────────────────────────────────── */
@@ -338,23 +345,13 @@ export default function ProjectsPageClient() {
   const t      = useTranslations('projectsPage');
   const locale = useLocale();
   const isRTL  = locale === 'ar';
-  const [activeFilter, setActiveFilter] = useState<Category>('all');
-
   const stats = [
     { value: '+30', label: t('statProjects') },
     { value: '+30', label: t('statClients') },
   ];
 
-  const filterLabels: Record<Category, string> = {
-    all:       t('filterAll'),
-    web:       t('filterWeb'),
-    mobile:    t('filterMobile'),
-    marketing: t('filterMarketing'),
-  };
-
-  const filtered       = PROJECTS.filter((p) => activeFilter === 'all' || p.category === activeFilter);
-  const featuredProject = filtered.find((p) => p.featured);
-  const gridProjects    = filtered.filter((p) => !p.featured);
+  const featuredProject = PROJECTS.find((p) => p.featured);
+  const gridProjects    = PROJECTS.filter((p) => !p.featured);
 
   return (
     <>
@@ -388,7 +385,7 @@ export default function ProjectsPageClient() {
           {/* Projects */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeFilter}
+              key="projects"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -413,11 +410,6 @@ export default function ProjectsPageClient() {
                 </div>
               )}
 
-              {filtered.length === 0 && (
-                <div className="flex items-center justify-center py-28">
-                  <p className="text-white/25 text-lg">{t('noProjects')}</p>
-                </div>
-              )}
             </motion.div>
           </AnimatePresence>
         </div>

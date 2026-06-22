@@ -394,6 +394,16 @@
         "title": "Saidia Bay",
         "description": "Full-stack real estate platform — calendar reservations with dynamic seasonal pricing, sales lead pipeline and secure admin CMS.",
         "features": "Seasonal pricing · Advanced calendar · Dual revenue · Interactive maps"
+      },
+      "fifap": {
+        "title": "FIFAP",
+        "description": "Modern event website for a professional organization — program, speakers and key information presented with an immersive design.",
+        "features": "Event website · Immersive design · Responsive · React"
+      },
+      "drcherkaouiabir": {
+        "title": "Dr. Cherkaoui Abir",
+        "description": "Showcase website for a dental practice — presenting services, the medical team and an integrated contact form.",
+        "features": "Showcase site · Dental care · Contact form · React"
       }
     }
   }

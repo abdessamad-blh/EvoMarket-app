@@ -394,6 +394,16 @@
         "title": "Saidia Bay",
         "description": "Plateforme immobilière full-stack — réservations avec tarification saisonnière dynamique, pipeline de ventes et CMS admin complet.",
         "features": "Prix saisonniers · Calendrier avancé · Double revenu · Cartes interactives"
+      },
+      "fifap": {
+        "title": "FIFAP",
+        "description": "Site événementiel moderne pour une organisation professionnelle — programme, intervenants et informations clés présentés avec un design immersif.",
+        "features": "Site événementiel · Design immersif · Responsive · React"
+      },
+      "drcherkaouiabir": {
+        "title": "Dr. Cherkaoui Abir",
+        "description": "Site vitrine pour un cabinet dentaire — présentation des soins, de l'équipe médicale et formulaire de contact intégré.",
+        "features": "Site vitrine · Soins dentaires · Formulaire de contact · React"
       }
     }
   }

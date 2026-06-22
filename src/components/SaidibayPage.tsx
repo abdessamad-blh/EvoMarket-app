@@ -159,8 +159,8 @@ export default function SaidibayPage() {
               <strong className="text-white/80">vente de biens</strong> (pipeline de leads).
             </p>
             <p className="text-white/55 text-sm leading-[1.9]">
-              La plateforme gère l'intégralité du parcours client — de la consultation des biens avec carte
-              interactive jusqu'à la confirmation de réservation — tout en offrant à l'administrateur
+              La plateforme gère l&apos;intégralité du parcours client — de la consultation des biens avec carte
+              interactive jusqu&apos;à la confirmation de réservation — tout en offrant à l&apos;administrateur
               un tableau de bord sécurisé avec analytics, gestion des contenus et suivi des revenus.
             </p>
           </div>
