@@ -23,8 +23,8 @@ export default function NavBar() {
 
   const navItems = [
     // { name: t('home'), path: `/${locale}` },
-    { name: t('services'), path: `/${locale}/services` },
     { name: t('portfolio'), path: `/${locale}/projects` },
+    { name: t('services'), path: `/${locale}/services` },
     { name: t('about'), path: `/${locale}/about` },
     { name: t('blog'), path: `/${locale}/blog` },
     { name: t('contact'), path: `/${locale}/contact` },

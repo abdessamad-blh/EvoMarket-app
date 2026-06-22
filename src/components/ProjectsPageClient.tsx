@@ -52,7 +52,7 @@ const PROJECTS: Project[] = [
     image: '/images/projects/saidiabay-hero.jpg',
     // category: 'web',
     tags: ['Next.js 14', 'Express.js', 'PostgreSQL', 'Leaflet', 'GSAP'],
-    year: '2026',
+    year: '2025',
     link: 'https://saidibay.ma',
     href: '/projects/saidibay',
     complex: true,
@@ -76,7 +76,7 @@ const PROJECTS: Project[] = [
   {
     id: 5,
     key: 'fifap',
-    image: '/projects/fifap.jpg',
+    image: '/images/projects/fifap-hero.jpg',
     tags: ['React', 'JavaScript', 'Responsive Design'],
     year: '2025',
     link: 'https://fifap.info',
@@ -84,9 +84,9 @@ const PROJECTS: Project[] = [
   {
     id: 6,
     key: 'drcherkaouiabir',
-    image: '/projects/drcherkaouiabir.jpg',
+    image: '/images/projects/abircherkauoi-hero.jpg',
     tags: ['React', 'JavaScript', 'Responsive Design'],
-    year: '2025',
+    year: '2024',
     link: 'https://drcherkaouiabir.com',
   },
 ];
