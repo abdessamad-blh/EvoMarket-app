@@ -1,6 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { Fragment } from 'react';
+
+function renderBold(text: string) {
+  return text.split(/\*\*(.*?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? <strong key={i} className="text-white">{part}</strong> : <Fragment key={i}>{part}</Fragment>
+  );
+}
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import { ArrowLeft, Clock, Calendar, User } from 'lucide-react';
@@ -89,28 +95,20 @@ export default function BlogPostContent({ post }: { post: BlogPost }) {
 
           {/* Content */}
           <div className="prose prose-invert prose-lg max-w-none prose-headings:font-semibold prose-headings:text-white prose-p:text-white/70 prose-p:leading-relaxed prose-strong:text-white prose-li:text-white/70 prose-a:text-[#F4B223] prose-a:no-underline hover:prose-a:underline prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-ul:my-4 prose-li:my-1">
-            {/* Render MDX content as HTML-like sections */}
             {post.content.split('\n').map((line, i) => {
               const trimmed = line.trim();
               if (!trimmed) return null;
-              if (trimmed.startsWith('## ')) {
-                return <h2 key={i}>{trimmed.replace('## ', '')}</h2>;
-              }
-              if (trimmed.startsWith('### ')) {
-                return <h3 key={i}>{trimmed.replace('### ', '')}</h3>;
-              }
+              if (trimmed.startsWith('## ')) return <h2 key={i}>{trimmed.slice(3)}</h2>;
+              if (trimmed.startsWith('### ')) return <h3 key={i}>{trimmed.slice(4)}</h3>;
               if (trimmed.startsWith('- ')) {
-                const content = trimmed.replace('- ', '');
                 return (
                   <div key={i} className="flex items-start gap-2 my-1 text-white/70">
                     <span className="w-1.5 h-1.5 bg-[#F4B223] rounded-full mt-2.5 shrink-0" />
-                    <span dangerouslySetInnerHTML={{ __html: content.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />
+                    <span>{renderBold(trimmed.slice(2))}</span>
                   </div>
                 );
               }
-              return (
-                <p key={i} dangerouslySetInnerHTML={{ __html: trimmed.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />
-              );
+              return <p key={i}>{renderBold(trimmed)}</p>;
             })}
           </div>
         </motion.article>

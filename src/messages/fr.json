@@ -236,16 +236,30 @@
       "message": "Message"
     },
     "step0": {
-      "title": "Dans quel secteur êtes-vous ?",
-      "subtitle": "Sélectionnez un ou plusieurs secteurs",
+      "title": "Votre secteur d'activité",
+      "subtitle": "Sélectionnez un ou plusieurs secteurs (optionnel)",
       "sectors": {
         "ecommerce": "E-commerce",
         "health": "Santé & Bien-être",
-        "entertainment": "Divertissement",
-        "education": "Éducation",
         "realestate": "Immobilier",
         "food": "Restauration",
+        "education": "Éducation",
+        "fashion": "Mode & Vêtements",
+        "construction": "Construction & BTP",
+        "beauty": "Beauté & Esthétique",
+        "artisanat": "Artisanat",
         "travel": "Voyage & Tourisme",
+        "automotive": "Automobile",
+        "other": "Autre"
+      },
+      "sourceLabel": "Comment avez-vous connu EvoMarket ?",
+      "sourcePlaceholder": "Sélectionnez (optionnel)",
+      "sourceOptions": {
+        "google": "Google / Recherche web",
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "referral": "Recommandation / Bouche à oreille",
+        "ads": "Publicité en ligne",
         "other": "Autre"
       }
     },
@@ -261,6 +275,10 @@
       "emailPlaceholder": "votre@email.com",
       "phone": "Téléphone",
       "phonePlaceholder": "6 12 34 56 78",
+      "preferredContact": "Moyen de contact préféré",
+      "contactWhatsapp": "WhatsApp",
+      "contactPhone": "Appel",
+      "contactEmail": "Email",
       "employees": "Nombre d'employés",
       "employeesPlaceholder": "Sélectionnez",
       "employeesOptions": {
@@ -286,15 +304,16 @@
       "budget": "Budget estimé",
       "budgetPlaceholder": "Sélectionnez votre budget",
       "budgetOptions": {
-        "sub500": "> $500",
-        "500-2000": "$500 – $2 000",
-        "2000-6000": "$2 000 – $6 000",
-        "6000plus": "$6 000 <"
+        "sub3000": "Moins de 3 000 DH",
+        "3000-10000": "3 000 – 10 000 DH",
+        "10000-30000": "10 000 – 30 000 DH",
+        "30000plus": "30 000 DH et plus"
       }
     },
     "step3": {
       "title": "Votre message",
       "description": "Parlez-nous de votre projet",
+      "optional": "(optionnel)",
       "descriptionPlaceholder": "Décrivez votre projet, vos objectifs, votre vision, votre calendrier...",
       "privacy": "J'accepte que mes données soient utilisées pour traiter ma demande conformément à la politique de confidentialité."
     },
@@ -308,6 +327,7 @@
       "title": "Demande envoyée !",
       "message": "Merci pour votre demande de devis. Notre équipe vous contactera dans les 24 heures.",
       "backHome": "Retour à l'accueil",
+      "whatsapp": "Discuter sur WhatsApp",
       "followUs": "Suivez-nous sur les réseaux sociaux"
     },
     "validation": {
@@ -331,5 +351,50 @@
     "title": "Nos Services",
     "subtitle": "Tout ce dont votre marque a besoin pour grandir dans le monde digital.",
     "requestQuote": "Demander un devis"
+  },
+  "projectsPage": {
+    "label": "Nos Réalisations",
+    "title": "Projets",
+    "subtitle": "Des sites web performants aux campagnes marketing percutantes — découvrez ce que nous construisons pour nos clients.",
+    "statProjects": "Projets livrés",
+    "statClients": "Clients satisfaits",
+    "filterAll": "Tous",
+    "filterWeb": "Web",
+    "filterMobile": "Mobile",
+    "filterMarketing": "Marketing",
+    "viewProject": "Voir le site",
+    "caseStudy": "Étude de cas",
+    "viewCaseStudy": "Voir l'étude de cas",
+    "noProjects": "Aucun projet dans cette catégorie.",
+    "ctaTitle": "Votre projet est le prochain ?",
+    "ctaDesc": "Travaillons ensemble et donnons vie à votre vision digitale.",
+    "ctaButton": "Démarrer un projet",
+    "projects": {
+      "healthcare": {
+        "title": "Plateforme de Santé",
+        "description": "Site web complet pour un cabinet médical avec prise de rendez-vous en ligne, gestion des patients et espace sécurisé.",
+        "features": "Prise de RDV en ligne · Dashboard Admin · Portail Patient · Notifications Email"
+      },
+      "realEstate": {
+        "title": "Plateforme Immobilière",
+        "description": "Application web moderne pour une agence immobilière avec recherche avancée, galeries de biens et système de contact intégré.",
+        "features": "Recherche avancée · Galerie de biens · Formulaire de contact · Responsive Design"
+      },
+      "contentCreation": {
+        "title": "Création de Contenu",
+        "description": "Production de contenu visuel complet pour les réseaux sociaux — visuels brandés, Reels et stories pour une présence digitale forte.",
+        "features": "Design de marque · Reels & Stories · Calendrier éditorial · Reporting mensuel"
+      },
+      "electrosky": {
+        "title": "Electro Sky",
+        "description": "Plateforme e-commerce full-stack avec commandes en temps réel via Socket.io, gestion multi-rôles et analytics avancés.",
+        "features": "Temps réel · RBAC granulaire · Analytics · OTP 2FA"
+      },
+      "saidibay": {
+        "title": "Saidia Bay",
+        "description": "Plateforme immobilière full-stack — réservations avec tarification saisonnière dynamique, pipeline de ventes et CMS admin complet.",
+        "features": "Prix saisonniers · Calendrier avancé · Double revenu · Cartes interactives"
+      }
+    }
   }
 }

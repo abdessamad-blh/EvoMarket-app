@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { User, Building2, Mail, Phone } from 'lucide-react';
+import { User, Building2, Mail, Phone, MessageCircle } from 'lucide-react';
 import PhoneInput, { getCountryCallingCode } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
@@ -11,6 +11,7 @@ export interface Step1Data {
   fullName: string;
   email: string;
   phone: string; // full E.164 number (e.g., "+212612345678")
+  preferredContact: 'whatsapp' | 'phone' | 'email';
   employees: string;
 }
 
@@ -217,6 +218,38 @@ export default function FormStep1({ data, onChange, errors }: FormStep1Props) {
             />
           </div>
           {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
+        </div>
+
+        {/* Preferred contact method */}
+        <div>
+          <label className="flex items-center gap-2 text-white/60 text-sm mb-2">
+            <MessageCircle className="w-4 h-4" />
+            {t('preferredContact')}
+          </label>
+          <div className="flex rounded-xl overflow-hidden border border-white/10">
+            {(
+              [
+                { key: 'whatsapp', label: t('contactWhatsapp') },
+                { key: 'phone',    label: t('contactPhone') },
+                { key: 'email',    label: t('contactEmail') },
+              ] as const
+            ).map(({ key, label }, idx) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => onChange({ ...data, preferredContact: key })}
+                className={`flex-1 py-2.5 text-xs font-medium transition-colors ${
+                  idx > 0 ? 'border-l border-white/10' : ''
+                } ${
+                  data.preferredContact === key
+                    ? 'bg-[#F4B223]/20 text-[#F4B223]'
+                    : 'text-white/40 hover:text-white/60'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Employees — commented out for now */}

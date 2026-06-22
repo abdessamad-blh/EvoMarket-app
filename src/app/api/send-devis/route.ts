@@ -1,24 +1,53 @@
 import { Resend } from 'resend';
 
+function esc(str: unknown): string {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+const ALLOWED_SECTORS  = new Set(['ecommerce','health','realestate','food','education','fashion','construction','beauty','artisanat','travel','automotive','other']);
+const ALLOWED_SERVICES = new Set(['website','mobile','seo','socialMedia','content','ads','training']);
+const ALLOWED_BUDGETS  = new Set(['sub3000','3000-10000','10000-30000','30000plus','']);
+const ALLOWED_CONTACTS = new Set(['whatsapp','phone','email','']);
+const ALLOWED_SOURCES  = new Set(['google','instagram','facebook','referral','ads','other','']);
+
 export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const data = await request.json();
+
+  // Honeypot check — bots fill hidden fields, humans don't
+  if (data._hp) {
+    return Response.json({ success: true });
+  }
+
   const {
     nameType,
     fullName,
     email,
     phone,
-    employees,
+    preferredContact,
     sectors,
+    source,
     services,
     budget,
     description,
     submittedAt,
   } = data;
 
-  const typeLabel   = nameType === 'org' ? 'Organisation' : 'Particulier';
-  const sectorsStr  = (sectors  as string[]).join(', ');
-  const servicesStr = (services as string[]).join(', ');
+  // Allowlist validation
+  const safeSectors  = (Array.isArray(sectors)  ? sectors  : []).filter((s: unknown) => typeof s === 'string' && ALLOWED_SECTORS.has(s));
+  const safeServices = (Array.isArray(services) ? services : []).filter((s: unknown) => typeof s === 'string' && ALLOWED_SERVICES.has(s));
+  const safeBudget   = ALLOWED_BUDGETS.has(String(budget))   ? String(budget)          : '';
+  const safeContact  = ALLOWED_CONTACTS.has(String(preferredContact)) ? String(preferredContact) : '';
+  const safeSource   = ALLOWED_SOURCES.has(String(source))   ? String(source)           : '';
+
+  const typeLabel    = nameType === 'org' ? 'Organisation' : 'Particulier';
+  const sectorsStr   = safeSectors.map(esc).join(', ');
+  const servicesStr  = safeServices.map(esc).join(', ');
 
   const html = `
     <!DOCTYPE html>
@@ -40,24 +69,25 @@ export async function POST(request: Request) {
         <h1>📋 Nouveau Devis — EvoMarket</h1>
 
         <h2>Informations de contact</h2>
-        <p><span class="label">Type :</span> ${typeLabel}</p>
-        <p><span class="label">Nom :</span> ${fullName}</p>
-        <p><span class="label">Email :</span> <a href="mailto:${email}">${email}</a></p>
-        <p><span class="label">Téléphone :</span> ${phone}</p>
-        ${employees ? `<p><span class="label">Employés :</span> ${employees}</p>` : ''}
+        <p><span class="label">Type :</span> ${esc(typeLabel)}</p>
+        <p><span class="label">Nom :</span> ${esc(fullName)}</p>
+        <p><span class="label">Email :</span> <a href="mailto:${esc(email)}">${esc(email)}</a></p>
+        <p><span class="label">Téléphone :</span> ${esc(phone)}</p>
+        ${safeContact ? `<p><span class="label">Contact préféré :</span> ${esc(safeContact)}</p>` : ''}
 
         <h2>Détails du projet</h2>
-        <p><span class="label">Secteur(s) :</span> ${sectorsStr}</p>
+        ${sectorsStr ? `<p><span class="label">Secteur(s) :</span> ${sectorsStr}</p>` : ''}
+        ${safeSource ? `<p><span class="label">Source :</span> ${esc(safeSource)}</p>` : ''}
         <p><span class="label">Service(s) :</span> ${servicesStr}</p>
-        <p><span class="label">Budget estimé :</span> ${budget}</p>
+        <p><span class="label">Budget estimé :</span> ${esc(safeBudget)}</p>
 
         ${description ? `
         <h2>Description</h2>
-        <p>${String(description).replace(/\n/g, '<br/>')}</p>
+        <p>${esc(description).replace(/\n/g, '<br/>')}</p>
         ` : ''}
 
         <div class="footer">
-          Soumis le ${new Date(submittedAt as string).toLocaleString('fr-MA')} via le formulaire EvoMarket
+          Soumis le ${new Date(String(submittedAt)).toLocaleString('fr-MA')} via le formulaire EvoMarket
         </div>
       </div>
     </body>
@@ -84,6 +114,6 @@ export async function POST(request: Request) {
     return Response.json({ success: true });
   } catch (error) {
     console.error('Resend error:', error);
-    return Response.json({ success: false, error: String(error) }, { status: 500 });
+    return Response.json({ success: false }, { status: 500 });
   }
 }

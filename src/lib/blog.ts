@@ -33,7 +33,8 @@ export function getAllPosts(locale?: string): BlogPostMeta[] {
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
-  const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
+  const safeSlug = path.basename(slug);
+  const filePath = path.join(BLOG_DIR, `${safeSlug}.mdx`);
 
   if (!fs.existsSync(filePath)) return null;
 

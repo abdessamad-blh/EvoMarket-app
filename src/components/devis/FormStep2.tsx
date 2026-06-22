@@ -25,7 +25,7 @@ const serviceOptions = [
   { key: 'training',    icon: GraduationCap },
 ] as const;
 
-const budgetOptions = ['sub500', '500-2000', '2000-6000', '6000plus'] as const;
+const budgetOptions = ['sub3000', '3000-10000', '10000-30000', '30000plus'] as const;
 
 export default function FormStep2({ data, onChange, errors }: FormStep2Props) {
   const t = useTranslations('devis.step2');

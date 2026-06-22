@@ -27,8 +27,9 @@ export default function DevisForm() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
 
-  const [step0Data, setStep0Data] = useState<Step0Data>({ sectors: [] });
+  const [step0Data, setStep0Data] = useState<Step0Data>({ sectors: [], source: '' });
   const [step0Errors, setStep0Errors] = useState<Partial<Record<keyof Step0Data, string>>>({});
 
   const [step1Data, setStep1Data] = useState<Step1Data>({
@@ -36,6 +37,7 @@ export default function DevisForm() {
     fullName: '',
     email: '',
     phone: '',
+    preferredContact: 'whatsapp',
     employees: '',
   });
 
@@ -67,10 +69,9 @@ export default function DevisForm() {
   }, [searchParams]);
 
   const validateStep0 = (): boolean => {
-    const errors: Partial<Record<keyof Step0Data, string>> = {};
-    if (step0Data.sectors.length === 0) errors.sectors = t('validation.selectSector');
-    setStep0Errors(errors);
-    return Object.keys(errors).length === 0;
+    // Sector step is optional — always passes
+    setStep0Errors({});
+    return true;
   };
 
   const validateStep1 = (): boolean => {
@@ -110,11 +111,12 @@ export default function DevisForm() {
   };
 
   const handleNext = () => {
-    if (currentStep === 1 && validateStep0()) {
+    // New order: 1=Contact, 2=Services, 3=Sector(optional), 4=Message
+    if (currentStep === 1 && validateStep1()) {
       setCurrentStep(2);
-    } else if (currentStep === 2 && validateStep1()) {
+    } else if (currentStep === 2 && validateStep2()) {
       setCurrentStep(3);
-    } else if (currentStep === 3 && validateStep2()) {
+    } else if (currentStep === 3 && validateStep0()) {
       setCurrentStep(4);
     }
   };
@@ -129,16 +131,18 @@ export default function DevisForm() {
     setIsSubmitting(true);
 
     const formData = {
-      nameType:    step1Data.nameType,
-      fullName:    step1Data.fullName,
-      email:       step1Data.email,
-      phone:       step1Data.phone,
-      employees:   step1Data.employees,
-      sectors:     step0Data.sectors,
-      services:    step2Data.services,
-      budget:      step2Data.budget,
-      description: step3Data.description,
-      submittedAt: new Date().toISOString(),
+      nameType:         step1Data.nameType,
+      fullName:         step1Data.fullName,
+      email:            step1Data.email,
+      phone:            step1Data.phone,
+      preferredContact: step1Data.preferredContact,
+      sectors:          step0Data.sectors,
+      source:           step0Data.source,
+      services:         step2Data.services,
+      budget:           step2Data.budget,
+      description:      step3Data.description,
+      submittedAt:      new Date().toISOString(),
+      _hp: honeypot,
     };
 
     try {
@@ -158,14 +162,15 @@ export default function DevisForm() {
   const handleNewRequest = () => {
     setShowSuccess(false);
     setCurrentStep(1);
-    setStep0Data({ sectors: [] });
-    setStep1Data({ nameType: 'person', fullName: '', email: '', phone: '', employees: '' });
+    setStep0Data({ sectors: [], source: '' });
+    setStep1Data({ nameType: 'person', fullName: '', email: '', phone: '', preferredContact: 'whatsapp', employees: '' });
     setStep2Data({ services: [], budget: '' });
     setStep3Data({ description: '', privacyAccepted: false });
     setStep0Errors({});
     setStep1Errors({});
     setStep2Errors({});
     setStep3Errors({});
+    setHoneypot('');
   };
 
   const slideVariants = {
@@ -184,6 +189,11 @@ export default function DevisForm() {
 
         {/* Form Card */}
         <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-10 overflow-hidden">
+          {/* Honeypot — invisible to humans, bots fill it automatically */}
+          <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+            <label htmlFor="_hp_website">Website</label>
+            <input id="_hp_website" name="website" type="text" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
+          </div>
           {/* Animated step content */}
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
@@ -196,13 +206,13 @@ export default function DevisForm() {
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
               {currentStep === 1 && (
-                <FormStep0 data={step0Data} onChange={setStep0Data} errors={step0Errors} />
-              )}
-              {currentStep === 2 && (
                 <FormStep1 data={step1Data} onChange={setStep1Data} errors={step1Errors} />
               )}
-              {currentStep === 3 && (
+              {currentStep === 2 && (
                 <FormStep2 data={step2Data} onChange={setStep2Data} errors={step2Errors} />
+              )}
+              {currentStep === 3 && (
+                <FormStep0 data={step0Data} onChange={setStep0Data} errors={step0Errors} />
               )}
               {currentStep === 4 && (
                 <FormStep3 data={step3Data} onChange={setStep3Data} errors={step3Errors} />

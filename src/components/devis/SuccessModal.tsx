@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { CheckCircle2, ArrowLeft, Instagram, Facebook, Linkedin } from 'lucide-react';
+import { CheckCircle2, ArrowLeft, Instagram, Facebook, Linkedin, MessageCircle } from 'lucide-react';
 
 interface SuccessModalProps {
   isOpen: boolean;
@@ -63,15 +63,26 @@ export default function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
               {t('message')}
             </p>
 
-            {/* Back to home button */}
-            <Link
-              href={`/${locale}`}
-              onClick={onClose}
-              className="inline-flex items-center justify-center gap-2 bg-[#F4B223] hover:bg-[#E09800] text-[#0A0E27] font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105 text-sm mb-8"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              {t('backHome')}
-            </Link>
+            {/* CTA buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+              <a
+                href="https://wa.me/212624458847"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-semibold py-3 px-7 rounded-full transition-all duration-300 hover:scale-105 text-sm shadow-lg shadow-[#25D366]/20"
+              >
+                <MessageCircle className="w-4 h-4" />
+                {t('whatsapp')}
+              </a>
+              <Link
+                href={`/${locale}`}
+                onClick={onClose}
+                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white/70 hover:text-white font-medium py-3 px-7 rounded-full transition-all duration-200 text-sm"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                {t('backHome')}
+              </Link>
+            </div>
 
             {/* Social media */}
             <div>

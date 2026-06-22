@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
 import ScrollAnimationWrapper from './ScrollAnimationWrapper';
 
 const projects = [
@@ -39,7 +40,8 @@ const projects = [
 ];
 
 export default function PortfolioSection() {
-  const t = useTranslations('portfolio');
+  const t      = useTranslations('portfolio');
+  const locale = useLocale();
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -90,7 +92,7 @@ export default function PortfolioSection() {
         </ScrollAnimationWrapper>
 
         {/* Slider — extra side padding to fit the nav arrows */}
-        <div className="relative px-0 sm:px-14">
+        <div className="relative px-0 sm:px-14 lg:max-w-[80%] lg:mx-auto">
 
           {/* ← Prev */}
           <button
@@ -199,6 +201,17 @@ export default function PortfolioSection() {
               }`} />
             </button>
           ))}
+        </div>
+
+        {/* See all projects CTA */}
+        <div className="flex justify-center mt-10">
+          <Link
+            href={`/${locale}/projects`}
+            className="inline-flex items-center gap-2 border border-[#F4B223]/40 text-[#F4B223] hover:bg-[#F4B223] hover:text-[#0A0E27] font-semibold text-sm px-7 py-3 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-[#F4B223]/20"
+          >
+            {t('viewAll')}
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
         </div>
 
       </div>

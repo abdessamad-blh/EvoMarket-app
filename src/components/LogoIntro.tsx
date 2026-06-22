@@ -18,7 +18,7 @@ export default function LogoIntro() {
       // First visit — play intro then fade out
       sessionStorage.setItem('evo_intro', '1');
       isIntro.current = true;
-      const t = setTimeout(() => setShow(false), 1000);
+      const t = setTimeout(() => setShow(false), 1300);
       return () => clearTimeout(t);
     }
   }, []);
@@ -32,7 +32,7 @@ export default function LogoIntro() {
           style={{ backgroundColor: '#0A0E27' }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: isIntro.current ? 0.3 : 0, ease: 'easeInOut' }}
+          transition={{ duration: isIntro.current ? 0.39 : 0, ease: 'easeInOut' }}
         >
 
           {/* Same grid background as hero section */}
@@ -55,7 +55,7 @@ export default function LogoIntro() {
               className="absolute inset-0"
               initial={{ clipPath: 'inset(0% 100% 0% 0%)' }}
               animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
-              transition={{ duration: 0.65, ease: 'circOut' }}
+              transition={{ duration: 0.845, ease: 'circOut' }}
             >
               <Image src="/images/4.png" alt="EvoMarket" fill className="object-contain" priority />
             </motion.div>
@@ -65,7 +65,7 @@ export default function LogoIntro() {
               className="absolute inset-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.35 }}
+              transition={{ delay: 0.52, duration: 0.455 }}
               style={{ filter: 'drop-shadow(0 0 20px rgba(244, 178, 35, 0.4))' }}
             >
               <Image src="/images/5.png" alt="EvoMarket Logo" fill className="object-contain" priority />

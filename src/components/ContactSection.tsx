@@ -205,6 +205,7 @@ export default function ContactSection({ standalone = false }: { standalone?: bo
             style={{ border: 'none', filter: 'invert(90%) hue-rotate(180deg) brightness(0.85) contrast(1.1)' }}
             loading="lazy"
             title="EvoMarket location"
+            sandbox="allow-scripts allow-same-origin"
           />
         </motion.div>
       </div>

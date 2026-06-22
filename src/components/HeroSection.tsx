@@ -151,7 +151,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-[1.3rem] sm:text-6xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight pt-15 pb-18 md:pt-0 md:pb-0 mb-0 md:mb-10 tracking-tight overflow-visible text-center md:text-left w-full"
+          className="text-[1.3rem] sm:text-6xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight pt-15 pb-18 md:pt-10 md:pb-0 mb-0 md:mb-15 tracking-tight overflow-visible text-center md:text-left w-full"
         >
           <span className="block whitespace-nowrap">
             <span className="text-white">{t('title1')} </span>
@@ -187,7 +187,7 @@ export default function HeroSection() {
 
         {/* DESKTOP: layered 3D cloud */}
         <div
-          className="hidden md:block relative w-full h-[200px] lg:h-[240px] mb-1 mt-5"
+          className="hidden md:block relative w-full h-[200px] lg:h-[240px] mb-10 mt-6"
           style={{ perspective: '1000px' }}
         >
           {floatingItems.map((item, index) => (
@@ -217,7 +217,6 @@ export default function HeroSection() {
             </motion.div>
           ))}
         </div>
-
       </div>
 
       {/* Partners ticker — bottom of hero */}

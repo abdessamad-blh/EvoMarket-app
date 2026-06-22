@@ -32,6 +32,7 @@ export default function FormStep3({ data, onChange, errors }: FormStep3Props) {
         <label className="flex items-center gap-2 text-white/60 text-sm mb-2">
           <MessageSquare className="w-4 h-4" />
           {t('description')}
+          <span className="text-white/30">{t('optional')}</span>
         </label>
         <textarea
           rows={7}

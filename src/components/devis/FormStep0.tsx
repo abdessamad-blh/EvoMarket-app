@@ -2,10 +2,14 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { ShoppingCart, Heart, Film, GraduationCap, Home, Utensils, Plane, Sparkles } from 'lucide-react';
+import {
+  ShoppingCart, Heart, Home, Utensils, GraduationCap,
+  Shirt, HardHat, Scissors, Gem, Plane, Car, Sparkles,
+} from 'lucide-react';
 
 export interface Step0Data {
   sectors: string[];
+  source: string;
 }
 
 interface FormStep0Props {
@@ -15,24 +19,30 @@ interface FormStep0Props {
 }
 
 const sectorOptions = [
-  { key: 'ecommerce', Icon: ShoppingCart },
-  { key: 'health', Icon: Heart },
-  { key: 'entertainment', Icon: Film },
-  { key: 'education', Icon: GraduationCap },
-  { key: 'realestate', Icon: Home },
-  { key: 'food', Icon: Utensils },
-  { key: 'travel', Icon: Plane },
-  { key: 'other', Icon: Sparkles },
+  { key: 'ecommerce',    Icon: ShoppingCart },
+  { key: 'health',       Icon: Heart },
+  { key: 'realestate',   Icon: Home },
+  { key: 'food',         Icon: Utensils },
+  { key: 'education',    Icon: GraduationCap },
+  { key: 'fashion',      Icon: Shirt },
+  { key: 'construction', Icon: HardHat },
+  { key: 'beauty',       Icon: Scissors },
+  { key: 'artisanat',    Icon: Gem },
+  { key: 'travel',       Icon: Plane },
+  { key: 'automotive',   Icon: Car },
+  { key: 'other',        Icon: Sparkles },
 ] as const;
+
+const sourceKeys = ['google', 'instagram', 'facebook', 'referral', 'ads', 'other'] as const;
 
 export default function FormStep0({ data, onChange, errors }: FormStep0Props) {
   const t = useTranslations('devis.step0');
 
-  const toggle = (key: string) => {
+  const toggleSector = (key: string) => {
     const next = data.sectors.includes(key)
       ? data.sectors.filter((s) => s !== key)
       : [...data.sectors, key];
-    onChange({ sectors: next });
+    onChange({ ...data, sectors: next });
   };
 
   return (
@@ -47,14 +57,15 @@ export default function FormStep0({ data, onChange, errors }: FormStep0Props) {
         <p className="text-white/40 text-sm">{t('subtitle')}</p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {/* Sector grid — 3 cols on desktop, 2 on mobile */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {sectorOptions.map(({ key, Icon }) => {
           const active = data.sectors.includes(key);
           return (
             <button
               key={key}
               type="button"
-              onClick={() => toggle(key)}
+              onClick={() => toggleSector(key)}
               className={`flex flex-col items-center gap-2.5 p-4 rounded-xl border transition-all duration-200 ${
                 active
                   ? 'bg-[#F4B223]/15 border-[#F4B223] text-[#F4B223]'
@@ -62,7 +73,9 @@ export default function FormStep0({ data, onChange, errors }: FormStep0Props) {
               }`}
             >
               <Icon className="w-6 h-6 shrink-0" />
-              <span className="text-xs font-medium text-center leading-tight">{t(`sectors.${key}`)}</span>
+              <span className="text-xs font-medium text-center leading-tight">
+                {t(`sectors.${key}`)}
+              </span>
             </button>
           );
         })}
@@ -71,6 +84,23 @@ export default function FormStep0({ data, onChange, errors }: FormStep0Props) {
       {errors.sectors && (
         <p className="text-red-400 text-xs">{errors.sectors}</p>
       )}
+
+      {/* Source dropdown */}
+      <div>
+        <label className="text-white/60 text-sm mb-2 block">{t('sourceLabel')}</label>
+        <select
+          value={data.source}
+          onChange={(e) => onChange({ ...data, source: e.target.value })}
+          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:border-[#F4B223]/50 focus:outline-none focus:ring-1 focus:ring-[#F4B223]/30 transition-all"
+        >
+          <option value="" className="bg-[#0D1230] text-white/50">{t('sourcePlaceholder')}</option>
+          {sourceKeys.map((key) => (
+            <option key={key} value={key} className="bg-[#0D1230] text-white">
+              {t(`sourceOptions.${key}`)}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }

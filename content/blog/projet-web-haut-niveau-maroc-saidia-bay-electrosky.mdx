@@ -1,0 +1,148 @@
+---
+title: "Comment Créer un Projet Web de Haut Niveau au Maroc : Retour d'Expérience sur Saidia Bay & Electro Sky"
+excerpt: "Créer un vrai projet web de haut niveau au Maroc, c'est bien plus que du design. Découvrez les décisions d'architecture, les fonctionnalités avancées et les points forts qui ont fait de Saidia Bay et Electro Sky deux références digitales marocaines."
+date: "2026-06-20"
+author: "EvoMarket"
+tags: ["Projet Web Maroc", "Développement Full-Stack", "Saidia Bay", "Electro Sky", "Agence Web Maroc", "Next.js Maroc"]
+image: "/images/projects/saidiabay-hero.jpg"
+readingTime: "8"
+locale: "fr"
+---
+
+## Ce Que "Haut Niveau" Signifie Vraiment dans le Digital Marocain
+
+Il existe une différence fondamentale entre un site web marocain ordinaire et une **plateforme digitale de haut niveau**. Cette différence ne se voit pas au premier regard — elle ne réside pas dans le prix, ni même dans le design. Elle réside dans les **décisions techniques invisibles** : l'architecture de la base de données, la gestion de la sécurité, la performance sous charge réelle, et la capacité du système à évoluer avec le business.
+
+Chez EvoMarket, nous avons construit deux projets qui illustrent parfaitement ce niveau d'exigence : **Saidia Bay**, une plateforme immobilière full-stack pour la côte méditerranéenne marocaine, et **Electro Sky**, un système e-commerce en temps réel pour un magasin d'électronique à Rabat.
+
+Voici ce que la création de ces deux plateformes a révélé sur ce que signifie réellement "faire du digital de haut niveau" au Maroc.
+
+---
+
+## Saidia Bay : Quand une Plateforme Immobilière Gère Deux Métiers en Un
+
+### Le Contexte
+
+Saidia Bay (saidibay.ma) est une plateforme immobilière dédiée à la station balnéaire de Saidia, au nord-est du Maroc. Le client avait un besoin complexe : gérer simultanément **deux types de transactions** sur le même bien immobilier — la location saisonnière avec réservations calendrier, et la vente avec suivi de leads structuré.
+
+Deux métiers différents, une seule application cohérente. C'est là que commence l'ambition technique.
+
+### Point Fort #1 — Moteur de Tarification Saisonnière Dynamique
+
+Les prix d'une villa à Saidia ne sont pas les mêmes en août, pendant Ramadan, ou en basse saison. Plutôt que de laisser l'admin modifier les prix manuellement à chaque période, nous avons conçu un **moteur `PricePeriod`** qui :
+
+- Permet de définir autant de périodes que nécessaire avec des tarifs à la nuitée distincts
+- Calcule automatiquement le coût total avec un décompte nuit par nuit visible par le client avant validation
+- Détecte et gère intelligemment les périodes chevauchantes pour éviter les incohérences tarifaires
+
+Ce niveau de sophistication est rare dans les plateformes immobilières marocaines, où la plupart s'arrêtent à un prix fixe mensuel.
+
+### Point Fort #2 — Validation des Chevauchements de Réservations côté Serveur
+
+Un bien ne peut pas être réservé deux fois aux mêmes dates. Cela peut paraître évident, mais la majorité des systèmes simples gèrent cela uniquement côté client — ce qui crée des conflits réels en cas de réservations simultanées.
+
+Notre système valide **chaque réservation en base de données côté serveur**, avec un algorithme de détection d'intervalles temporels en temps réel. Aucune réservation ne passe sans vérification sur l'état réel des disponibilités — pas sur une version mise en cache côté navigateur.
+
+### Point Fort #3 — Double Flux Métier dans une Architecture Unifiée
+
+La gestion des **locations** (flux PENDING → CONFIRMED → COMPLETED) et des **ventes** (pipeline NEW → CONTACTÉ → QUALIFIÉ → CONCLU) coexistent dans le même tableau de bord admin, avec des interfaces dédiées, des alertes email automatiques à chaque étape, et des analytics séparés pour chaque activité.
+
+Cela évite à l'admin de jongler entre deux outils et centralise toute la vision commerciale en un seul endroit.
+
+### Point Fort #4 — Cartes Interactives et Sécurité Admin Renforcée
+
+Chaque bien affiche sa localisation exacte sur une carte **Leaflet + OpenStreetMap** avec des coordonnées GPS stockées en base de données. L'acheteur potentiel peut évaluer la proximité de la mer, des routes et des commerces directement depuis la fiche.
+
+Côté sécurité, l'accès admin est protégé par **OTP 2FA obligatoire** (confirmation par email) et une **déconnexion automatique après 5 minutes d'inactivité** — une contrainte pensée pour les environnements d'agences où plusieurs personnes partagent un même poste.
+
+### Stack Technique Saidia Bay
+
+`Next.js 14 · React 18 · TypeScript · Tailwind CSS · GSAP · Express.js · Node.js · PostgreSQL · Prisma ORM · Leaflet + OpenStreetMap · Zustand · TipTap · Cloudinary · Resend + Nodemailer · Railway · Docker`
+
+---
+
+## Electro Sky : L'E-commerce en Temps Réel pour un Magasin Physique de Rabat
+
+### Le Contexte
+
+Electro Sky (electrosky.ma) est un magasin d'électronique physique situé à Rabat. Le projet consistait à construire une plateforme e-commerce avec un modèle **click-and-collect** : les clients commandent en ligne depuis leur téléphone et récupèrent leurs achats en magasin en environ 30 minutes.
+
+Ce modèle impose des contraintes techniques que les solutions e-commerce standard comme Shopify ne peuvent pas résoudre : les caissiers doivent voir les commandes **en temps réel**, les stocks doivent se mettre à jour instantanément, et les permissions doivent être configurables par employé.
+
+### Point Fort #1 — Temps Réel avec Socket.io
+
+C'est le cœur technique d'Electro Sky. Quand un client valide sa commande depuis son téléphone, le caissier au comptoir la voit apparaître **en moins d'une seconde**, sans recharger la page.
+
+Nous avons implémenté :
+- Une room Socket.io dédiée (`orders_room`) pour les notifications de commandes en direct
+- Des événements `new_order` et `order_status_changed` synchronisés entre la boutique client et le dashboard admin
+- Une architecture backend **Fastify + Node.js 20** asynchrone pour supporter plusieurs connexions simultanées sans dégradation
+
+Ce niveau de réactivité transforme la gestion du flux caisse en quelque chose de fluide et professionnel.
+
+### Point Fort #2 — Contrôle d'Accès Granulaire : 3 Niveaux de Rôles
+
+Tous les commerces n'ont pas la même structure d'équipe. Electro Sky emploie plusieurs caissiers avec des responsabilités différentes. Notre système de permissions permet à l'admin de :
+
+- Créer des comptes caissier avec accès limité à certains modules uniquement (commandes, stocks, clients, analytics…)
+- Modifier les permissions d'un seul caissier sans affecter les autres
+- Journaliser chaque action de chaque utilisateur dans un `ActionLog` complet pour audit et traçabilité
+
+### Point Fort #3 — Dashboard Analytique Complet
+
+L'admin dispose d'un tableau de bord avec :
+- Revenus par période (jour, semaine, mois)
+- Top 10 des produits les plus vendus
+- Performance individuelle de chaque caissier
+- Alertes automatiques pour les produits sous le seuil de stock minimum
+- Graphiques 30 jours en temps réel (Recharts)
+
+### Point Fort #4 — Recherche Full-Text et Audit Total
+
+La recherche produits utilise l'extension PostgreSQL **`pg_trgm`** — une recherche full-text performante qui tolère les fautes de frappe et les correspondances partielles, bien supérieure à un simple `LIKE` SQL.
+
+Chaque recherche utilisateur est journalisée dans un `SearchLog` pour des analytics futures, et chaque action admin dans un `ActionLog` — une traçabilité totale de ce qui se passe sur la plateforme.
+
+### Point Fort #5 — Déploiement Production sur VPS avec Docker
+
+Electro Sky tourne sur un **VPS Contabo 4 vCPU / 8 Go RAM** sous Ubuntu 24.04 LTS avec :
+- **Docker Compose** pour l'orchestration : API, BDD PostgreSQL, Redis, et proxy Caddy dans des containers séparés
+- **Caddy** comme reverse proxy avec SSL Let's Encrypt automatique et sans configuration manuelle
+- **Redis 7** pour la rotation des JWT, le panier client persistant, et le rate limiting global
+
+Ce niveau d'infrastructure garantit une disponibilité et des performances que les hébergements partagés ou les plateformes "no-code" ne peuvent pas offrir.
+
+### Stack Technique Electro Sky
+
+`Next.js 15 · React 19 · TypeScript · Tailwind CSS · TanStack Query · Zustand · Recharts · Fastify · Node.js 20 · Zod · Socket.io · JWT · PostgreSQL 16 · Prisma ORM · Redis 7 · pg_trgm · Docker Compose · Caddy · Ubuntu VPS · Cloudinary · Resend · TipTap`
+
+---
+
+## Ce Qui Distingue Ces Projets de la Moyenne Marocaine
+
+En construisant Saidia Bay et Electro Sky, nous avons consolidé une différence claire entre ce que font la plupart des prestataires web au Maroc et ce que nous livrons :
+
+| Critère | Projet standard | Saidia Bay / Electro Sky |
+|---|---|---|
+| Base de données | MySQL basique, pas de relations | PostgreSQL + Prisma ORM, schéma relationnel optimisé |
+| Authentification | Login/mot de passe simple | OTP 2FA, rotation JWT, auto-logout, historique mots de passe |
+| Admin | Interface basique, pas d'analytics | CMS complet, analytics temps réel, ActionLog |
+| Infrastructure | Hébergement mutualisé | VPS Docker + Caddy + Redis |
+| Temps réel | Pas de mise à jour live | Socket.io pour commandes instantanées |
+| Recherche | LIKE SQL simple | pg_trgm full-text avec journalisation |
+
+La plupart des agences web au Maroc s'arrêtent à la première colonne. EvoMarket livre la deuxième.
+
+---
+
+## Votre Business Mérite un Projet à la Hauteur de Ses Ambitions
+
+Que vous gériez des biens immobiliers comme Saidia Bay, un commerce physique comme Electro Sky, ou toute autre activité au Maroc — votre projet digital doit être construit pour durer, sécuriser vos données, et évoluer avec votre croissance.
+
+Si vous êtes prêt à construire une plateforme qui change réellement la façon dont votre business opère, parlons-en.
+
+**EvoMarket propulse votre business vers le succès.**
+
+📞 06 24 45 88 47 — 05 37 70 59 11
+📧 evomarketagency@gmail.com
+📱 @evomarket.ma

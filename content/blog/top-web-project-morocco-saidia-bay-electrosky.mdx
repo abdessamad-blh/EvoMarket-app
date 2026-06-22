@@ -1,0 +1,148 @@
+---
+title: "How to Build a Top-Tier Web Project in Morocco: Lessons from Saidia Bay & Electro Sky"
+excerpt: "Building a truly great web project in Morocco means more than design. Discover the architecture decisions, advanced features, and technical strengths that made Saidia Bay and Electro Sky standout Moroccan digital platforms."
+date: "2026-06-20"
+author: "EvoMarket"
+tags: ["Web Project Morocco", "Full-Stack Development", "Saidia Bay", "Electro Sky", "Web Agency Morocco", "Next.js Morocco"]
+image: "/images/projects/saidiabay-hero.jpg"
+readingTime: "8"
+locale: "en"
+---
+
+## What "Top-Tier" Really Means in Moroccan Digital
+
+There is a fundamental difference between an ordinary Moroccan website and a **top-tier digital platform**. That difference is not immediately visible — it is not about price, nor even about design. It lives in the **invisible technical decisions**: database architecture, security implementation, real-world performance under load, and the system's ability to grow with the business.
+
+At EvoMarket, we have built two projects that illustrate this level of excellence: **Saidia Bay**, a full-stack real estate platform for Morocco's Mediterranean coast, and **Electro Sky**, a real-time e-commerce system for an electronics store in Rabat.
+
+Here is what building these two platforms revealed about what it truly means to do high-level digital work in Morocco.
+
+---
+
+## Saidia Bay: When a Real Estate Platform Manages Two Businesses in One
+
+### The Context
+
+Saidia Bay (saidibay.ma) is a real estate platform dedicated to the beach resort of Saidia, in northeastern Morocco. The client had a complex requirement: managing **two types of transactions** on the same properties simultaneously — seasonal rentals with calendar-based reservations, and property sales with a structured lead pipeline.
+
+Two different business models, one cohesive application. That is where the technical ambition begins.
+
+### Strength #1 — Dynamic Seasonal Pricing Engine
+
+The nightly price of a villa in Saidia is not the same in August, during Ramadan, or in low season. Rather than making the admin manually update prices each period, we designed a **`PricePeriod` engine** that:
+
+- Allows defining as many pricing periods as needed with distinct nightly rates
+- Automatically calculates the full cost with a night-by-night breakdown visible to the client before checkout
+- Detects and intelligently handles overlapping periods to prevent pricing inconsistencies
+
+This level of sophistication is rare in Moroccan real estate platforms, where most stop at a single fixed monthly rate.
+
+### Strength #2 — Server-Side Reservation Overlap Validation
+
+A property cannot be double-booked on the same dates. This seems obvious, but most simple systems handle this only client-side — which creates real conflicts when two users book simultaneously.
+
+Our system validates **every reservation against the database server-side**, using a real-time interval detection algorithm. No booking goes through without checking the actual availability state — not a cached browser-side version.
+
+### Strength #3 — Dual Business Flow in a Unified Architecture
+
+**Rental management** (PENDING → CONFIRMED → COMPLETED flow) and **sales management** (NEW → CONTACTED → QUALIFIED → CLOSED pipeline) coexist within the same admin dashboard, with dedicated interfaces, automatic email alerts at each stage, and separate analytics for each activity.
+
+This eliminates the need for the admin to juggle two separate tools and centralizes the entire commercial view in one place.
+
+### Strength #4 — Interactive Maps and Hardened Admin Security
+
+Every property displays its exact location on a **Leaflet + OpenStreetMap** interactive map with GPS coordinates stored in the database. Potential buyers can evaluate proximity to the sea, roads, and amenities directly from the property listing.
+
+On the security side, admin access is protected by **mandatory OTP 2FA** (email confirmation) and an **automatic logout after 5 minutes of inactivity** — a constraint designed for agency environments where multiple people share the same workstation.
+
+### Saidia Bay Tech Stack
+
+`Next.js 14 · React 18 · TypeScript · Tailwind CSS · GSAP · Express.js · Node.js · PostgreSQL · Prisma ORM · Leaflet + OpenStreetMap · Zustand · TipTap · Cloudinary · Resend + Nodemailer · Railway · Docker`
+
+---
+
+## Electro Sky: Real-Time E-Commerce for a Physical Rabat Store
+
+### The Context
+
+Electro Sky (electrosky.ma) is a physical electronics store in Rabat. The project was to build an e-commerce platform around a **click-and-collect** model: customers order online from their phone and pick up their purchases in-store within about 30 minutes.
+
+This model imposes technical constraints that standard e-commerce solutions like Shopify cannot address: cashiers must see orders **in real time**, inventory must update instantly, and permissions must be configurable per employee.
+
+### Strength #1 — Real-Time Orders with Socket.io
+
+This is Electro Sky's technical core. When a customer confirms their order from their phone, the cashier at the counter sees it appear **in under one second**, without reloading the page.
+
+We implemented:
+- A dedicated Socket.io room (`orders_room`) for live order notifications
+- `new_order` and `order_status_changed` events synchronized between the customer storefront and the admin dashboard
+- An asynchronous **Fastify + Node.js 20** backend architecture to handle multiple simultaneous connections without performance degradation
+
+This level of responsiveness transforms checkout queue management into something fluid and professional.
+
+### Strength #2 — Granular Access Control: 3 Role Levels
+
+Not every business has the same team structure. Electro Sky employs multiple cashiers with different responsibilities. Our permissions system allows the admin to:
+
+- Create cashier accounts with access limited to specific modules only (orders, inventory, customers, analytics…)
+- Modify one cashier's permissions without affecting others
+- Log every action from every user in a complete `ActionLog` for audit and traceability
+
+### Strength #3 — Full Analytics Dashboard
+
+The admin has a dashboard with:
+- Revenue by period (day, week, month)
+- Top 10 best-selling products
+- Individual performance metrics per cashier
+- Automatic alerts for products below minimum stock threshold
+- Real-time 30-day charts (Recharts)
+
+### Strength #4 — Full-Text Search and Total Audit Trail
+
+Product search uses the PostgreSQL **`pg_trgm`** extension — a performant full-text search that tolerates typos and partial matches, far superior to a simple SQL `LIKE` query.
+
+Every user search is logged in a `SearchLog` for future analytics, and every admin action in an `ActionLog` — total traceability of everything happening on the platform.
+
+### Strength #5 — Production Deployment on VPS with Docker
+
+Electro Sky runs on a **Contabo VPS (4 vCPU / 8 GB RAM)** under Ubuntu 24.04 LTS with:
+- **Docker Compose** for service orchestration: API, PostgreSQL database, Redis, and Caddy proxy in separate containers
+- **Caddy** as reverse proxy with automatic Let's Encrypt SSL, zero manual configuration
+- **Redis 7** for JWT rotation, persistent customer cart, and global rate limiting
+
+This infrastructure level guarantees availability and performance that shared hosting or no-code platforms simply cannot deliver.
+
+### Electro Sky Tech Stack
+
+`Next.js 15 · React 19 · TypeScript · Tailwind CSS · TanStack Query · Zustand · Recharts · Fastify · Node.js 20 · Zod · Socket.io · JWT · PostgreSQL 16 · Prisma ORM · Redis 7 · pg_trgm · Docker Compose · Caddy · Ubuntu VPS · Cloudinary · Resend · TipTap`
+
+---
+
+## What Sets These Projects Apart from the Moroccan Average
+
+Building Saidia Bay and Electro Sky solidified a clear distinction between what most web providers deliver in Morocco and what we build at EvoMarket:
+
+| Criterion | Standard project | Saidia Bay / Electro Sky |
+|---|---|---|
+| Database | Basic MySQL, no relationships | PostgreSQL + Prisma ORM, optimized relational schema |
+| Authentication | Simple login/password | OTP 2FA, JWT rotation, auto-logout, password history |
+| Admin | Basic interface, no analytics | Full CMS, real-time analytics, ActionLog |
+| Infrastructure | Shared hosting | VPS Docker + Caddy + Redis |
+| Real-time | No live updates | Socket.io for instant orders |
+| Search | Simple SQL LIKE | pg_trgm full-text with logging |
+
+Most Moroccan web agencies stop at the first column. EvoMarket delivers the second.
+
+---
+
+## Your Business Deserves a Project That Matches Its Ambitions
+
+Whether you manage real estate like Saidia Bay, a physical retail store like Electro Sky, or any other business in Morocco — your digital project must be built to last, secure your data, and evolve with your growth.
+
+If you are ready to build a platform that genuinely changes how your business operates, let's talk.
+
+**EvoMarket propels your business towards success.**
+
+📞 06 24 45 88 47 — 05 37 70 59 11
+📧 evomarketagency@gmail.com
+📱 @evomarket.ma

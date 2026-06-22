@@ -1,0 +1,148 @@
+---
+title: "Professional Digital Platform in Morocco: What Few Agencies Dare to Build"
+excerpt: "Between a showcase website and a true professional digital platform, there is a gap that few Moroccan web agencies cross. Discover the architecture, security, and deployment standards that define technical excellence in Morocco in 2026."
+date: "2026-06-20"
+author: "EvoMarket"
+tags: ["Digital Platform Morocco", "Full-Stack Architecture", "Web Security Morocco", "Docker Deployment", "Web Agency Morocco"]
+image: "/images/projects/electrosky-hero1.jpg"
+readingTime: "8"
+locale: "en"
+---
+
+## The Gap Nobody Shows You
+
+In Morocco, the web agency market has split into two parallel worlds. On one side, hundreds of providers delivering WordPress sites, Shopify templates, or Wix pages for a few thousand dirhams. On the other, a very small number of teams capable of building **true professional digital platforms** — systems that handle sensitive data, financial transactions, teams, and thousands of simultaneous users.
+
+The difference between these two worlds is not just about price. It is about **fundamental architectural choices** — decisions made before the first line of code that determine whether the platform holds up in 6 months, in 2 years, or under unexpected load.
+
+At EvoMarket, we build platforms in the second world. Here is what that concretely means.
+
+---
+
+## 1. A Database That Matches the Business Ambition
+
+The choice of database is the first decision separating an amateur project from a professional one.
+
+### PostgreSQL: The Standard for Serious Platforms
+
+Our platforms use **PostgreSQL** — not MySQL, not SQLite, not a generic NoSQL database. PostgreSQL offers:
+
+- **Strict relational constraints** (foreign keys, cascades) that guarantee data integrity at all times
+- **ACID transactions** that prevent inconsistent states in case of errors or interruptions
+- **Full-text search with `pg_trgm`** — as on Electro Sky, where every product search tolerates typos and partial matches, with automatic logging of every query
+- Optimized performance for complex queries on millions of rows
+
+On **Saidia Bay**, managing reservation overlaps, seasonal pricing periods, and dual business flows (rental + sales) relies entirely on a rigorously modeled PostgreSQL schema with **Prisma ORM** — ensuring type consistency between the database and TypeScript code.
+
+### The Schema: Strategic Decision, Not Technical
+
+A bad database schema in a Moroccan e-commerce site can mean you cannot add product variants without a risky migration, you cannot have multiple prices for the same product, or you cannot track inventory movement history.
+
+On **Electro Sky**, we modeled from day one: products with variants (color, storage), stock movements with full history (ADD/REMOVE), suppliers, multi-roles, and `ActionLog` / `SearchLog` for total traceability. Over **15 interconnected tables** — a foundation that can evolve without rebuilding everything.
+
+---
+
+## 2. Security: Well Beyond HTTPS
+
+An HTTPS padlock is the minimum. A professional platform implements defense-in-depth security at every layer.
+
+### OTP 2FA: Two-Factor Authentication via Email
+
+On **Saidia Bay** and **Electro Sky**, admin access requires an **OTP sent by email** at every login. This is not optional. It is not a checkbox — it is real protection against credential stuffing attacks and unauthorized access.
+
+Electro Sky goes further: any sensitive profile modification (email, phone, password) triggers a new OTP confirmation. Password history prevents reuse of old passwords.
+
+### JWT Rotation and Session Management
+
+JWT tokens have a short lifespan. **Redis 7** on Electro Sky manages refresh token rotation — if a token is stolen, it becomes invalid at the next rotation. Session revocation is immediate.
+
+On Saidia Bay, automatic logout after **5 minutes of inactivity** protects sessions on shared workstations — a real scenario in Moroccan real estate agencies where staff share computers.
+
+### Global Rate Limiting on the Reverse Proxy
+
+On Electro Sky, **Caddy** (the reverse proxy) applies global rate limiting before requests reach the API — protection against brute-force attacks and bots at the infrastructure level rather than the application level.
+
+### Media Validation with Magic Bytes
+
+Image uploads on Electro Sky use **Cloudinary** with **magic byte validation** — verifying the file is actually an image from its initial bytes, not just its extension. This prevents malicious file uploads disguised as images.
+
+---
+
+## 3. Real-Time: A Business Feature, Not a Gadget
+
+Real-time is often presented as a "nice to have" feature. On Electro Sky, it is the **business core**.
+
+The click-and-collect model works because when a customer confirms their order, the cashier 200 meters away sees it appear on their screen **in under one second**. Without real-time, the model fails — the customer arrives at the counter before the cashier has prepared the order.
+
+### The Socket.io Architecture
+
+We implemented a dedicated `orders_room` in **Socket.io** with:
+- `new_order` and `order_status_changed` events emitted by the **Fastify** backend on every status change
+- Reception on the admin dashboard side without page reload
+- Automatic reconnection handling for unstable connections (4G network in-store)
+
+The asynchronous **Fastify + Node.js 20** backend supports multiple simultaneous cashier connections without degradation — critical for a store with several checkout counters.
+
+---
+
+## 4. The Admin Dashboard: A Decision Tool, Not Just a Data List
+
+A professional admin dashboard is not a raw data list. It is a **decision tool** that transforms data into actionable insights.
+
+On **Electro Sky**, the admin has:
+- Consolidated revenue by period with real-time 30-day charts (**Recharts**)
+- Top 10 products — to identify best-sellers and adjust stock accordingly
+- Individual cashier performance metrics — to identify operational inefficiencies
+- Automatic low-stock alerts — to never be caught off guard during peak demand
+- A complete `ActionLog` — every action from every user is traced with timestamp and context
+
+On **Saidia Bay**, the admin also manages a **full homepage CMS**: hero carousel reordering, banner activation/deactivation, customizable CTAs, and click analytics per banner to measure each promotion's effectiveness — all without touching the code.
+
+---
+
+## 5. Deployment: Production-Grade from Day One
+
+Deployment is the step many agencies rush through. "It works locally" is not a production guarantee.
+
+### Docker Compose: Reproducible Environments
+
+Electro Sky runs on a **Contabo VPS (4 vCPU / 8 GB RAM)** under Ubuntu 24.04 LTS with **Docker Compose** — each service (Fastify API, PostgreSQL 16, Redis 7, Caddy) runs in its own isolated container.
+
+Concrete benefits:
+- **Reproducibility**: development environment is identical to production
+- **Isolation**: a crash in one service does not affect others
+- **Scalability**: adding an API instance behind a load balancer is trivial
+
+### Caddy: Automatic SSL Without Friction
+
+**Caddy** automatically manages Let's Encrypt SSL certificates — automatic renewal, HTTP-to-HTTPS redirection, and global rate limiting, with zero manual nginx/certbot configuration. This is a significant operational reliability gain for a Moroccan agency managing multiple projects.
+
+### Railway for Lighter Projects
+
+Saidia Bay uses **Railway.app** — a PaaS platform handling Docker orchestration, environment variables, and automatic Git deployments. It is the ideal solution for full-stack projects that don't yet need a dedicated VPS but want serious infrastructure from the start.
+
+---
+
+## What This Changes for Your Business
+
+These technical choices are not an end in themselves. They have direct consequences on your business:
+
+- **PostgreSQL + rigorous schema** → Zero data corruption, zero double-booking, zero stock inconsistency
+- **OTP 2FA + JWT rotation** → Admin access protected even if a password is compromised
+- **Socket.io real-time** → Viable click-and-collect model, reduced checkout errors
+- **Docker + dedicated VPS** → Guaranteed uptime, predictable performance, no noisy neighbors sharing your server
+- **Analytics dashboard** → Decisions based on data, not intuition
+
+---
+
+## Ready to Build a Real Digital Platform?
+
+If you are a Moroccan business that needs more than a showcase website — if you manage orders, teams, inventory, transactions, or users — you deserve a platform built to the same standards as Saidia Bay and Electro Sky.
+
+EvoMarket is one of the very few Moroccan web agencies that builds at this level. Let's talk about your project.
+
+**EvoMarket propels your business towards success.**
+
+📞 06 24 45 88 47 — 05 37 70 59 11
+📧 evomarketagency@gmail.com
+📱 @evomarket.ma
